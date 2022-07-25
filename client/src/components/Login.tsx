@@ -1,8 +1,9 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { useAppDispatch } from "../config"
 import { loginUser } from "../redux/actions"
+import { useVerfication } from "../services/services"
 
 export default function Login(){
     const navigate = useNavigate()
@@ -21,7 +22,7 @@ export default function Login(){
             window.localStorage.setItem('userDataLogin', JSON.stringify(userData))
             navigate("/admin/panel")
         }else{
-            
+            setMsgError("Datos ingresados incorrectos!")
         }
     }
 
@@ -31,6 +32,14 @@ export default function Login(){
             [event.target.name]: event.target.value
         })
     }
+    // useVerfication('panel', false)
+    useEffect(()=>{
+        let data = window.localStorage.getItem("userDataLogin");
+        let dataParse = data ? JSON.parse(data) : null
+        if(dataParse && dataParse.email){
+            navigate(`/admin/panel`)
+        }
+    },[])
 
     return(
         <section>
@@ -39,6 +48,7 @@ export default function Login(){
                 <input name='password' type='password' value={userData.password} onChange={handleChange}/>
                 <button>Enviar</button>
             </form>
+            <p>{msgError}</p>
         </section>
     )
 }
