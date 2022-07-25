@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { useAppDispatch } from "../config"
 import { loginUser } from "../redux/actions"
 import { useVerfication } from "../services/services"
+import s from './Styles/Login.module.css'
 
 export default function Login(){
     const navigate = useNavigate()
@@ -42,11 +43,13 @@ export default function Login(){
     },[])
 
     return(
-        <section>
-            <form onSubmit={handleSubmit}>
+        <section id={s.loginContainer}>
+            <form onSubmit={handleSubmit} id={s.formLogin}>
+                <label>Email:</label>
                 <input name='email' type='text' value={userData.email} onChange={handleChange}/>
+                <label>Password:</label>
                 <input name='password' type='password' value={userData.password} onChange={handleChange}/>
-                <button>Enviar</button>
+                <button>Entrar</button>
             </form>
             <p>{msgError}</p>
         </section>

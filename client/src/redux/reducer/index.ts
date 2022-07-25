@@ -12,6 +12,7 @@ const initialState:any = {
     vehicles: [],
     allVehicles: [],
     vehicleDetails: {},
+    actualPage: 1,
 }
 
 
@@ -22,6 +23,12 @@ export default function rootReducer(state = initialState, action:any){
                 ...state,
                 vehicles: action.payload,
                 allVehicles: action.payload
+            }
+        case actions.GET_VEHICLES_BY_NAME:
+            let vehiclesFiltered = [...state.allVehicles].filter(v => v.title.toLowerCase().includes(action.payload.toLowerCase()))
+            return{
+                ...state,
+                vehicles: vehiclesFiltered,
             }
         case actions.GET_DETAILS:
             return {
@@ -37,5 +44,12 @@ export default function rootReducer(state = initialState, action:any){
                 ...state,
                 vehicles: filtered,
             }
+        case actions.CHANGE_PAGE:
+            return {
+                ...state,
+                actualPage: action.payload
+            }
+        default:
+            return state
     }
 }
