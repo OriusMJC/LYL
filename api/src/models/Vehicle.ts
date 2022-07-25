@@ -21,7 +21,7 @@ module.exports = (sequelize: any) => {
             allownull: false,
         },
         status: {
-            type: DataTypes.ENUM('nuevo', 'usado'),
+            type: DataTypes.ENUM('Nuevo', 'Usado'),
             allownull: false,
         },
         kilom: {

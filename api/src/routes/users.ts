@@ -1,4 +1,5 @@
 // import express from 'express';
+require('dotenv').config();
 import { Router } from 'express';
 // import {
 //     getAllUsers,
@@ -15,9 +16,9 @@ router.get('/', (req, res, next): Object | undefined | void=> {
     const {email,password} = req.body
     try {
         if(email === EMAIL && password === PASSWORD){
-            return res.json('Datos correctos')
+            return res.send('Datos correctos')
         }
-        return res.json('Datos incorrectos');
+        return res.send('Datos incorrectos');
     } catch (error) {
         return next(error)
     }
