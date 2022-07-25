@@ -18,12 +18,12 @@ export interface Vehicle {
     price: number,
     status: VehicleStatus;
     description: string,
-    kilom: number,
+    kilom?: number,
     year: number,
 }
 
 export interface State{
     vehicles: Array<Vehicle>,
     allVehicles: Array<Vehicle>,
-    vehicleDetails: Object<Vehicle>,
+    vehicleDetails?: Object<Vehicle>,
 }

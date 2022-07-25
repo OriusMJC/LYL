@@ -36,7 +36,7 @@ export function getAllVehicles(){
     return async(dispatch: Dispatch<Action>)=>{
         try {
             let res = await axios('/vehicles');
-            dispatch({type: GET_ALL_VEHICLES, payload: res})
+            dispatch({type: GET_ALL_VEHICLES, payload: res.data})
         } catch (error) {
             console.log(error)
         }
@@ -47,7 +47,7 @@ export function getDetails(idVehicle:string){
     return async(dispatch: Dispatch<Action>)=>{
         try {
             let res = await axios(`/vehicles/${idVehicle}`);
-            dispatch({type: GET_DETAILS, payload: res})
+            dispatch({type: GET_DETAILS, payload: res.data})
         } catch (error) {
             console.log(error)
         }
@@ -58,7 +58,7 @@ export function createVehicle(data:types.Vehicle){
     return async(dispatch: Dispatch<Action>)=>{
         try {
             let res = await axios.post('/create', data);
-            dispatch({type: CREATE_VEHICLE, payload: res});
+            dispatch({type: CREATE_VEHICLE, payload: res.data});
         } catch (error) {
             console.log(error);
         }
@@ -69,7 +69,7 @@ export function deteleVehicle(idVehicle:string){
     return async(dispatch: Dispatch<Action>)=>{
         try {
             let res = await axios.delete(`/vehicles/${idVehicle}`);
-            dispatch({type: DELETE_VEHICLE, payload: res});
+            dispatch({type: DELETE_VEHICLE, payload: res.data});
         } catch (error) {
             console.log(error)
         }
@@ -80,7 +80,7 @@ export function updateData(idVehicle:string, data:types.Vehicle){
     return async(dispatch: Dispatch<Action>)=>{
         try {
             let res = await axios.put(`/vehicles/${idVehicle}`, data);
-            dispatch({type: UPDATE_VEHICLE, payload: res});
+            dispatch({type: UPDATE_VEHICLE, payload: res.data});
         } catch (error) {
             console.log(error)
         }

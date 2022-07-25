@@ -1,4 +1,4 @@
-import * as actions from '../actions/index';
+import * as actions from '../actions';
 import * as types from '../../types';
 
 function orderMayMen(){
@@ -14,13 +14,14 @@ const initialState:any = {
     vehicleDetails: {},
 }
 
+
 export default function rootReducer(state = initialState, action:any){
-    switch (action.paylod) {
+    switch (action.type) {
         case actions.GET_ALL_VEHICLES:
-            return {
+            return{
                 ...state,
                 vehicles: action.payload,
-                allVehicles: action.payload,
+                allVehicles: action.payload
             }
         case actions.GET_DETAILS:
             return {

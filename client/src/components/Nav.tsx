@@ -11,7 +11,7 @@ function Nav() {
         <li>Sobre nosotros</li>
         <li>Contactanos</li>
         <Link to = "/">
-        <li>Home</li>        
+          <li>Home</li>        
         </Link>
       </ul>
     </div>

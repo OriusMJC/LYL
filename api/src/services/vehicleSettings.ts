@@ -3,7 +3,6 @@ const { Vehicle } = require('../db');
 
 export const getAllVehicles = async(): Promise<types.Vehicle[] | string> => {
     let allVehicles = await Vehicle.findAll();
-    if(!allVehicles.length) return 'No hay vehiculos creados aun';
     return allVehicles;
 };
 
