@@ -30,7 +30,7 @@ router.get('/:id', async(req, res, next): Promise<any> => {
     }
 });
 
-router.post('/:idUser', async(req, res, next): Promise<any> => {
+router.post('/create', async(req, res, next): Promise<any> => {
     // const id = req.params.idUser;
     const vehicle = req.body;
     try {
