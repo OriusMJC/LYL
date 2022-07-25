@@ -9,16 +9,17 @@ type Action = {
 	payload: any;
 };
 
-export function Login(dataUser:object){
+export function loginUser(dataUser:object){
     return async (dispatch: Dispatch<Action>)=>{
         try {
-            let resp = await axios('/user',dataUser)
-            // if(resp === 'Datos correctos'){
-            //         // dispatch({
-            //         //     type: LOGIN,
-            //         //     payload: dataUser
-            //         // })
-            // }
+            let resp = await axios('/users', {params: dataUser})
+            if(resp.data == 'Datos correctos'){
+                    dispatch({
+                        type: LOGIN,
+                        payload: dataUser
+                    })
+            }
+            return resp
         } catch (error) {
             console.log(error)
         }
