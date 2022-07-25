@@ -16,7 +16,7 @@ export interface Vehicle {
     title: string,
     photo: Array<string>,
     price: number,
-    status: VehicleStatus;
+    status: VehicleStatus | string;
     description: string,
     kilom?: number,
     year: number,
