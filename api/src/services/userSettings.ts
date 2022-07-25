@@ -22,7 +22,8 @@ export const getBasicUserInfo = async(id: string): Promise<types.NonSensitiveUse
             id: userData.dataValues.id,
             name: userData.dataValues.name,
             email: userData.dataValues.email,
-            phone: userData.dataValues.phone
+            phone: userData.dataValues.phone,
+            admin: userData.dataVaules.admin,
         };
         return user;
     }

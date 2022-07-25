@@ -1,8 +1,9 @@
 import * as types from '../types';
 const { Vehicle } = require('../db');
 
-export const getAllVehicles = async(): Promise<types.Vehicle[]> => {
+export const getAllVehicles = async(): Promise<types.Vehicle[] | string> => {
     let allVehicles = await Vehicle.findAll();
+    if(!allVehicles.length) return 'No hay vehiculos creados aun';
     return allVehicles;
 };
 
@@ -31,4 +32,9 @@ export const addNewVehicle = async(userData: types.NonSensitiveUserInfo, newVehi
 export const deleteVehicle = async(idVehicle: string): Promise<string> => {
     await Vehicle.destroy({where: {id: idVehicle}});
     return 'Vehiculo eliminado';
+};
+
+export const updateData = async(idVehicle: string, newData: types.Vehicle): Promise<string> => {
+    await Vehicle.update(newData, {where: {id: idVehicle}});
+    return 'Cambios actualizados';
 }

@@ -1,10 +1,9 @@
-import express from 'express';
+// import express from 'express';
 import { Router } from 'express';
 import {
     getAllUsers,
     getUserById,
-    getBasicUserInfo,
-    addNewUser,
+    // addNewUser,
 } from '../services/userSettings';
 import * as types from '../types';
 

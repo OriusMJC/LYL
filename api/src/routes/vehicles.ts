@@ -1,11 +1,11 @@
-import express, { Router } from 'express';
-import * as types from '../types';
+import { Router } from 'express';
 import {
     getAllVehicles,
     getVehiclesById,
     getVehicleByName,
     addNewVehicle,
     deleteVehicle,
+    updateData,
 } from '../services/vehicleSettings';
 import { getBasicUserInfo } from '../services/userSettings';
 const router = Router();
@@ -25,7 +25,7 @@ router.get('/', async(req, res, next): Promise<any> =>{
     }
 });
 
-router.get('/:id', async(req, res, next) => {
+router.get('/:id', async(req, res, next):Promise<any> => {
     const id = req.params.id;
     try {
         let vehicleById = await getVehiclesById(id);
@@ -35,7 +35,7 @@ router.get('/:id', async(req, res, next) => {
     }
 });
 
-router.post('/:idUser', async(req, res, next) => {
+router.post('/:idUser', async(req, res, next):Promise<any> => {
     const id = req.params.idUser;
     const vehicle = req.body;
     try {
@@ -47,7 +47,7 @@ router.post('/:idUser', async(req, res, next) => {
     }
 });
 
-router.delete('/:idVehicle', async(req, res, next) => {
+router.delete('/:idVehicle', async(req, res, next): Promise<any> => {
     const idVehicle = req.params.idVehicle;
     try {
         let resp = await deleteVehicle(idVehicle);
@@ -57,5 +57,15 @@ router.delete('/:idVehicle', async(req, res, next) => {
     }
 });
 
+router.put('/:idVehicle', async(req, res, next): Promise<any>=>{
+    const idVehicle = req.params.idVehicle;
+    const newData = req.body;
+    try {
+        let response = await updateData(idVehicle, newData);
+        return res.json(response);
+    } catch (error) {
+        next(error)
+    }
+})
 
 module.exports = router;
