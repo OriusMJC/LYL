@@ -2,13 +2,16 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../config';
 import { getAllVehicles } from '../redux/actions';
+import { useParams } from 'react-router-dom';
 import * as types from '../types';
 import notFound from '../media/notFound.jpg'
 
 
 function VehiclesDetails() {
   const dispatch = useAppDispatch();
+  const { idVehicle } = useParams();
   const vehicles = useSelector((state:any) => state && state.vehicles);
+  const actualVehicle = vehicles?.filter((v:types.Vehicle) => v.id === idVehicle);
   console.log(vehicles);
 
   useEffect(() => {
@@ -18,8 +21,8 @@ function VehiclesDetails() {
   return (
     <div>
       {
-        vehicles && vehicles.length &&
-        vehicles.map((v:types.Vehicle) => {
+        actualVehicle && actualVehicle.length &&
+        actualVehicle.map((v:types.Vehicle) => {
           return (
             <div key = {v.id}>
               {v.photo && v.photo.length ?
