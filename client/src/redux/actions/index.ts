@@ -4,11 +4,13 @@ import * as types from '../../types'
 
 export const LOGIN = "LOGIN";
 export const GET_ALL_VEHICLES = "GET_ALL_VEHICLES";
+export const GET_VEHICLES_BY_NAME = "GET_VEHICLES_BY_NAME"
 export const GET_DETAILS = "GET_DETAILS";
 export const CREATE_VEHICLE = "CREATE_VEHICLE";
 export const DELETE_VEHICLE = "DELETE_VEHICLE";
 export const UPDATE_VEHICLE = "UPDATE_VEHICLE";
 export const ORDER_BY_PRICE = "ORDER_BY_PRICE";
+export const CHANGE_PAGE = "CHANGE_PAGE"
 
 type Action = {
 	type: string;
@@ -43,10 +45,20 @@ export function getAllVehicles(){
     }
 };
 
+export function getVehiclesByName(name:string){
+    return (dispatch: Dispatch<Action>)=>{
+        dispatch({
+            type: GET_VEHICLES_BY_NAME,
+            payload: name
+        })
+    }
+}
+
 export function getDetails(idVehicle:string){
     return async(dispatch: Dispatch<Action>)=>{
         try {
             let res = await axios(`/vehicles/${idVehicle}`);
+            console.log('res',res)
             dispatch({type: GET_DETAILS, payload: res.data})
         } catch (error) {
             console.log(error)
@@ -93,3 +105,10 @@ export function orderByPrice(payload:any){
         payload,
     }
 }
+
+export function changePage(page:number){
+    return {
+            type: CHANGE_PAGE,
+            payload: page
+        }
+    }

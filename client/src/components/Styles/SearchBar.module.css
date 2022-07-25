@@ -1,0 +1,29 @@
+#searchBarContainer{
+    width: 100vw;
+    height: 50px;
+    margin: 30px 0px;
+}
+#searchBarContainer input{
+    background-color: #eee;
+    width: 400px;
+    height: 30px;
+    border: none;
+    border-radius: 3px 0px 0px 3px;
+    padding: 0px 5px;
+}
+/* #searchBarContainer input:{
+    border: none;
+} */
+#searchBarContainer button{
+    width: 75px;
+    height: 30px;
+    border: none;
+    border-radius: 0px 3px 3px 0px;
+}
+/* #searchBarContainer button i{
+    width: 55px;
+    height: 25px;
+} */
+#searchBarContainer button:hover{
+    background-color: #ddd;
+}

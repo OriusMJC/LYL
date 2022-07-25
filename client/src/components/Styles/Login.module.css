@@ -1,0 +1,35 @@
+#loginContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 83vh;
+}
+#loginContainer p{
+    color: #f00;
+}
+
+#formLogin{
+    background-color: #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+}
+#formLogin input{
+    width: 300px;
+    height: 20px;
+    margin: 25px 0;
+}
+#formLogin button{
+    width: 70px;
+    height: 30px;
+    margin: 25px 0;
+    border: none;
+    border-radius: 3px;
+}
+#formLogin button:hover{
+    background-color: #ddd;
+}

@@ -1,0 +1,60 @@
+#vehiclesContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 80vh;
+}
+
+#sectionVehicles{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 60vw;
+    min-height: 70vh;
+}
+
+.cardVechicle{
+    background-color: rgb(231, 231, 231);
+    height: 300px;
+    width: 280px;
+    margin: 10px 20px;
+    border-radius: 5px;
+    transition: .2s;
+}
+.cardVechicle:hover{
+    transform: scale(1.013);
+}
+.cardVechicle h2,p{
+    margin: 2px;
+    font-size: 1em;
+}
+.cardVechicle div{
+    border-radius: 5px 5px 0px 0px;
+}
+.cardVechicle a{
+    color: #000;
+    text-decoration: none;
+}
+.cardVechicle a:visited{
+    color: #000;
+}
+
+#btnsContainer{
+    width: 60vw;
+}
+
+.buttonActive{
+    height: 30px;
+    width: 30px;
+    border: 1px solid #000;
+    border-radius: 3px;
+}
+.btnsPage{
+    height: 30px;
+    width: 30px;
+    border: none;
+    border-radius: 3px;
+}
+.btnsPage:hover{
+    transform: scale(1.08);
+}
