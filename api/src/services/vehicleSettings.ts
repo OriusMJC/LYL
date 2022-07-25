@@ -19,13 +19,10 @@ export const getVehicleByName = async(vehicleTitle: string): Promise<types.Vehic
     return vehicleFind;
 };
 
-export const addNewVehicle = async(userData: types.NonSensitiveUserInfo, newVehicle: types.Vehicle): Promise<string> => {
-    let vehicleToCreate = null;
-    if(userData.admin){
-        vehicleToCreate = {...newVehicle};
-        Vehicle.create(vehicleToCreate);
+export const addNewVehicle = async(newVehicle: types.Vehicle): Promise<string> => {
+        let vehicleToCreate = {...newVehicle};
+        await Vehicle.create(vehicleToCreate);
         return 'Vehiculo posteado con exito';
-    }else return 'No puede crear un vehiculo si no es admin'
 };
 
 export const deleteVehicle = async(idVehicle: string): Promise<string> => {

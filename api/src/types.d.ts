@@ -14,7 +14,7 @@ export interface User {
 export interface Vehicle {
     id: string,
     title: string,
-    photo: string,
+    photo: Array<string>,
     price: number,
     status: VehicleStatus;
     description: string,
