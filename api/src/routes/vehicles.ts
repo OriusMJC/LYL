@@ -30,11 +30,7 @@ router.get('/:id', async(req, res, next): Promise<any> => {
     }
 });
 
-<<<<<<< HEAD
 router.post('/create', async(req, res, next): Promise<any> => {
-=======
-router.post('/', async(req, res, next): Promise<any> => {
->>>>>>> 8ce9736cd5f83faa0e4700ad7836e9b5f755c874
     // const id = req.params.idUser;
     const vehicle = req.body;
     try {

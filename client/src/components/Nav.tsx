@@ -10,6 +10,9 @@ function Nav() {
         </Link>
         <li>Sobre nosotros</li>
         <li>Contactanos</li>
+        <Link to = "/">
+        <li>Home</li>        
+        </Link>
       </ul>
     </div>
   )
