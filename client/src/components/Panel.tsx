@@ -12,7 +12,7 @@ function Panel() {
     title: '',
     photo: [],
     price: 0,
-    status: '',
+    status: 'Nuevo',
     kilom: 0,
     year: 0,
     description: ''
