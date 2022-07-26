@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { useSelector} from 'react-redux';
 import { useAppDispatch } from '../config';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -15,6 +15,7 @@ function VehiclesDetails() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const vehicle = useSelector((state:any) => state && state.vehicleDetails);
+  const [deleteBtn, setDeleteBtn] = useState(false)
 
   useEffect(() => {
     if(idVehicle){
@@ -36,9 +37,17 @@ function VehiclesDetails() {
     })
   }, [])
 
+  useEffect(()=>{
+    let data = window.localStorage.getItem("userDataLogin");
+    let dataParse = data ? JSON.parse(data) : null
+    if(dataParse && dataParse.email){
+        setDeleteBtn(true)
+    }
+  },[])
+
   return (
     <div>
-      <button value = {vehicle.id} onClick = {handleDelete}>ELIMINAR</button>
+      {deleteBtn && <button value = {vehicle.id} onClick = {handleDelete}>ELIMINAR</button>}
       {
         vehicle &&
             <div key = {vehicle.id}>
