@@ -6,15 +6,15 @@ import { getAllVehicles, getDetails, deleteVehicle } from '../redux/actions';
 import * as types from '../types';
 import notFound from '../media/notFound.jpg';
 import swal from 'sweetalert';
+import ReactPlayer from 'react-player';
 
 
 function VehiclesDetails() {
+  
   const idVehicle:any = useParams().idVehicle;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const vehicle = useSelector((state:any) => state && state.vehicleDetails);
-  
-  console.log(idVehicle)
 
   useEffect(() => {
     if(idVehicle){
@@ -48,6 +48,13 @@ function VehiclesDetails() {
               ))
               :
               <img src = {notFound}></img>
+              }
+              {vehicle.video &&
+              <ReactPlayer 
+              url = {require(`../media/videos/${vehicle.video}`)}
+              controls
+              autoplay
+               />
               }
               <h2>{vehicle.title}</h2>
               <h3>Precio: {vehicle.price}</h3>

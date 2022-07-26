@@ -12,9 +12,11 @@ module.exports = (sequelize: any) => {
             type: DataTypes.STRING(100),
             allownull: false,
         },
+        video: {
+            type: DataTypes.STRING,
+        },
         photo: {
             type: DataTypes.ARRAY(DataTypes.STRING),
-            allownull: false,
         },
         price: {
             type: DataTypes.FLOAT,
