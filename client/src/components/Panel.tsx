@@ -8,20 +8,21 @@ import s from './Styles/Panel.module.css'
 function Panel() {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const [vehicleData,setVehicleData] = useState({
-    id:'',
+  const [vehicleData,setVehicleData] = useState<any>({
     title: '',
     photo: [],
     price: 0,
-    status: 'Nuevo',
+    status: '',
     kilom: 0,
     year: 0,
     description: ''
   })
 
+
   function handleSubmit(event:any){
     event.preventDefault()
     dispatch(createVehicle(vehicleData))
+    navigate('/vehicles')
   }
 
   function handleChange(event:any){
@@ -46,20 +47,17 @@ function Panel() {
     const data = new FormData();
 
     data.append('file', files[0]);
-    data.append('uplod_preset', 'chropyis');
+    data.append('upload_preset', 'chropyis');
 
-    const res = await fetch("https://api.cloudinary.com/v1_1/mypc/LyL/upload", { method: "POST", body: data });
-    console.log(res);
+    const res = await fetch("https://api.cloudinary.com/v1_1/mypc/image/upload", { method: "POST", body: data });
     const file = await res.json();
 
-    console.log(file)
-
-    // if(!file.error){
-    //   setVehicleData({
-    //     ...vehicleData,
-    //     photo: [file.secure_url]
-    //   })
-    // }else console.log(file.error)
+    if(!file.error && file.secure_url !== undefined){
+      setVehicleData({
+        ...vehicleData,
+        photo: [...vehicleData.photo, file.secure_url]
+      })
+    }else console.log(file.error);
 
   }
 
@@ -70,7 +68,7 @@ function Panel() {
         <label>Titulo: </label>
         <input name="title" type="text" value={vehicleData.title} onChange={handleChange} required/>
         <label>Imagenes: </label>
-        <input name="photo" type="text" value={vehicleData.photo} onChange={handleChange} required/>
+        <input name="photo" type="file" onChange={uploadImage} required/>
         <label>Precio: </label>
         <input name="price" type="number" value={vehicleData.price} onChange={handleChange} required/>
         <label>Estado: </label>

@@ -26,6 +26,7 @@ module.exports = (sequelize: any) => {
         },
         kilom: {
             type: DataTypes.FLOAT,
+            allownull: false,
         },
         year: {
             type: DataTypes.INTEGER,

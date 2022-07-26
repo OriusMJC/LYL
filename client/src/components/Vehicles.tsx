@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { changePage, getAllVehicles } from '../redux/actions/index';
+import { changePage, getAllVehicles} from '../redux/actions/index';
 import { useAppDispatch } from '../config';
 import * as types from '../types';
 import notFound from '../media/notFound.jpg'
@@ -36,8 +36,6 @@ function Vehicles() {
     }
   }
   
-  
-
   return (
     <div id={s.vehiclesContainer}>
       <SearchBar/>
@@ -54,7 +52,6 @@ function Vehicles() {
               height: '210px',
               transition: '.2s',
             }
-            console.log(v.photo[0])
             return (
               <div key = {v.id} className={s.cardVechicle}>
                 <Link to = {`/vehicles/${v.id}`}>

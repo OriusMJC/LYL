@@ -58,7 +58,6 @@ export function getDetails(idVehicle:string){
     return async(dispatch: Dispatch<Action>)=>{
         try {
             let res = await axios(`/vehicles/${idVehicle}`);
-            console.log('res',res)
             dispatch({type: GET_DETAILS, payload: res.data})
         } catch (error) {
             console.log(error)
@@ -67,17 +66,18 @@ export function getDetails(idVehicle:string){
 };
 
 export function createVehicle(data:types.Vehicle){
-    return async(dispatch: Dispatch<Action>)=>{
+    console.log(data);
+    return async()=>{
         try {
-            let res = await axios.post('/create', data);
-            dispatch({type: CREATE_VEHICLE, payload: res.data});
+            let res = await axios.post('/vehicles/create', data);
+            return res;
         } catch (error) {
             console.log(error);
         }
     }
 };
 
-export function deteleVehicle(idVehicle:string){
+export function deleteVehicle(idVehicle:string){
     return async(dispatch: Dispatch<Action>)=>{
         try {
             let res = await axios.delete(`/vehicles/${idVehicle}`);

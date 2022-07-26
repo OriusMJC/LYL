@@ -1,24 +1,44 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useCallback } from 'react';
+import { useSelector} from 'react-redux';
 import { useAppDispatch } from '../config';
-import { useParams } from 'react-router-dom';
-import { getAllVehicles, getDetails } from '../redux/actions';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getAllVehicles, getDetails, deleteVehicle } from '../redux/actions';
 import * as types from '../types';
-import notFound from '../media/notFound.jpg'
+import notFound from '../media/notFound.jpg';
+import swal from 'sweetalert';
 
 
 function VehiclesDetails() {
-  const {idVehicle} = useParams()
+  const idVehicle:any = useParams().idVehicle;
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const vehicle = useSelector((state:any) => state && state.vehicleDetails);
   
+  console.log(idVehicle)
+
   useEffect(() => {
     if(idVehicle){
       dispatch(getDetails(idVehicle));
     }
   }, []);
+
+  const handleDelete = useCallback(() => {
+    swal({
+      text: 'Estas seguro que queres eliminar este vehiculo?',
+      icon: "warning",
+      buttons: ["No", "Si"]
+    }).then(respuesta => {
+      if(respuesta){
+        swal({text: "Vehiculo elimindo con exito", icon: "success"});
+        dispatch(deleteVehicle(idVehicle));
+        navigate('/vehicles')
+      }
+    })
+  }, [])
+
   return (
     <div>
+      <button value = {vehicle.id} onClick = {handleDelete}>ELIMINAR</button>
       {
         vehicle &&
             <div key = {vehicle.id}>
