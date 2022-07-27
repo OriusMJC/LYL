@@ -5,12 +5,15 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getAllVehicles, getDetails, deleteVehicle } from '../redux/actions';
 import * as types from '../types';
 import notFound from '../media/notFound.jpg';
+import play from '../media/play-button-transparent.png';
 import swal from 'sweetalert';
 import s from './Styles/VehicleDetails.module.css'
 import Card from './Card';
+import ReactPlayer from 'react-player';
 
 
 function VehiclesDetails() {
+  
   const idVehicle:any = useParams().idVehicle;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -50,7 +53,7 @@ function VehiclesDetails() {
   useEffect(()=>{
     vehicle.photo && vehicle.photo.length && setPhoto(vehicle.photo[0])
   },[vehicle])
-
+  console.log(vehicle?.video.slice(-3))
   return (
     <section id={s.containerVehicleDetails}>
       <div id={s.vehicleDetails}>
@@ -60,7 +63,17 @@ function VehiclesDetails() {
             <div key = {vehicle.id} id={s.containDetails}>
               <div id={s.containPhotoDetails}>
                 <div className={s.photoAndDetails}>
-                  <img src={photo} alt='Vehicle photo'/>
+                  {
+                    photo.slice(-3) !== 'mp4'?
+                      <img src={photo} alt='Vehicle photo'/>
+                    :
+                    <ReactPlayer 
+                    url = {require(`../media/videos/${vehicle.video}`)}
+                    controls
+                    autoplay
+                    />
+
+                  }
                 </div>
                 <div className={s.photoAndDetails}>
                   <h2>{vehicle.title}</h2>
@@ -77,6 +90,13 @@ function VehiclesDetails() {
                   vehicle.photo.map((p:string) => (
                     <img src={p} onClick={()=>{setPhoto(p)}} alt='Vehicle photo' className={photo === p? s.photoActive : undefined}></img>
                   ))
+                :
+                  null
+                }
+                {vehicle && vehicle.video?
+                  <div>
+                    <video poster={play} height="100" width="100" onClick={()=>{setPhoto(vehicle?.video ? vehicle.video : undefined)}}/> 
+                  </div>
                 :
                   null
                 }

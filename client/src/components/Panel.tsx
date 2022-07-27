@@ -10,6 +10,7 @@ function Panel() {
   const dispatch = useAppDispatch()
   const [vehicleData,setVehicleData] = useState<any>({
     title: '',
+    video: '',
     photo: [],
     price: 0,
     status: 'Nuevo',
@@ -18,6 +19,7 @@ function Panel() {
     description: ''
   })
 
+  console.log(vehicleData);
 
   function handleSubmit(event:any){
     event.preventDefault()
@@ -32,6 +34,12 @@ function Panel() {
     })
   }
 
+  function handleSelectVideo(event:any){
+    setVehicleData({
+      ...vehicleData,
+      video: (event.target.value).slice(12, event.target.value.length)
+    })
+  }
 
   useEffect(()=>{
     let data = window.localStorage.getItem("userDataLogin");
@@ -69,6 +77,8 @@ function Panel() {
         <input name="title" type="text" value={vehicleData.title} onChange={handleChange} required/>
         <label>Imagenes: </label>
         <input name="photo" type="file" onChange={uploadImage} required/>
+        <label>Videos: </label>
+        <input name="video" type="file" onChange={handleSelectVideo}/>
         <label>Precio: </label>
         <input name="price" type="number" value={vehicleData.price} onChange={handleChange} required/>
         <label>Estado: </label>
