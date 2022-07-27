@@ -20,7 +20,7 @@ export default function Contact(){
 
     return (
         <section id={s.containerContact}>
-            <h1>Contacto</h1>
+            <h1>CONTACTO</h1>
             <form>
                 {/* <input type='text' placeholder="Tu nombre" value={data.name} name="name" onChange={handleChange}/>
                 <input type='text' placeholder="Tu apellido" value={data.lastname} name="lastname" onChange={handleChange}/> */}
