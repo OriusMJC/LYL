@@ -58,6 +58,7 @@ function VehiclesDetails() {
     <section id={s.containerVehicleDetails}>
       <div id={s.vehicleDetails}>
         {deleteBtn && <button value = {vehicle.id} onClick = {handleDelete} className={s.btnContact}>ELIMINAR</button>}
+        <h1>{vehicle.title}</h1>
         {
           vehicle &&
             <div key = {vehicle.id} id={s.containDetails}>
@@ -76,7 +77,6 @@ function VehiclesDetails() {
                   }
                 </div>
                 <div className={s.photoAndDetails}>
-                  <h2>{vehicle.title}</h2>
                   <h3>Kilometros: {vehicle?.kilom}</h3>
                   {/* <h3>Precio: ${vehicle.price}</h3> */}
                   <h3>Año: {vehicle.year}</h3>
