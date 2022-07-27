@@ -1,0 +1,24 @@
+#containerContact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100vw;
+}
+#containerContact form textarea{
+    height: 300px;
+    width: 400px;
+    resize: none;
+    overflow: auto;
+    border-radius: 5px;
+}
+#containerContact a button{
+    color: #fff;
+    background-color: #2185D5;
+    width: 120px;
+    margin: 15px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+}

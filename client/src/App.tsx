@@ -6,6 +6,7 @@ import Vehicles from './components/Vehicles';
 import VehiclesDetails from './components/VehiclesDetails';
 import Login from './components/Login';
 import Panel from './components/Panel';
+import Contact from './components/Contact';
 
 function App() {
   return (
@@ -14,9 +15,10 @@ function App() {
         <Route path = "/" element = {<Home/>}/>
         <Route path = "/vehicles" element = {<Vehicles/>}/>
         <Route path = "/vehicles/:idVehicle" element = {<VehiclesDetails/>}/>;
-        <Route path='/admin'>
-        <Route path='login' element={<Login/>}/>
-        <Route path='panel' element={<Panel/>}/>
+        <Route path='/contact' element={<Contact/>}/>
+        <Route path='/admin' element={<Login/>}>
+          <Route path='login' element={<Login/>}/>
+          <Route path='panel' element={<Panel/>}/>
         </Route>
       </Routes>
     </div>

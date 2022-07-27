@@ -38,8 +38,6 @@ function Vehicles() {
   }
   
   return (
-    <>
-    <Nav/>
     <div id={s.vehiclesContainer}>
       <SearchBar/>
       <section id={s.sectionVehicles}>
@@ -59,7 +57,6 @@ function Vehicles() {
         {pageNumbers}
       </div>
     </div>
-    </>
   )
 }
 
