@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import { changePage, getAllVehicles} from '../redux/actions/index';
 import { useAppDispatch } from '../config';
 import * as types from '../types';
-import notFound from '../media/notFound.jpg'
 import SearchBar from './SearchBar';
 import s from './Styles/Vehicles.module.css'
+import Card from './Card';
 
 function Vehicles() {
   const dispatch = useAppDispatch();
@@ -42,25 +42,8 @@ function Vehicles() {
       <section id={s.sectionVehicles}>
         {allVehicles && allVehicles.length ? 
           currentProduct.map((v:types.Vehicle) => {
-            const styledBut = {
-              backgroundImage: `url("${v.photo[0] ? v.photo[0] : notFound}")`,
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-              backgroundSize: v.photo[0]? 'cover' : 'contain',
-              outlineOffset: v.photo[0]? '-8px' : '0px',
-              width:  '280px',
-              height: '210px',
-              transition: '.2s',
-            }
             return (
-              <div key = {v.id} className={s.cardVechicle}>
-                <Link to = {`/vehicles/${v.id}`}>
-                  <div style={styledBut}></div>
-                  <h2>{v.title}</h2>
-                  <b>{v.status}</b>
-                  <p>Año: {v.year}</p>
-                </Link>
-              </div>
+              <Card v={v}/>
             )
           })
         :
