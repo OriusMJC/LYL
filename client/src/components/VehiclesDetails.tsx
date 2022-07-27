@@ -37,7 +37,7 @@ function VehiclesDetails() {
     if(idVehicle){
       dispatch(getDetails(idVehicle));
     }
-  }, []);
+  }, [idVehicle]);
   
   useEffect(()=>{
     let data = window.localStorage.getItem("userDataLogin");
