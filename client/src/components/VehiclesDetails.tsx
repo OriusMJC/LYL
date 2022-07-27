@@ -53,7 +53,7 @@ function VehiclesDetails() {
   useEffect(()=>{
     vehicle.photo && vehicle.photo.length && setPhoto(vehicle.photo[0])
   },[vehicle])
-  console.log(vehicle?.video.slice(-3))
+  
   return (
     <section id={s.containerVehicleDetails}>
       <div id={s.vehicleDetails}>
