@@ -7,6 +7,7 @@ import * as types from '../types';
 import notFound from '../media/notFound.jpg'
 import SearchBar from './SearchBar';
 import s from './Styles/Vehicles.module.css'
+import Nav from './Nav'
 
 function Vehicles() {
   const dispatch = useAppDispatch();
@@ -37,6 +38,8 @@ function Vehicles() {
   }
   
   return (
+    <>
+    <Nav/>
     <div id={s.vehiclesContainer}>
       <SearchBar/>
       <section id={s.sectionVehicles}>
@@ -73,6 +76,7 @@ function Vehicles() {
         {pageNumbers}
       </div>
     </div>
+    </>
   )
 }
 

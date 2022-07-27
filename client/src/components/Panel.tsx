@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../config';
 import { createVehicle } from '../redux/actions';
 import { useVerfication } from '../services/services'
-import s from './Styles/Panel.module.css'
+import s from './Styles/Panel.module.css';
+import Nav from './Nav';
 
 function Panel() {
   const navigate = useNavigate()
@@ -12,14 +13,12 @@ function Panel() {
     title: '',
     video: '',
     photo: [],
-    price: 0,
+    price: null,
     status: 'Nuevo',
-    kilom: 0,
-    year: 0,
+    kilom: null,
+    year: null,
     description: ''
   })
-
-  console.log(vehicleData);
 
   function handleSubmit(event:any){
     event.preventDefault()
@@ -71,30 +70,37 @@ function Panel() {
 
 
   return (
+    <>
+    <Nav/>
     <section id={s.panelContainer}>
       <form onSubmit={handleSubmit} id={s.formPanel}>
-        <label>Titulo: </label>
-        <input name="title" type="text" value={vehicleData.title} onChange={handleChange} required/>
-        <label>Imagenes: </label>
-        <input name="photo" type="file" onChange={uploadImage} required/>
-        <label>Videos: </label>
-        <input name="video" type="file" onChange={handleSelectVideo}/>
-        <label>Precio: </label>
-        <input name="price" type="number" value={vehicleData.price} onChange={handleChange} required/>
-        <label>Estado: </label>
-        <select name="status" onChange={handleChange}>
+        <h1>CREAR ARTICULO</h1>
+        <div id = {s.files}>
+          <input name="photo" type="file" onChange={uploadImage} required id = {s.imagenes}/>
+          <input name="video" type="file" onChange={handleSelectVideo} id = {s.videos}/>
+        </div>
+
+        <input name="title" type="text" value={vehicleData.title} onChange={handleChange} required placeholder="Titulo" id = {s.inputs}/>
+        <input placeholder = "Precio" name="price" type="number" value={vehicleData.price} onChange={handleChange} required id = {s.inputs}/>
+
+        <select name="status" onChange={handleChange} id = {s.select}>
+          <option hidden>Estado</option>
           <option value='Nuevo'>Nuevo</option>
           <option value='Usado'>Usado</option>
         </select>
-        <label>Kilometros: </label>
-        <input name="kilom" type="number" value={vehicleData.kilom} onChange={handleChange}/>
-        <label>Año: </label>
-        <input name="year" type="number" value={vehicleData.year} onChange={handleChange} required/>
-        <label>Descripción: </label>
-        <input name="description" type="text" value={vehicleData.description} onChange={handleChange} required/>
+
+        <input placeholder = "Kilometros" name="kilom" type="number" value={vehicleData.kilom} onChange={handleChange} id = {s.inputs}/>
+
+        <input placeholder = "Año" name="year" type="number" value={vehicleData.year} onChange={handleChange} required id = {s.inputs}/>
+
+        <textarea placeholder = "Descripción" name="description"  value={vehicleData.description} onChange={handleChange} required id = {s.inputs1}/>
         <button>Publicar</button>
       </form>
+      <div className = {s.showInfo}>
+
+      </div>
     </section>
+    </>
   )
 }
 

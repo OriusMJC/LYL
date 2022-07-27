@@ -1,35 +1,103 @@
 #panelContainer{
     display: flex;
-    justify-content: center;
+    flex-direction: row;;
+    justify-content: space-around;
     min-height: 83vh;
     margin: 30px 0;
 }
 #formPanel{
-    background-color: #ccc;
+    background-color: #EEEEEE;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 60vw;
     min-width: 400px;
     padding: 25px 0;
-}
-#formPanel input{
-    height: 30px;
-    width: 60%;
-    margin: 20px 0px;
-}
-#formPanel select{
-    height: 30px;
-    width: 100px;
-    margin: 20px 0px;
+    border-radius: 15px;
 }
 #formPanel button{
-    height: 30px;
-    width: 100px;
+    height: 40px;
+    width: 70%;
     margin: 20px 0px;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
+    background-color: #2185D5;
+    transition: .2s;
+    color: #F7F7F7;
+    cursor: pointer;
 }
 #formPanel button:hover{
     transform: scale(1.02);
+}
+#formPanel h1{
+    color: #393E46;
+}
+#inputs{
+    width: 80%;
+    height: 50px;
+    margin: 20px 0px;
+    border-radius: 10px;
+    border: none;
+    padding: 0px 20px;
+    font-size: 20px;
+    font-family: "Helvetica";
+}
+#inputs1{
+    width: 80%;
+    resize: none;
+    padding: 10px 20px;
+    font-family: "Helvetica";
+    font-size: 20px;
+    border: none;
+    margin: 20px 0px;
+    height: 150px;
+    border-radius: 10px;
+}
+#select{
+    height: 50px;
+    width: 80%;
+    margin: 20px 0px;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    font-family: "Helvetica";
+}
+#files{
+    border: 2px solid black;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#imagenes::-webkit-file-upload-button{
+    visibility: hidden; 
+}
+#imagenes::before{
+    content: 'Seleccione una imagen';
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+    width: 100%;
+}
+#imagenes:hover::before{
+    border-color: black;
+}
+#imagenes:active::before{
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+.showInfo{
+    background-color: black;
+    width: 50px;
+    min-height: 83vh;
 }

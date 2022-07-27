@@ -1,31 +1,44 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import s from './Styles/Nav.module.css'
+import logo from '../media/logo.png'
 
 function Nav() {
+  const [nav, setNav] = useState(false);
+
+  const changeNav = () =>{
+    if(window.scrollY >= 80){
+      setNav(true);
+    }else{
+      setNav(false);
+    }
+  }
+
+  window.addEventListener('scroll', changeNav)
+ 
   return (
-    <div id={s.navContainer}>
-      <div className={s.navSec}>
-        <Link to='/'>
-          <img src='https://lylautomotores.com/wp-content/uploads/2021/11/LL-1-62x62.png'/>
-        </Link>
-      </div>
+    <div id={!nav ? s.navContainer : s.navContainer2}>
       <div className={s.navSec}>
         <Link to = "/vehicles">
-          <h3>Vehiculos</h3>
+          <h4>Vehiculos</h4>
         </Link>
         <Link to='/'>
-          <h3>Sobre nosotros</h3>
+          <h4>Sobre nosotros</h4>
         </Link>
         <Link to='/'>
-          <h3>Contactanos</h3>
+          <h4>Contactanos</h4>
         </Link>
         <Link to = "/">
-          <h3>Inicio</h3>        
+          <h4>Inicio</h4>        
         </Link>
         <Link to = '/admin/panel'>
-          <h3>Panel</h3>
+          <h4>Panel</h4>
         </Link>
+        <div className={s.navSec2}>
+        <Link to='/'>
+          <img src={logo}/>
+        </Link>
+      </div>
     </div>
   </div>
   )
