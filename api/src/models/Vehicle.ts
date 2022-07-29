@@ -37,6 +37,9 @@ module.exports = (sequelize: any) => {
         description: {
             type: DataTypes.TEXT,
             allownull: false,
+        },
+        type: {
+            type: DataTypes.ENUM('bmw', 'audi', 'peugeot', 'citroen', 'mercedes benz', 'ford', 'fiat', 'toyota', 'volkswagen', 'renault', 'chevrolet', 'honda', 'hyundai', 'suzuki', 'ducati', 'rouser')
         }
     }, {
         timestamps: true

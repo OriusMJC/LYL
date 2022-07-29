@@ -1,6 +1,7 @@
 export type NonSensitiveUserInfo = Pick<User, 'id','name','email','phone', 'admin'>
 export type basicProductInfo = Pick<Products, 'id','title','photo','price'>
 export type VehicleStatus = 'Nuevo' | 'Usado';
+export type VehicleType = 'bmw' | 'audi' | 'peugeot' | 'citroen'| 'mercedes benz' | 'ford' | 'fiat' | 'toyota' | 'volkswagen' | 'renault' | 'chevrolet' | 'honda' | 'hyundai' | 'suzuki' | 'ducati' | 'rouser'
 
 
 export interface User {
@@ -20,4 +21,5 @@ export interface Vehicle {
     description: string,
     kilom: number,
     year: number,
+    type: VehicleType
 }

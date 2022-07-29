@@ -10,7 +10,9 @@ export const CREATE_VEHICLE = "CREATE_VEHICLE";
 export const DELETE_VEHICLE = "DELETE_VEHICLE";
 export const UPDATE_VEHICLE = "UPDATE_VEHICLE";
 export const ORDER_BY_PRICE = "ORDER_BY_PRICE";
-export const CHANGE_PAGE = "CHANGE_PAGE"
+export const CHANGE_PAGE = "CHANGE_PAGE";
+export const SET_TYPE = "SET_TYPE";
+export const REFRESH_TYPE = "REFRESH_TYPE";
 
 type Action = {
 	type: string;
@@ -112,3 +114,15 @@ export function changePage(page:number){
             payload: page
         }
     }
+export function setType(type:any){
+    return {
+        type: SET_TYPE,
+        payload: type
+    }
+}
+export function refreshType(){
+    return {
+        type: REFRESH_TYPE,
+        payload: [],
+    }
+}

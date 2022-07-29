@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../config';
+import { setType } from '../redux/actions/index';
 import s from './Styles/Nav.module.css'
 import logo from '../media/logo.png'
 
 function Nav() {
+  const dispatch = useAppDispatch();
   const [nav, setNav] = useState(false);
 
   const changeNav = () =>{
@@ -15,12 +18,16 @@ function Nav() {
   }
 
   window.addEventListener('scroll', changeNav)
+
+  const handleType = () => {
+    dispatch(setType(undefined));
+  }
  
   return (
     <div id={!nav ? s.navContainer : s.navContainer2}>
       <div className={s.navSec}>
         <Link to = "/vehicles">
-          <h4>Vehiculos</h4>
+          <h4 onClick = {handleType}>Vehiculos</h4>
         </Link>
         <Link to='/'>
           <h4>Sobre nosotros</h4>

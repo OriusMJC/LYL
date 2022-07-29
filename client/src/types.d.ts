@@ -1,6 +1,10 @@
 export type NonSensitiveUserInfo = Pick<User, 'id','name','email','phone', 'admin'>
 export type basicProductInfo = Pick<Products, 'id','title','photo','price'>
 export type VehicleStatus = 'Nuevo' | 'Usado';
+export type photo = {
+    text: string,
+    photo: any,
+}
 
 
 export interface User {

@@ -1,18 +1,26 @@
 import * as actions from '../actions';
 import * as types from '../../types';
+import audi from '../../media/Marcas/audi.jpg';
+import bmw from '../../media/Marcas/bmw.jpg';
+import ford from '../../media/Marcas/ford.jpg';
+import mb from '../../media/Marcas/mb.jpg';
+import peugeot from '../../media/Marcas/peugeot.jpg';
+import volkswagen from '../../media/Marcas/volkswagen.jpg';
 
-function orderMayMen(){
-
-};
-function orderMenMay(){
-
-};
 
 const initialState:any = {
     vehicles: [],
     allVehicles: [],
     vehicleDetails: {},
     actualPage: 1,
+    actualType : [],
+    fotos: [
+        {text: "audi", photo: audi}, 
+        {text: "bmw", photo: bmw}, 
+        {text: "ford", photo: ford},
+        {text: "mercedes benz", photo: mb}, 
+        {text: "peugeot", photo: peugeot},
+        {text: "volkswagen", photo: volkswagen}]
 }
 
 
@@ -48,6 +56,16 @@ export default function rootReducer(state = initialState, action:any){
             return {
                 ...state,
                 actualPage: action.payload
+            }
+        case actions.SET_TYPE:
+            return{
+                ...state,
+                actualType: [action.payload]
+            }
+        case actions.REFRESH_TYPE:
+            return {
+                ...state,
+                actualType: action.payload
             }
         default:
             return state
