@@ -69,8 +69,8 @@ function VehiclesDetails() {
         </Link>
       </div>
       <section id={s.vehicleDetails}>
-        {/* {deleteBtn && <button value = {vehicle.id} onClick = {handleDelete} className={s.btnContact}>ELIMINAR</button>}
-        <h1>{vehicle.title}</h1> */}
+        {deleteBtn && <button value = {vehicle.id} onClick = {handleDelete} className={s.btnDelete}>ELIMINAR</button>}
+        {/* <h1>{vehicle.title}</h1> */}
         {
           vehicle &&
             <div key = {vehicle.id} id={s.containDetails}>
@@ -139,14 +139,20 @@ function VehiclesDetails() {
             <button className={s.btnContact}>Contactar!</button>
           </Link>
         </div> */}
-        <div id={s.details}>
           <Link to='/contact'>
             <button className={s.btnContact}>Contactar!</button>
           </Link>
-          <h3>Kilometros: <b>{vehicle?.kilom}</b></h3>
-          <h3>Precio: <b>${vehicle.price}</b></h3>
-          <h3>Año: <b>{vehicle.year}</b></h3>
-          <h3>Estado: <b>{vehicle.status}</b></h3>
+        <div id={s.details}>
+          <hr></hr>
+          <div className={s.detailsMin}>
+            <h3>Kilometros: <b>{vehicle?.kilom}</b></h3>
+            <h3>Precio: <b>${vehicle.price}</b></h3>
+          </div>
+          <div className={s.detailsMin}>
+            <h3>Año: <b>{vehicle.year}</b></h3>
+            <h3>Estado: <b>{vehicle.status}</b></h3>
+          </div>
+          <hr></hr>
           <h3>Descripción:</h3>
           <p>{vehicle?.description}</p>
         </div>
