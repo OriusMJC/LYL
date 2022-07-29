@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useState } from 'react';
 import { useSelector} from 'react-redux';
 import { useAppDispatch } from '../config';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { getAllVehicles, getDetails, deleteVehicle} from '../redux/actions';
+import { getAllVehicles, getDetails, deleteVehicle } from '../redux/actions';
 import * as types from '../types';
 import notFound from '../media/notFound.jpg';
 import play from '../media/play-button-transparent.png';
@@ -13,7 +13,7 @@ import ReactPlayer from 'react-player';
 
 
 function VehiclesDetails() {
-
+  
   const idVehicle:any = useParams().idVehicle;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -22,6 +22,7 @@ function VehiclesDetails() {
   const [deleteBtn, setDeleteBtn] = useState(false)
   const [photo,setPhoto] = useState(notFound)
 
+  
   const handleDelete = useCallback(() => {
     swal({
       text: 'Estas seguro que queres eliminar este vehiculo?',

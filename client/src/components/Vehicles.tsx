@@ -70,7 +70,7 @@ function Vehicles() {
     </div>
 
     <div className = {s.imgContainer}>
-      <img src= {allVehicles && allVehicles[0].photo[0]}></img>
+      <img src= {allVehicles && allVehicles[0]?.photo[0]}></img>
     </div>
 
     </div>
