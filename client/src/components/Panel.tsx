@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../config';
 import { createVehicle } from '../redux/actions';
@@ -8,7 +9,8 @@ import Nav from './Nav';
 
 function Panel() {
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
+  const types = useSelector((state:any) => state && state.types);
   const [vehicleData,setVehicleData] = useState<any>({
     title: '',
     video: '',
@@ -17,6 +19,7 @@ function Panel() {
     status: 'Nuevo',
     kilom: null,
     year: null,
+    type: '',
     description: ''
   })
 
@@ -87,6 +90,11 @@ function Panel() {
           <option hidden>Estado</option>
           <option value='Nuevo'>Nuevo</option>
           <option value='Usado'>Usado</option>
+        </select>
+
+        <select name = "type" onChange={handleChange} id = {s.select}>
+          <option hidden>Tipo</option>
+          {types.map((t:any) => <option value = {t}>{t}</option>)}
         </select>
 
         <input placeholder = "Kilometros" name="kilom" type="number" value={vehicleData.kilom} onChange={handleChange} id = {s.inputs}/>
