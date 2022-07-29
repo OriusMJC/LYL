@@ -11,7 +11,9 @@ import s from './Styles/VehicleDetails.module.css'
 import Card from './Card';
 import ReactPlayer from 'react-player';
 import Nav from './Nav';
-import v from '../media/videos/fondoAuto.mp4'
+import v from '../media/videos/jeep.mp4'
+import logo from '../media/logo.png'
+import { BiLeftArrowAlt } from 'react-icons/bi';
 
 
 function VehiclesDetails() {
@@ -58,7 +60,14 @@ function VehiclesDetails() {
   
   return (
     <div id={s.containerVehicleDetails}>
-      <Nav/>
+      <div id={s.navVDetails}>
+        <Link to='/vehicles'>
+          <BiLeftArrowAlt className = {s.leftArrow}/>
+        </Link>
+        <Link to = "/" className = {s.imgDiv}>
+          <img src= {logo} alt = "logo"></img>
+        </Link>
+      </div>
       <section id={s.vehicleDetails}>
         {/* {deleteBtn && <button value = {vehicle.id} onClick = {handleDelete} className={s.btnContact}>ELIMINAR</button>}
         <h1>{vehicle.title}</h1> */}
@@ -67,9 +76,9 @@ function VehiclesDetails() {
             <div key = {vehicle.id} id={s.containDetails}>
               <div id={s.containPhotoDetails}>
                 <div className={s.photoAndDetails}>
-                  {
+                  <img src={photo} alt='Vehicle photo'/>
+                  {/* {
                     photo.slice(-3) !== 'mp4'?
-                      <img src={photo} alt='Vehicle photo'/>
                     :
                     <ReactPlayer 
                     url = {require(`../media/videos/${vehicle.video}`)}
@@ -77,7 +86,7 @@ function VehiclesDetails() {
                     autoplay
                     />
 
-                  }
+                  } */}
                 </div>
                 {/* <div className={s.photoAndDetails}>
                   <h3>Kilometros: {vehicle?.kilom}</h3>
@@ -91,14 +100,14 @@ function VehiclesDetails() {
               </div>
               <div id={s.contImgs}>
                 <video 
-                  src = {v}
+                  src = {vehicle?.video? require(`../media/videos/${vehicle.video}`) : v}
                   autoPlay
                   loop
                   muted
                   />
                 {vehicle && vehicle.video?
                   <div>
-                    <video poster={play} height="100" width="100" onClick={()=>{setPhoto(vehicle?.video ? vehicle.video : undefined)}}/> 
+                    {/* <video poster={play} height="100" width="100" onClick={()=>{setPhoto(vehicle?.video ? vehicle.video : undefined)}}/>  */}
                   </div>
                 :
                   null
@@ -116,10 +125,32 @@ function VehiclesDetails() {
         {/* <h3>Kilometros:</h3>
         <p>{vehicle?.kilom}</p> */}
       </section>
-      <section>
-        <h3>Descripción:</h3>
-        <p>{vehicle?.description}</p>
-        <h3>Recomendados:</h3>
+      <section id={s.contentDetails}>
+      {/* <div id={s.details}>
+          <h3 className={s.detailsH3}>Kilometros:</h3>
+          <p>{vehicle?.kilom}</p>
+          <h3 className={s.detailsH3}>Precio:</h3>
+          <p>${vehicle.price}</p>
+          <h3 className={s.detailsH3}>Año: </h3>
+          <p>{vehicle.year}</p>
+          <h3 className={s.detailsH3}>Estado: </h3>
+          <p>{vehicle.status}</p>
+          <Link to='/contact'>
+            <button className={s.btnContact}>Contactar!</button>
+          </Link>
+        </div> */}
+        <div id={s.details}>
+          <Link to='/contact'>
+            <button className={s.btnContact}>Contactar!</button>
+          </Link>
+          <h3>Kilometros: <b>{vehicle?.kilom}</b></h3>
+          <h3>Precio: <b>${vehicle.price}</b></h3>
+          <h3>Año: <b>{vehicle.year}</b></h3>
+          <h3>Estado: <b>{vehicle.status}</b></h3>
+          <h3>Descripción:</h3>
+          <p>{vehicle?.description}</p>
+        </div>
+          {/* <h3>Recomendados:</h3>
         <div id={s.suggest}>
           {
             suggest.length && suggest.map((v:types.Vehicle) => {
@@ -128,7 +159,7 @@ function VehiclesDetails() {
               )
             })
           }
-        </div>
+        </div> */}
       </section>
     </div>
   )
