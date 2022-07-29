@@ -16,7 +16,7 @@ function App() {
         <Route path = "/vehicles" element = {<Vehicles/>}/>
         <Route path = "/vehicles/:idVehicle" element = {<VehiclesDetails/>}/>;
         <Route path='/contact' element={<Contact/>}/>
-        <Route path='/admin' element={<Login/>}>
+        <Route path='/admin'>
           <Route path='login' element={<Login/>}/>
           <Route path='panel' element={<Panel/>}/>
         </Route>
