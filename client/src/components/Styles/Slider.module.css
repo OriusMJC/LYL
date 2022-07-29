@@ -14,8 +14,8 @@
     width: 60%;
     height: 70%;
     opacity: 1;
-    transition-duration: 1s;
-    transform: scale(1.08)
+    transition: 1s;
+    transform: scale(1.08);
 }
 .main2Contain{
     display: flex;
@@ -25,7 +25,7 @@
     width: 60%;
     height: 70%;
     opacity: 0;
-    transition-duration: 1s ease;
+    transition: 1s ease;
 }
 .main2Text{
     width: 50%;
@@ -34,12 +34,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    animation: aparecer 2s;
 }
 .main2Text h1{
     font-family: 'Montserrat';
     font-size: 60px;
+    width: 500px;
+    text-align: left;
 }
 .main2Text p{
+    margin: 0;
     width: 400px;
     text-align: justify;
     text-justify: inter-word;
@@ -77,4 +81,15 @@
 }
 .leftArrow:hover{
     transform: translateX(-10%)
+}
+
+
+@keyframes aparecer {
+    from {
+        margin: 0px 500px;
+        opacity: 0;
+    }to{
+        margin: 0;
+        opacity: 1;
+    }
 }

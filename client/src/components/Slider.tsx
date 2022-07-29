@@ -33,21 +33,34 @@ function Slider() {
     {
       vehicles && vehicles.map((v, i) => {
         if(i === current){
+          const styledBut = {
+            backgroundImage: `url("${v?.photo[0]}")`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            backgroundSize: v?.photo[0]? 'cover' : 'contain',
+            outlineOffset: v?.photo[0]? '-8px' : '0px',
+            width: "50%",
+            height: "100%",
+            transition: '.2s',
+          }
           return (
             <div className = {i === current ? s.main2ContainActive : s.main2Contain}>
                 <div className = {s.main2Text}>
-                <h1>{v.title.toUpperCase()}</h1>
-                <p>{v.description}</p>
-                <br/>
-                <br/>
-                {
-                  vehicles?.length &&
-                  <Link to = {`/vehicles/${v.id}`}>
-                    <button>CONOCE MAS</button>
-                  </Link>
-                }
-              </div>
-                <img src={v.photo[0]} className = {s.img}></img>
+                  <h1>{v.title.toUpperCase()}</h1>
+                  <p>{v.description}</p>
+                  <br/>
+                  <br/>
+                  {
+                    vehicles?.length &&
+                    <Link to = {`/vehicles/${v.id}`}>
+                      <button>CONOCE MAS</button>
+                    </Link>
+                  }
+                </div>
+                <div style={styledBut}>
+                  
+                </div>
+                {/* <img src={v.photo[0]} className = {s.img}></img> */}
             </div>
           )
         }
