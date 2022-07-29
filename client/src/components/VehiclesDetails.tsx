@@ -147,7 +147,7 @@ function VehiclesDetails() {
             <button className={s.btnContact}>Contactar!</button>
           </Link>
         <div id={s.details}>
-          <hr></hr>
+          {/* <hr></hr>
           <div className={s.detailsMin}>
             <div>
               <h3>KILOMETROS: </h3>
@@ -168,9 +168,23 @@ function VehiclesDetails() {
               <p>{vehicle.status?.toUpperCase()}</p>
             </div>
           </div>
+          <hr></hr> */}
+          <h1>{vehicle?.title?.toUpperCase()}</h1>
           <hr></hr>
           {/* <h3>Descripción:</h3> */}
           <p>{vehicle?.description}</p>
+          <div className={s.detailsMin}>
+            <div>
+              <h3>KILOMETROS: </h3>
+              <p>{vehicle?.kilom}</p>
+            </div>
+          </div>
+          <div className={s.detailsMin}>
+            <div>
+              <h3>ESTADO: </h3>
+              <p>{vehicle.status?.toUpperCase()}</p>
+            </div>
+          </div>
         </div>
           {/* <h3>Recomendados:</h3>
         <div id={s.suggest}>
