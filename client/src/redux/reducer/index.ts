@@ -13,7 +13,8 @@ const initialState:any = {
     allVehicles: [],
     vehicleDetails: {},
     actualPage: 1,
-    actualType : [],
+    actualType : [], 
+    types: ['bmw', 'audi', 'peugeot', 'citroen', 'mercedes benz', 'ford', 'fiat', 'toyota', 'volkswagen', 'renault', 'chevrolet', 'honda', 'hyundai', 'suzuki', 'ducati', 'rouser'],
     fotos: [
         {text: "audi", photo: audi}, 
         {text: "bmw", photo: bmw}, 
