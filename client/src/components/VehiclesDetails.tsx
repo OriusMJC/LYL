@@ -165,7 +165,7 @@ function VehiclesDetails() {
             </div>
             <div>
               <h3>ESTADO: </h3>
-              <p>{vehicle.status.toUpperCase()}</p>
+              <p>{vehicle.status?.toUpperCase()}</p>
             </div>
           </div>
           <hr></hr>
