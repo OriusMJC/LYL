@@ -21,7 +21,10 @@ function Vehicles() {
   const actualPage = useSelector((state:any)=> state && state.actualPage);
   const actualType = useSelector((state:any)=> state && state.actualType);
   let filteredType = allVehicles.filter((v:any) => v.type === actualType[0]);
+  const [pos, setPos] = useState(0)
   
+  console.log(pos);
+  console.log(allVehicles[1])
   const cantPages = Math.ceil(allVehicles?.length / 12)
   const [currentPage, setCurrentPage] = useState(actualPage);
   const indexOfLastProduct = currentPage * 12;
@@ -30,6 +33,10 @@ function Vehicles() {
 
   const handleFilter = () => {
     dispatch(setType(undefined))
+  }
+
+  const handleHover = (e:any) => {
+    setPos(e.target.value)
   }
 
   return (
@@ -46,17 +53,17 @@ function Vehicles() {
       </div>
       <section id={s.sectionVehicles}>
         {filteredType && filteredType.length ?
-        filteredType.map((t:any) => 
+        filteredType.map((t:any, i:any) => 
         <Link to = {`/vehicles/${t.id}`} id = {s.links}>
-          <h2 className = {s.h2}>{t.title}</h2>
+          <button className = {s.h2} value = {i} onMouseOver = {handleHover}>{t.title.toUpperCase()}</button>
         </Link>
         )
         :
         allVehicles && allVehicles.length ? 
-          currentProduct.map((v:types.Vehicle) => {
+          currentProduct.map((v:types.Vehicle, i:any) => {
             return (
               <Link to = {`/vehicles/${v.id}`} id = {s.links}>
-                <h2 className = {s.h2}>{v.title.toUpperCase()}</h2>
+                <button className = {s.h2} value={i} onMouseOver = {handleHover}>{v.title.toUpperCase()}</button>
               </Link>
             )
           })
@@ -70,7 +77,7 @@ function Vehicles() {
     </div>
 
     <div className = {s.imgContainer}>
-      <img src= {allVehicles && allVehicles[0].photo[0]}></img>
+      <img src= {allVehicles && allVehicles[pos].photo[0]}></img>
     </div>
 
     </div>
