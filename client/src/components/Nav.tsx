@@ -29,10 +29,10 @@ function Nav() {
         <Link to = "/vehicles">
           <h4 onClick = {handleType}>Vehiculos</h4>
         </Link>
-        <Link to='/'>
+        <Link to='/about'>
           <h4>Sobre nosotros</h4>
         </Link>
-        <Link to='/'>
+        <Link to='/contact'>
           <h4>Contactanos</h4>
         </Link>
         <Link to = "/">

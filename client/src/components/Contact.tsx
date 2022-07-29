@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Nav from "./Nav"
 import s from './Styles/Contact.module.css'
 
 export default function Contact(){
@@ -20,6 +21,7 @@ export default function Contact(){
 
     return (
         <section id={s.containerContact}>
+            <Nav></Nav>
             <h1>CONTACTO</h1>
             <form>
                 {/* <input type='text' placeholder="Tu nombre" value={data.name} name="name" onChange={handleChange}/>

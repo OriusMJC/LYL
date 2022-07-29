@@ -7,6 +7,7 @@ import VehiclesDetails from './components/VehiclesDetails';
 import Login from './components/Login';
 import Panel from './components/Panel';
 import Contact from './components/Contact';
+import About from './components/About';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path = "/" element = {<Home/>}/>
         <Route path = "/vehicles" element = {<Vehicles/>}/>
         <Route path = "/vehicles/:idVehicle" element = {<VehiclesDetails/>}/>;
+        <Route path='/about' element={<About/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/admin'>
           <Route path='login' element={<Login/>}/>

@@ -58,6 +58,15 @@ function VehiclesDetails() {
     vehicle.photo && vehicle.photo.length && setPhoto(vehicle.photo[0])
   },[vehicle])
   
+  const styledBut = {
+    backgroundImage: `url("${photo}")`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    backgroundSize: photo? 'cover' : 'contain',
+    outlineOffset: photo? '-8px' : '0px',
+    transition: '.2s',
+  }
+
   return (
     <div id={s.containerVehicleDetails}>
       <div id={s.navVDetails}>
@@ -75,8 +84,8 @@ function VehiclesDetails() {
           vehicle &&
             <div key = {vehicle.id} id={s.containDetails}>
               <div id={s.containPhotoDetails}>
-                <div className={s.photoAndDetails}>
-                  <img src={photo} alt='Vehicle photo'/>
+                <div className={s.photoAndDetails} style={styledBut}>
+                  {/* <img src={photo} alt='Vehicle photo'/> */}
                   {/* {
                     photo.slice(-3) !== 'mp4'?
                     :
@@ -105,20 +114,15 @@ function VehiclesDetails() {
                   loop
                   muted
                   />
-                {vehicle && vehicle.video?
-                  <div>
-                    {/* <video poster={play} height="100" width="100" onClick={()=>{setPhoto(vehicle?.video ? vehicle.video : undefined)}}/>  */}
-                  </div>
-                :
-                  null
-                }
-                {vehicle.photo && vehicle.photo.length?
-                  vehicle.photo.map((p:string) => (
-                    <img src={p} onClick={()=>{setPhoto(p)}} alt='Vehicle photo' className={photo === p? s.photoActive : undefined}></img>
-                  ))
-                :
-                  null
-                }
+                <div>
+                  {vehicle.photo && vehicle.photo.length?
+                    vehicle.photo.map((p:string) => (
+                      <img src={p} onClick={()=>{setPhoto(p)}} alt='Vehicle photo' className={photo === p? s.photoActive : undefined}></img>
+                    ))
+                  :
+                    null
+                  }
+                </div>
               </div>
             </div>
         }
@@ -145,15 +149,27 @@ function VehiclesDetails() {
         <div id={s.details}>
           <hr></hr>
           <div className={s.detailsMin}>
-            <h3>Kilometros: <b>{vehicle?.kilom}</b></h3>
-            <h3>Precio: <b>${vehicle.price}</b></h3>
+            <div>
+              <h3>KILOMETROS: </h3>
+              <p>{vehicle?.kilom}</p>
+            </div>
+            <div>
+              <h3>PRECIO: </h3>
+              <p>${vehicle.price}</p>
+            </div>
           </div>
           <div className={s.detailsMin}>
-            <h3>Año: <b>{vehicle.year}</b></h3>
-            <h3>Estado: <b>{vehicle.status}</b></h3>
+            <div>
+              <h3>AÑO:</h3>
+              <p>{vehicle.year}</p>
+            </div>
+            <div>
+              <h3>ESTADO: </h3>
+              <p>{vehicle.status.toUpperCase()}</p>
+            </div>
           </div>
           <hr></hr>
-          <h3>Descripción:</h3>
+          {/* <h3>Descripción:</h3> */}
           <p>{vehicle?.description}</p>
         </div>
           {/* <h3>Recomendados:</h3>
