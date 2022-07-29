@@ -10,6 +10,8 @@ import swal from 'sweetalert';
 import s from './Styles/VehicleDetails.module.css'
 import Card from './Card';
 import ReactPlayer from 'react-player';
+import Nav from './Nav';
+import v from '../media/videos/fondoAuto.mp4'
 
 
 function VehiclesDetails() {
@@ -55,10 +57,11 @@ function VehiclesDetails() {
   },[vehicle])
   
   return (
-    <section id={s.containerVehicleDetails}>
-      <div id={s.vehicleDetails}>
-        {deleteBtn && <button value = {vehicle.id} onClick = {handleDelete} className={s.btnContact}>ELIMINAR</button>}
-        <h1>{vehicle.title}</h1>
+    <div id={s.containerVehicleDetails}>
+      <Nav/>
+      <section id={s.vehicleDetails}>
+        {/* {deleteBtn && <button value = {vehicle.id} onClick = {handleDelete} className={s.btnContact}>ELIMINAR</button>}
+        <h1>{vehicle.title}</h1> */}
         {
           vehicle &&
             <div key = {vehicle.id} id={s.containDetails}>
@@ -76,28 +79,34 @@ function VehiclesDetails() {
 
                   }
                 </div>
-                <div className={s.photoAndDetails}>
+                {/* <div className={s.photoAndDetails}>
                   <h3>Kilometros: {vehicle?.kilom}</h3>
-                  {/* <h3>Precio: ${vehicle.price}</h3> */}
+                  <h3>Precio: ${vehicle.price}</h3>
                   <h3>Año: {vehicle.year}</h3>
                   <h4>Estado: {vehicle.status}</h4>
                   <Link to='/contact'>
                     <button className={s.btnContact}>Contactar!</button>
                   </Link>
-                </div>
+                </div> */}
               </div>
               <div id={s.contImgs}>
-                {vehicle.photo && vehicle.photo.length?
-                  vehicle.photo.map((p:string) => (
-                    <img src={p} onClick={()=>{setPhoto(p)}} alt='Vehicle photo' className={photo === p? s.photoActive : undefined}></img>
-                  ))
-                :
-                  null
-                }
+                <video 
+                  src = {v}
+                  autoPlay
+                  loop
+                  muted
+                  />
                 {vehicle && vehicle.video?
                   <div>
                     <video poster={play} height="100" width="100" onClick={()=>{setPhoto(vehicle?.video ? vehicle.video : undefined)}}/> 
                   </div>
+                :
+                  null
+                }
+                {vehicle.photo && vehicle.photo.length?
+                  vehicle.photo.map((p:string) => (
+                    <img src={p} onClick={()=>{setPhoto(p)}} alt='Vehicle photo' className={photo === p? s.photoActive : undefined}></img>
+                  ))
                 :
                   null
                 }
@@ -106,8 +115,8 @@ function VehiclesDetails() {
         }
         {/* <h3>Kilometros:</h3>
         <p>{vehicle?.kilom}</p> */}
-      </div>
-      <div>
+      </section>
+      <section>
         <h3>Descripción:</h3>
         <p>{vehicle?.description}</p>
         <h3>Recomendados:</h3>
@@ -120,8 +129,8 @@ function VehiclesDetails() {
             })
           }
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }
 
