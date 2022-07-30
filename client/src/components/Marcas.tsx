@@ -27,10 +27,10 @@ function Marcas() {
             
             return (
                 <div className = {s.imgCont}>
-                <Link to = '/vehicles'>
-                <button value = {name} onClick = {handleType} style = {styled}>
-                </button>
-                </Link>
+                    <Link to = '/vehicles'>
+                        <button value = {name} onClick = {handleType} style = {styled}>
+                        </button>
+                    </Link>
                 </div>
             )
         }

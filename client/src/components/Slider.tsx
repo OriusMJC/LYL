@@ -53,7 +53,7 @@ function Slider() {
                   {
                     vehicles?.length &&
                     <Link to = {`/vehicles/${v.id}`}>
-                      <button>CONOCE MAS</button>
+                      <button>CONOCE MÁS</button>
                     </Link>
                   }
                 </div>

@@ -3,8 +3,8 @@ import Nav from "./Nav"
 import s from './Styles/Contact.module.css'
 
 export default function Contact(){
-    const num = '3413880895'
-    // const num = '3415005025'
+    // const num = '3413880895'
+    const num = '3415005025'
     // const num = '1126099930'
     const [data,setData] = useState({
         name: '',
@@ -30,9 +30,10 @@ export default function Contact(){
             </form>
             <a href={`https://wa.me/${num}?text=${data.msg}`} target="_blank">
                 <button>
-                    Enviar mensaje a WhatsApp
+                    ENVIAR A WHATSAPP
                 </button>
             </a>
+            <p>WPP: +54 9 3415 00-5025</p>
 
         </section>
     )
