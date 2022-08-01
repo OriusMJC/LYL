@@ -4,6 +4,8 @@ import { useAppDispatch } from '../config';
 import { setType } from '../redux/actions/index';
 import s from './Styles/Nav.module.css'
 import logo from '../media/logo.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 function Nav() {
   const dispatch = useAppDispatch();
@@ -32,7 +34,7 @@ function Nav() {
           open?
             <>X</>
             :
-            <>BTN</>
+            <FontAwesomeIcon icon={solid('bars')} />
         }
       </button>
       <div className={s.navSec} id={open? s.navOpen : ''}>

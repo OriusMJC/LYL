@@ -64,10 +64,10 @@
         border: none;
         z-index: 101;
     }
-    /* i {
-        width: 50px !important;
-        height: 50px !important;
-    } */
+    .navBtn svg {
+        width: 25px;
+        height: 25px;
+    }
     .navSec{
         display: none;
     }
@@ -81,5 +81,17 @@
         width: 45%;
         height: 60vh;
         z-index: 100;
+        animation: openNav .5s ease-in-out;
+    }
+    @keyframes openNav {
+        from{
+            /* width: 10%;
+            height: 10vh; */
+            opacity: 0;
+        }to{
+            /* width: 45%;
+            height: 60vh; */
+            opacity: 1;
+        }
     }
 }

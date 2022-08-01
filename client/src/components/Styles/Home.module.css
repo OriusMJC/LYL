@@ -1,4 +1,5 @@
 .main{
+    background-color: #000;
     width: 100%;
     height: 100vh;
 }
@@ -84,4 +85,10 @@
 }
 .arrow:hover{
     transform: translateX(20%)
+}
+
+@media screen and (max-width: 430px){
+    .main3{
+        height: 90vh;
+    }
 }
