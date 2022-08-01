@@ -32,12 +32,34 @@ function Panel() {
     year: null,
     type: '',
     description: '',
-    generalInfo: {},
-    exterior:{},
-    equipamiento: {},
-    seguridad :{},
-    interior: {},
-    multimedia: {},
+    generalInfo: {
+      tipoDeCombustible: '',
+      transmision: '',
+    },
+    exterior:{
+      aperturaDeCajuela: '',
+      numeroDePuertas: '',
+    },
+    equipamiento: {
+      alarma: '',
+      aireAcondicionado: '',
+      espejosElectricos: '',
+      butacasCalefaccionadas: '',
+      controlDeVelocidad: '',
+    },
+    seguridad :{
+      ABS: '',
+      cantidadDeAirbags: '',
+    },
+    interior: {
+      regulacionDeButaca: '',
+      regulacionDeVolante: '',
+    },
+    multimedia: {
+      bluetooth: '',
+      GPS: '',
+      USB: '',
+    },
   })
 
   console.log(vehicleData)
@@ -52,8 +74,8 @@ function Panel() {
     setVehicleData({
       ...vehicleData,
       generalInfo: {
-        tipoDeCombustible: event.target.value,
-        transmision: event.target.value,
+        ...vehicleData.generalInfo,
+        [event.target.name]: event.target.value,
       }
     })
   }
@@ -62,7 +84,7 @@ function Panel() {
     setVehicleData({
       ...vehicleData,
       exterior: {
-        [event.target.name]: event.target.value,
+        ...vehicleData.exterior,
         [event.target.name]: event.target.value,
       }
     })
@@ -71,11 +93,8 @@ function Panel() {
     setVehicleData({
       ...vehicleData,
       equipamiento: {
-        alarma: event.target.value,
-        aireAcondicionado: event.target.value,
-        espejosElectricos: event.target.value,
-        butacasCalefaccionadas: event.target.value,
-        controlDeVelocidad: event.target.value,
+        ...vehicleData.equipamiento,
+       [event.target.name]: event.target.value
       }
     })
   }
@@ -83,8 +102,8 @@ function Panel() {
     setVehicleData({
       ...vehicleData,
       seguridad: {
-        ABS: event.target.value,
-        cantidadDeAirbags: event.target.value,
+        ...vehicleData.seguridad,
+        [event.target.name]: event.target.value
       }
     })
   }
@@ -92,8 +111,8 @@ function Panel() {
     setVehicleData({
       ...vehicleData,
       interior: {
-        regulacionDeButaca: event.target.value,
-        regulacionDeVolante: event.target.value,
+        ...vehicleData.interior,
+        [event.target.name]: event.target.value
       }
     })
   }
@@ -102,9 +121,8 @@ function Panel() {
     setVehicleData({
       ...vehicleData,
       multimedia: {
-        bluetooth: event.target.value,
-        GPS: event.target.value,
-        USB: event.target.value,
+        ...vehicleData.multimedia,
+        [event.target.name]: event.target.value
       }
     })
   }
@@ -377,6 +395,7 @@ function Panel() {
           </div>
         </div>
       </div>
+      <h2 onClick = {handleSubmit} id = {s.h2Button}>CREAR</h2>
     </section>
     </>
   )
