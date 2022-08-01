@@ -13,7 +13,7 @@ const initialState:any = {
     allVehicles: [],
     vehicleDetails: {},
     actualPage: 1,
-    actualType : [], 
+    actualType : [],
     types: ['bmw', 'audi', 'peugeot', 'citroen', 'mercedes benz', 'ford', 'fiat', 'toyota', 'volkswagen', 'renault', 'chevrolet', 'honda', 'hyundai', 'suzuki', 'ducati', 'rouser'],
     fotos: [
         {text: "audi", photo: audi}, 
@@ -21,7 +21,9 @@ const initialState:any = {
         {text: "ford", photo: ford},
         {text: "mercedes benz", photo: mb}, 
         {text: "peugeot", photo: peugeot},
-        {text: "volkswagen", photo: volkswagen}]
+        {text: "volkswagen", photo: volkswagen}],
+    panel: false,
+    
 }
 
 
@@ -67,6 +69,11 @@ export default function rootReducer(state = initialState, action:any){
             return {
                 ...state,
                 actualType: action.payload
+            }
+        case actions.SET_PANEL:
+            return {
+                ...state,
+                panel: action.payload
             }
         default:
             return state

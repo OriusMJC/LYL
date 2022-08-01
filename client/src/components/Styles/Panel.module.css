@@ -1,104 +1,159 @@
 #panelContainer{
-    background-color: #131313;
-    display: flex;
-    flex-direction: row;;
-    justify-content: space-around;
-    min-height: 100vh;
-}
-#formPanel{
-    background-color: #EEEEEE;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60vw;
-    min-width: 400px;
-    padding: 25px 0;
-    border-radius: 15px;
-    margin: 100px 0;
+    width: 100%;
+    height: 160vh;
 }
-#formPanel button{
-    height: 40px;
-    width: 70%;
-    margin: 20px 0px;
-    border: none;
-    border-radius: 5px;
-    background-color: #2185D5;
-    transition: .2s;
-    color: #F7F7F7;
-    cursor: pointer;
+#firstDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 50%;
+    margin-top: 50px;
+    border-radius: 30px;
 }
-#formPanel button:hover{
-    transform: scale(1.02);
+#divImages{
+    width: 65%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
-#formPanel h1{
-    color: #393E46;
+#imgPrincipal{
+    width: 100%;
+    height: 75%;
 }
-#inputs{
-    width: 80%;
-    height: 50px;
-    margin: 20px 0px;
-    border-radius: 10px;
-    border: none;
-    padding: 0px 20px;
-    font-size: 20px;
-    font-family: "Helvetica";
+#imgPrincipal img{
+    width: 100%;
+    height: 100%;
 }
-#inputs1{
-    width: 80%;
-    resize: none;
-    padding: 10px 20px;
-    font-family: "Helvetica";
-    font-size: 20px;
-    border: none;
-    margin: 20px 0px;
-    height: 150px;
-    border-radius: 10px;
-}
-#select{
-    height: 50px;
-    width: 80%;
-    margin: 20px 0px;
-    text-align: center;
-    border-radius: 10px;
-    border: none;
-    font-size: 20px;
-    font-family: "Helvetica";
-}
-#files{
-    border: 2px solid black;
+#imgCarrousel{
     width: 90%;
+    height: 20%;
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
+}
+#divButtons{
+    height: 100%;
+    min-width: 150px;
+    overflow: hidden;
+}
+#button{
+    height: 100%;
+    min-width: 150px;
+    border: none;
+    z-index: -1;
+}
+#button2{
+    z-index: 1000;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    position: absolute;
+    transition: .2s;
+}
+#button2:hover{
+    transform: scale(1.08)
+}
+#divInfo{
+    width: 30%;
+    height: 80%;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;  
+}
+#input1 {
+    width: 90%;
+    height: 5%;
+    padding: 5px 5px;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+    font-family: "Montserrat";
+}
+#divInfo div{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
-#imagenes::-webkit-file-upload-button{
-    visibility: hidden; 
+#input2{
+    width: 45%;
+    padding: 10px 8px;
+    height: 5%;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 12px;
 }
-#imagenes::before{
-    content: 'Seleccione una imagen';
-    background: linear-gradient(top, #f9f9f9, #e3e3e3);
-    border: 1px solid #999;
-    border-radius: 3px;
-    padding: 5px 8px;
-    outline: none;
-    white-space: nowrap;
-    user-select: none;
-    -webkit-user-select: none;
-    cursor: pointer;
-    text-shadow: 1px 1px #fff;
-    font-weight: 700;
-    font-size: 10pt;
+#input1::-webkit-outer-spin-button,
+#input1::-webkit-inner-spin-button,
+#input2::-webkit-outer-spin-button,
+#input2::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}   
+.select{
+    width: 90%;
+    height: 50%;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+}
+#textarea{
+    resize: none;
+    font-family: "Helvetica";
+    font-size: 15px;
+    width: 90%;
+    height: 20%;
+    overflow-y: scroll;
+}
+#h1{
+    font-family: "Montserrat";
+    font-size: 50px;
+}
+#caracteristicas{
+    width: 60%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+#caracteristicas h2{
+    border-bottom: 1px solid black;
+    font-size: 25px;
+    font-family: "Helvetica";
+}
+#general{
     width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 }
-#imagenes:hover::before{
-    border-color: black;
+#general div{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
-#imagenes:active::before{
-    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-}
-.showInfo{
-    background-color: black;
-    width: 50px;
-    min-height: 83vh;
+#general select{
+    margin-left: 30px;
+    padding: 10px 10px;
+    border: none;
+    border-bottom: 1px solid black;
 }

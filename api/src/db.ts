@@ -60,11 +60,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 
 
-const { User, Vehicle} = sequelize.models;
-
-
-
-// relaciones
+const { User, Vehicle, VehicleInfo} = sequelize.models;
 
 User.hasMany(Vehicle);
 Vehicle.belongsTo(User);

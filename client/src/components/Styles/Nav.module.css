@@ -49,3 +49,27 @@
     transition: .3s;
     z-index: 1000;
 }
+
+#navContainer3{
+    background-color: black;
+    display: flex;
+    height: 8vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: .3s;
+    z-index: 1000;
+}
+
+#navContainer4{
+    background-color: black;
+    display: flex;
+    height: 8vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: .3s;
+    z-index: 1000;
+}

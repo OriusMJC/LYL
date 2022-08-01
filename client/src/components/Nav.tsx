@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../config';
 import { setType } from '../redux/actions/index';
@@ -7,6 +8,7 @@ import logo from '../media/logo.png'
 
 function Nav() {
   const dispatch = useAppDispatch();
+  const panel = useSelector((state:any) => state&& state.panel)
   const [nav, setNav] = useState(false);
 
   const changeNav = () =>{
@@ -23,32 +25,62 @@ function Nav() {
     dispatch(setType(undefined));
   }
  
-  return (
-    <div id={!nav ? s.navContainer : s.navContainer2}>
-      <div className={s.navSec}>
-        <Link to = "/vehicles">
-          <h4 onClick = {handleType}>Vehiculos</h4>
-        </Link>
-        <Link to='/about'>
-          <h4>Sobre nosotros</h4>
-        </Link>
-        <Link to='/contact'>
-          <h4>Contactanos</h4>
-        </Link>
-        <Link to = "/">
-          <h4>Inicio</h4>        
-        </Link>
-        <Link to = '/admin/panel'>
-          <h4>Panel</h4>
-        </Link>
-        <div className={s.navSec2}>
-        <Link to='/'>
-          <img src={logo}/>
-        </Link>
+  if(!panel){
+    return (
+      <div id={!nav ? s.navContainer : s.navContainer2}>
+        <div className={s.navSec}>
+          <Link to = "/vehicles">
+            <h4 onClick = {handleType}>Vehiculos</h4>
+          </Link>
+          <Link to='/about'>
+            <h4>Sobre nosotros</h4>
+          </Link>
+          <Link to='/contact'>
+            <h4>Contactanos</h4>
+          </Link>
+          <Link to = "/">
+            <h4>Inicio</h4>        
+          </Link>
+          <Link to = '/admin/panel'>
+            <h4>Panel</h4>
+          </Link>
+          <div className={s.navSec2}>
+          <Link to='/'>
+            <img src={logo}/>
+          </Link>
+        </div>
       </div>
     </div>
-  </div>
-  )
+    )
+  }else {
+    return (
+      <div id={!nav ? s.navContainer3 : s.navContainer4}>
+        <div className={s.navSec}>
+          <Link to = "/vehicles">
+            <h4 onClick = {handleType}>Vehiculos</h4>
+          </Link>
+          <Link to='/about'>
+            <h4>Sobre nosotros</h4>
+          </Link>
+          <Link to='/contact'>
+            <h4>Contactanos</h4>
+          </Link>
+          <Link to = "/">
+            <h4>Inicio</h4>        
+          </Link>
+          <Link to = '/admin/panel'>
+            <h4>Panel</h4>
+          </Link>
+          <div className={s.navSec2}>
+          <Link to='/'>
+            <img src={logo}/>
+          </Link>
+        </div>
+      </div>
+    </div>
+    )
+  }
+  
 }
 
 export default Nav
