@@ -8,7 +8,7 @@ export default function SimpleMap(){
 			center={[-32.961479878536544, -60.65046720982142]}
 			zoom={15}
 			scrollWheelZoom={true}
-			style={{ height: "500px", width: "50vw"}}
+			style={{ height: "500px", width: "70vw"}}
 		>
 			<TileLayer
 				attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

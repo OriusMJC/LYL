@@ -61,3 +61,42 @@
         opacity: 1;
     }
 }
+
+@media screen and (max-width: 768px){
+    #aboutContainer h1{
+        margin: 150px 0 60px;
+        width: 90vw;
+    }
+    .dataAbout{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 150px;
+    }
+    .dataAbout hr{
+        width: 60vw;
+    }
+    .dataAbout div{
+        width: 60vw;
+        text-align: center;
+        margin-left: 0;
+    }
+}
+@media screen and (max-width: 430px){
+    .dataAbout{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 150px;
+    }
+    .dataAbout hr{
+        width: 80vw;
+    }
+    .dataAbout div{
+        width: 80vw;
+        text-align: center;
+        margin-left: 0;
+    }
+}

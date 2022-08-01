@@ -49,3 +49,10 @@
         opacity: 1;
     }
 }
+
+@media screen and (max-width: 430px){
+    #containerContact form textarea{
+        height: 430px;
+        width: 340px;
+    }
+}

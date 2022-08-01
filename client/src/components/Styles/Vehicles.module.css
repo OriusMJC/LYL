@@ -112,3 +112,36 @@
         filter: blur(2px)
     }
 }
+
+@media screen and (max-width: 1024px){
+    #vehiclesContainer{
+        height: 100%;
+        width: 55%;
+    }
+    #links button{
+        text-align: left;
+    }
+    .imgContainer{
+        width: 45%;
+    }
+}
+@media screen and (max-width: 768px){
+    #vehiclesContainer{
+        height: 100%;
+        width: 60%;
+    }
+    .imgContainer{
+        width: 40%;
+    }
+}
+@media screen and (max-width: 425px){
+    #vehiclesContainer{
+        height: 100%;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+    }
+    .imgContainer{
+        display: none;
+    }
+}
