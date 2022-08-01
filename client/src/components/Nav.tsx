@@ -8,6 +8,7 @@ import logo from '../media/logo.png'
 function Nav() {
   const dispatch = useAppDispatch();
   const [nav, setNav] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const changeNav = () =>{
     if(window.scrollY >= 80){
@@ -25,7 +26,16 @@ function Nav() {
  
   return (
     <div id={!nav ? s.navContainer : s.navContainer2}>
-      <div className={s.navSec}>
+      <button className={s.navBtn} onClick={()=>{setOpen(open? false: true)}}>
+        {/* <i className="fa-solid fa-bars"></i> */}
+        {
+          open?
+            <>X</>
+            :
+            <>BTN</>
+        }
+      </button>
+      <div className={s.navSec} id={open? s.navOpen : ''}>
         <Link to = "/vehicles">
           <h4 onClick = {handleType}>Vehiculos</h4>
         </Link>
@@ -41,12 +51,12 @@ function Nav() {
         <Link to = '/admin/panel'>
           <h4>Panel</h4>
         </Link>
-        <div className={s.navSec2}>
+      </div>
+      <div className={s.navSec2}>
         <Link to='/'>
           <img src={logo}/>
         </Link>
       </div>
-    </div>
   </div>
   )
 }

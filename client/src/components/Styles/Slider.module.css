@@ -94,3 +94,27 @@
         opacity: 1;
     }
 }
+@keyframes aparecer2 {
+    from {
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 1270px){
+    .img{
+        display: none;
+    }
+    .main2Text{
+        width: 100%;
+        animation: aparecer2 2s;
+    }
+    .main2Text h1{
+        font-size: 30px;
+        width: 100%;
+    }
+    .main2Text p{
+        width: 100%;
+    }
+}

@@ -9,6 +9,9 @@
     transition: .3s;
     z-index: 1000;
 }
+.navBtn{
+    display: none;
+}
 .navSec{
     display: flex;
     justify-content: space-evenly;
@@ -31,7 +34,8 @@
 .navSec2 {
     position: absolute;
     top: 15px;
-    left: 50%;
+    left: 49%;
+    right: 49%;
 }
 .navSec2 img{
     width: 50px;
@@ -48,4 +52,34 @@
     width: 100%;
     transition: .3s;
     z-index: 1000;
+}
+
+@media screen and (max-width: 1024px){
+    .navBtn{
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0);
+        display: block;
+        width: 50px;
+        height: 50px;
+        border: none;
+        z-index: 101;
+    }
+    /* i {
+        width: 50px !important;
+        height: 50px !important;
+    } */
+    .navSec{
+        display: none;
+    }
+    #navOpen{
+        background-color: rgba(0, 0, 0, 0.897);
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 45%;
+        height: 60vh;
+        z-index: 100;
+    }
 }

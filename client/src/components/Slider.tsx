@@ -57,7 +57,7 @@ function Slider() {
                     </Link>
                   }
                 </div>
-                <div style={styledBut}>
+                <div style={styledBut} className={s.img}>
                   
                 </div>
                 {/* <img src={v.photo[0]} className = {s.img}></img> */}
