@@ -15,10 +15,12 @@ function Panel() {
   useEffect(()=>{
     dispatch(setPanel(true))
   }, [])
-  
+
   const navigate = useNavigate()
   const types = useSelector((state:any) => state && state.types);
   const [pos, setPos] = useState(0);
+  const [video, setVideo] = useState(false);
+  const [presentation, setPresentation] = useState(false);
   const [vehicleData,setVehicleData] = useState<any>({
     title: '',
     video: '',
@@ -30,10 +32,7 @@ function Panel() {
     year: null,
     type: '',
     description: '',
-    generalInfo: {
-      tipoDeCombustible: '',
-      transmision: '',
-    },
+    generalInfo: {},
     exterior:{},
     equipamiento: {},
     seguridad :{},
@@ -84,8 +83,8 @@ function Panel() {
     setVehicleData({
       ...vehicleData,
       seguridad: {
-        ABS: '',
-        cantidadDeAirbags: 0,
+        ABS: event.target.value,
+        cantidadDeAirbags: event.target.value,
       }
     })
   }
@@ -93,8 +92,8 @@ function Panel() {
     setVehicleData({
       ...vehicleData,
       interior: {
-        regulacionDeButaca: '',
-        regulacionDeVolante: '',
+        regulacionDeButaca: event.target.value,
+        regulacionDeVolante: event.target.value,
       }
     })
   }
@@ -103,9 +102,9 @@ function Panel() {
     setVehicleData({
       ...vehicleData,
       multimedia: {
-        bluetooth: '',
-        GPS: '',
-        USB: '',
+        bluetooth: event.target.value,
+        GPS: event.target.value,
+        USB: event.target.value,
       }
     })
   }
