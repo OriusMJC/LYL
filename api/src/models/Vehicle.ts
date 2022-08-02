@@ -16,7 +16,7 @@ module.exports = (sequelize: any) => {
             type: DataTypes.STRING,
         },
         presentation: {
-            type: DataTypes.STRING,
+            type: DataTypes.ARRAY(DataTypes.STRING),
         },
         photo: {
             type: DataTypes.ARRAY(DataTypes.STRING),

@@ -8,6 +8,8 @@ import { setPanel } from '../redux/actions';
 import s from './Styles/Panel.module.css';
 import Nav from './Nav';
 import notFound from '../media/notFound.jpg';
+import swal from 'sweetalert';
+import ReactPlayer from 'react-player';
 
 function Panel() {
   const dispatch = useAppDispatch();
@@ -20,12 +22,12 @@ function Panel() {
   const types = useSelector((state:any) => state && state.types);
   const [pos, setPos] = useState(0);
   const [video, setVideo] = useState(false);
-  const [presentation, setPresentation] = useState(false);
+  const [pres, setPres] = useState(false);
   const [vehicleData,setVehicleData] = useState<any>({
     title: '',
     video: '',
     photo: [],
-    presentation: '',
+    presentation: [],
     price: null,
     status: 'Nuevo',
     kilom: null,
@@ -61,12 +63,18 @@ function Panel() {
       USB: '',
     },
   })
-
-  console.log(vehicleData)
+  const presType = vehicleData.presentation[0] && vehicleData.presentation.length && vehicleData.presentation[0].slice(-3)
+  console.log(vehicleData);
+  console.log(presType);
 
   function handleSubmit(event:any){
     event.preventDefault()
     dispatch(createVehicle(vehicleData))
+    swal({
+      title: "Felicidades",
+      text: "Vehiculo creado",
+      icon: "success",
+    })
     navigate('/vehicles')
   }
 
@@ -126,6 +134,7 @@ function Panel() {
       }
     })
   }
+
   function handlePosition(event: any){
     setPos(event.target.value)
   }
@@ -138,9 +147,34 @@ function Panel() {
   }
 
   function handleSelectVideo(event:any){
+    if(event.target.value.slice(-3) !== 'mp4'){
+      swal({
+        title: "Error",
+        text: "Solo puedes elegir videos",
+        icon: "error",
+      })
+    }else {
+      setVehicleData({
+        ...vehicleData,
+        video: (event.target.value).slice(12, event.target.value.length)
+      })
+      setVideo(true)
+    }
+  }
+
+  function handleDeleteVideo(event:any){
     setVehicleData({
       ...vehicleData,
-      video: (event.target.value).slice(12, event.target.value.length)
+      video: ''
+    })
+    setVideo(false);
+  }
+
+  function handleDeleteImg(event:any){
+    let images = vehicleData.photo.filter((p:any) => p !== event.target.value)
+    setVehicleData({
+      ...vehicleData,
+      photo: images
     })
   }
 
@@ -154,7 +188,7 @@ function Panel() {
     const res = await fetch("https://api.cloudinary.com/v1_1/mypc/image/upload", { method: "POST", body: data });
     const file = await res.json();
 
-    if(!file.error && file.secure_url !== undefined){
+    if(!file.error && file.secure_url !== 'undefined'){
       setVehicleData({
         ...vehicleData,
         photo: [...vehicleData.photo, file.secure_url]
@@ -162,12 +196,31 @@ function Panel() {
     }else console.log(file.error);
   }
 
-  function handleDeleteImg(event:any){
-    let images = vehicleData.photo.filter((p:any) => p !== event.target.value)
-    setVehicleData({
-      ...vehicleData,
-      photo: images
-    })
+  const uploadImagePresentation = async(e:any) => {
+    const files = e.target.files;
+    const data = new FormData();
+
+    data.append('file', files[0]);
+    data.append('upload_preset', 'chropyis');
+
+    const res = await fetch("https://api.cloudinary.com/v1_1/mypc/image/upload", { method: "POST", body: data });
+    const file = await res.json();
+
+    if(!file.error && file.secure_url !== 'undefined'){
+      if(vehicleData.presentation.length < 1){
+        setVehicleData({
+          ...vehicleData,
+          presentation: [file.secure_url]
+        })
+      }else {
+        swal({
+          title: "Error",
+          text: "Solo puedes elegir una archivo",
+          icon: "error",
+        })
+      }
+      
+    }else console.log(file.error);
   }
 
   function handlePres(event:any){
@@ -175,11 +228,21 @@ function Panel() {
     if(valueFile === 'mp4'){
       setVehicleData({
         ...vehicleData,
-        presentation: (event.target.value).slice(12, event.target.value.length)
+        presentation: [(event.target.value).slice(12, event.target.value.length)]
       })
+      setPres(true)
     }else {
-      uploadImage(event)
+      uploadImagePresentation(event)
+      setPres(true)
     }
+  }
+
+  function handleDeletePres(event:any){
+    setVehicleData({
+      ...vehicleData,
+      presentation: []
+    })
+    setPres(false);
   }
 
   useEffect(()=>{
@@ -195,6 +258,7 @@ function Panel() {
     <>
     <Nav/>
     <section id={s.panelContainer}>
+      <form id = {s.form} onSubmit = {handleSubmit}>
       <div id = {s.firstDiv}>
         <div id = {s.divImages}>
           <div id = {s.imgPrincipal}>
@@ -214,8 +278,9 @@ function Panel() {
                 }
                 return (
                   <div id = {s.divButtons}>
-                    <button style = {styledBut} value = {i} onClick = {handlePosition} id = {s.button}></button>
-                    <button id = {s.button2} value = {photo} onClick = {handleDeleteImg}>X</button>
+                    <button style = {styledBut} value = {i} onClick = {handlePosition} id = {s.button}>
+                      <button id = {s.button2} value = {photo} onClick = {handleDeleteImg}>X</button>
+                    </button>
                   </div>
                 )
               })
@@ -232,12 +297,46 @@ function Panel() {
             <input placeholder = "Precio" name = "price" value = {vehicleData.price} onChange = {handleChange} required type = "number" id = {s.input1}></input>
 
             <div className = {s.select}>
-              <input type = "file" name = "photo" onChange = {uploadImage} ></input>
+              <input type = "file" name = "photo" onChange = {uploadImage} required></input>
               <input type = "file" name = "video" onChange = {handleSelectVideo}></input>
               <input type = "file" name = "presentation" onChange = {handlePres}></input>
             </div>
+          
             <textarea placeholder = "Descripcion" name = "description" value = {vehicleData.description} onChange = {handleChange} required id ={s.textarea}></textarea>
         </div>
+        {video || pres ?
+        <div id = {s.divP}>
+          { video &&
+          <div id = {s.divVideo}>
+            <video 
+            src = {require(`../media/videos/${vehicleData.video}`)}
+            controls
+            muted
+            id = {s.video}
+            />
+            <button onClick = {handleDeleteVideo}>X</button>
+          </div>
+        }
+        { pres && 
+        <div id = {s.divPres}>
+          {
+          presType === 'mp4' ?
+          <video
+          src = {require(`../media/videos/${vehicleData.presentation[0]}`)}
+          controls
+          muted
+          id = {s.videoPres}
+          />
+          :
+          <img src = {vehicleData.presentation[0]} id = {s.imgPres}></img>
+          }
+          <button onClick = {handleDeletePres}>x</button>
+        </div>
+        }
+        </div>
+        : null
+        }
+        
       </div>
       <h1 id = {s.h1}>CARACTERISTICAS</h1>
       <div id = {s.caracteristicas}>
@@ -256,6 +355,16 @@ function Panel() {
               <option hidden>Transmision</option>
               <option value = 'Automatica'>Automatica</option>
               <option value = 'Manual'>Manual</option>
+          </select>
+          </label>
+          <label>Marca
+          <select name = "type" onChange = {handleChange}>
+              <option hidden>Marca</option>
+              {types && types.map((t:any) =>{
+                return (
+                  <option value = {t}>{t}</option>
+                )
+              })}
           </select>
           </label>
           </div>
@@ -395,7 +504,8 @@ function Panel() {
           </div>
         </div>
       </div>
-      <h2 onClick = {handleSubmit} id = {s.h2Button}>CREAR</h2>
+      <button id = {s.buttonPublicar}>PUBLICAR</button>
+      </form>
     </section>
     </>
   )

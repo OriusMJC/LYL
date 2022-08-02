@@ -6,6 +6,16 @@
     width: 100%;
     height: 180vh;
 }
+#form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    border-radius: 30px;
+}
 #firstDiv{
     display: flex;
     flex-direction: row;
@@ -54,13 +64,15 @@
     z-index: 1000;
     background-color: black;
     color: white;
+    font-size: 10px;
     text-align: center;
     border-radius: 50%;
     width: 25px;
     height: 25px;
     cursor: pointer;
-    position: absolute;
     transition: .2s;
+    margin-left: 85%;
+    margin-bottom: 65%;
 }
 #button2:hover{
     transform: scale(1.08)
@@ -151,16 +163,94 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
+#general label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
 #general select{
     margin-left: 30px;
     padding: 10px 10px;
     border: none;
     border-bottom: 1px solid black;
 }
-#h2Button{
+#buttonPublicar{
     height: 30px;
     cursor: pointer;
+    border: none;
+    background: transparent;
+    margin-bottom: 50px;
+    font-family: "Helvetica";
+    font-weight: bold;
+    font-size: 20px;
+    transition: .2s;
 }
-#h2Button:hover{
-    border-bottom: 1px solid black;
+#buttonPublicar:hover{
+    transform: scale(1.02)
+}
+#divP {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: space-between;
+}
+#divVideo {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-around;
+}
+#video{
+    width: 100%;
+    height: 100%;
+}
+#divVideo button{
+    background-color: black;
+    color: white;
+    font-size: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 25px;
+    transition: .2s;
+}
+#divVideo button:hover{
+    transform: scale(1.05)
+}
+#divPres {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+#videoPres{
+    width: 100%;
+    height: 100%;
+}
+#imgPres{
+    width: 100%;
+    height: 100%;
+}
+#divPres button{
+    background-color: black;
+    color: white;
+    font-size: 10px;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 25px;
+    transition: .2s;
+}
+#divPres button:hover{
+    transform: scale(1.05)
 }
