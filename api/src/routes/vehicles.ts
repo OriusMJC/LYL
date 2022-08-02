@@ -30,7 +30,6 @@ router.get('/:id', async(req, res, next): Promise<any> => {
 });
 
 router.post('/create', async(req, res, next): Promise<any> => {
-    // const id = req.params.idUser;
     let arr:any = []
     const photos = req.body.photo
     const vehicle = req.body;
@@ -38,6 +37,8 @@ router.post('/create', async(req, res, next): Promise<any> => {
         await cloudinary.uploader.upload(p, (error:any, result:any) => {
             if(!error){
                 arr.push(result.url)
+            }else{
+                console.log(error);
             }
         })
     })

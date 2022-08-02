@@ -15,6 +15,9 @@ module.exports = (sequelize: any) => {
         video: {
             type: DataTypes.STRING,
         },
+        presentation: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
+        },
         photo: {
             type: DataTypes.ARRAY(DataTypes.STRING),
         },
@@ -39,8 +42,32 @@ module.exports = (sequelize: any) => {
             allownull: false,
         },
         type: {
-            type: DataTypes.ENUM('bmw', 'audi', 'peugeot', 'citroen', 'mercedes benz', 'ford', 'fiat', 'toyota', 'volkswagen', 'renault', 'chevrolet', 'honda', 'hyundai', 'suzuki', 'ducati', 'rouser')
-        }
+            type: DataTypes.ENUM('bmw', 'audi', 'peugeot', 'citroen', 'mercedes benz', 'ford', 'fiat', 'jeep', 'toyota', 'volkswagen', 'renault', 'chevrolet', 'honda', 'hyundai', 'suzuki', 'ducati', 'rouser')
+        },
+        generalInfo: {
+            type: DataTypes.JSON,
+            allownull: false,
+        },
+        exterior: {
+            type: DataTypes.JSON,
+            allownull: false,
+        },
+        equipamiento: {
+            type: DataTypes.JSON,
+            allownull: false,
+        },
+        seguridad: {
+            type: DataTypes.JSON,
+            allownull:false,
+        },
+        interior: {
+            type: DataTypes.JSON,
+            allownull: false,
+        },
+        multimedia: {
+            type: DataTypes.JSON,
+            allownull: false,
+        },
     }, {
         timestamps: true
     })

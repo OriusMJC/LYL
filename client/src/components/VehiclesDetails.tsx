@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useState } from 'react';
 import { useSelector} from 'react-redux';
 import { useAppDispatch } from '../config';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { getAllVehicles, getDetails, deleteVehicle } from '../redux/actions';
+import { getAllVehicles, getDetails, deleteVehicle, setPanel } from '../redux/actions';
 import * as types from '../types';
 import notFound from '../media/notFound.jpg';
 import play from '../media/play-button-transparent.png';
@@ -14,19 +14,29 @@ import Nav from './Nav';
 import v from '../media/videos/jeep.mp4'
 import logo from '../media/logo.png'
 import { BiLeftArrowAlt } from 'react-icons/bi';
+<<<<<<< HEAD
 import Loading from './Loading';
+=======
+import video from '../media/video1.mp4'
+>>>>>>> 3669f26991ab3d3a1ef77a02893d9205ed99be69
 
 
 function VehiclesDetails() {
   
   const idVehicle:any = useParams().idVehicle;
   const dispatch = useAppDispatch();
+
+  useEffect(()=> {
+    dispatch(setPanel(false))
+  }, [])
+
   const navigate = useNavigate();
   const suggest = useSelector((state:any)=> state && state.allVehicles)
   const vehicle = useSelector((state:any) => state && state.vehicleDetails);
   const [deleteBtn, setDeleteBtn] = useState(false)
   const [photo,setPhoto] = useState(notFound)
 
+  console.log(vehicle);
   
   const handleDelete = useCallback(() => {
     swal({
@@ -69,137 +79,15 @@ function VehiclesDetails() {
   }
 
   return (
-    <div id={s.containerVehicleDetails}>
-      <Loading/>
-      <div id={s.navVDetails}>
-        <Link to='/vehicles'>
-          <BiLeftArrowAlt className = {s.leftArrow}/>
-        </Link>
-        <Link to = "/" className = {s.imgDiv}>
-          <img src= {logo} alt = "logo"></img>
-        </Link>
-      </div>
-      <section id={s.vehicleDetails}>
-        {deleteBtn && <button value = {vehicle.id} onClick = {handleDelete} className={s.btnDelete}>ELIMINAR</button>}
-        {/* <h1>{vehicle.title}</h1> */}
-        {
-          vehicle &&
-            <div key = {vehicle.id} id={s.containDetails}>
-              <div id={s.containPhotoDetails}>
-                <div className={s.photoAndDetails} style={styledBut}>
-                  {/* <img src={photo} alt='Vehicle photo'/> */}
-                  {/* {
-                    photo.slice(-3) !== 'mp4'?
-                    :
-                    <ReactPlayer 
-                    url = {require(`../media/videos/${vehicle.video}`)}
-                    controls
-                    autoplay
-                    />
+    <>
+    <Nav/>
+    <section>
 
-                  } */}
-                </div>
-                {/* <div className={s.photoAndDetails}>
-                  <h3>Kilometros: {vehicle?.kilom}</h3>
-                  <h3>Precio: ${vehicle.price}</h3>
-                  <h3>Año: {vehicle.year}</h3>
-                  <h4>Estado: {vehicle.status}</h4>
-                  <Link to='/contact'>
-                    <button className={s.btnContact}>Contactar!</button>
-                  </Link>
-                </div> */}
-              </div>
-              <div id={s.contImgs}>
-                <video 
-                  src = {vehicle?.video? require(`../media/videos/${vehicle.video}`) : v}
-                  autoPlay
-                  loop
-                  muted
-                  />
-                <div>
-                  {vehicle.photo && vehicle.photo.length?
-                    vehicle.photo.map((p:string) => (
-                      <img src={p} onClick={()=>{setPhoto(p)}} alt='Vehicle photo' className={photo === p? s.photoActive : undefined}></img>
-                    ))
-                  :
-                    null
-                  }
-                </div>
-              </div>
-            </div>
-        }
-        {/* <h3>Kilometros:</h3>
-        <p>{vehicle?.kilom}</p> */}
-      </section>
-      <section id={s.contentDetails}>
-      {/* <div id={s.details}>
-          <h3 className={s.detailsH3}>Kilometros:</h3>
-          <p>{vehicle?.kilom}</p>
-          <h3 className={s.detailsH3}>Precio:</h3>
-          <p>${vehicle.price}</p>
-          <h3 className={s.detailsH3}>Año: </h3>
-          <p>{vehicle.year}</p>
-          <h3 className={s.detailsH3}>Estado: </h3>
-          <p>{vehicle.status}</p>
-          <Link to='/contact'>
-            <button className={s.btnContact}>Contactar!</button>
-          </Link>
-        </div> */}
-          <Link to='/contact'>
-            <button className={s.btnContact}>Contactar!</button>
-          </Link>
-        <div id={s.details}>
-          {/* <hr></hr>
-          <div className={s.detailsMin}>
-            <div>
-              <h3>KILOMETROS: </h3>
-              <p>{vehicle?.kilom}</p>
-            </div>
-            <div>
-              <h3>PRECIO: </h3>
-              <p>${vehicle.price}</p>
-            </div>
-          </div>
-          <div className={s.detailsMin}>
-            <div>
-              <h3>AÑO:</h3>
-              <p>{vehicle.year}</p>
-            </div>
-            <div>
-              <h3>ESTADO: </h3>
-              <p>{vehicle.status?.toUpperCase()}</p>
-            </div>
-          </div>
-          <hr></hr> */}
-          <h1>{vehicle?.title?.toUpperCase()}</h1>
-          <hr></hr>
-          {/* <h3>Descripción:</h3> */}
-          <p>{vehicle?.description}</p>
-          <div className={s.detailsMin}>
-            <div>
-              <h3>KILOMETROS: </h3>
-              <p>{vehicle?.kilom}</p>
-            </div>
-          </div>
-          <div className={s.detailsMin}>
-            <div>
-              <h3>ESTADO: </h3>
-              <p>{vehicle.status?.toUpperCase()}</p>
-            </div>
-          </div>
-        </div>
-          {/* <h3>Recomendados:</h3>
-        <div id={s.suggest}>
-          {
-            suggest.length && suggest.map((v:types.Vehicle) => {
-              return (
-                <Card v={v}/>
-              )
-            })
-          }
-        </div> */}
-      </section>
-    </div>
+    </section>
+    <section>
+
+    </section>
+    </>
   )
 }
 

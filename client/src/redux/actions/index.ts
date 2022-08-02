@@ -13,6 +13,7 @@ export const ORDER_BY_PRICE = "ORDER_BY_PRICE";
 export const CHANGE_PAGE = "CHANGE_PAGE";
 export const SET_TYPE = "SET_TYPE";
 export const REFRESH_TYPE = "REFRESH_TYPE";
+export const SET_PANEL = "SET_PANEL";
 
 type Action = {
 	type: string;
@@ -124,5 +125,11 @@ export function refreshType(){
     return {
         type: REFRESH_TYPE,
         payload: [],
+    }
+}
+export function setPanel(boolean: boolean){
+    return{
+        type: SET_PANEL,
+        payload: boolean
     }
 }
