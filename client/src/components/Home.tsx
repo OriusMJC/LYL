@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setType } from '../redux/actions/index';
+import { setType, setPanel } from '../redux/actions/index';
 import { useAppDispatch } from '../config';
 import Slider from './Slider';
 import Marcas from './Marcas';
@@ -16,6 +17,10 @@ function Home() {
   const dispatch = useAppDispatch();
   const [anim, setAnim] = useState(false);
 
+  useEffect(() => {
+    dispatch(setPanel(false))
+  })
+  
   const changeAnim = () => {
     if(window.scrollY > 800){
       setAnim(true)

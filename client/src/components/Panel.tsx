@@ -64,8 +64,8 @@ function Panel() {
     },
   })
   const presType = vehicleData.presentation[0] && vehicleData.presentation.length && vehicleData.presentation[0].slice(-3)
+
   console.log(vehicleData);
-  console.log(presType);
 
   function handleSubmit(event:any){
     event.preventDefault()
@@ -189,10 +189,19 @@ function Panel() {
     const file = await res.json();
 
     if(!file.error && file.secure_url !== 'undefined'){
-      setVehicleData({
-        ...vehicleData,
-        photo: [...vehicleData.photo, file.secure_url]
-      })
+      if(vehicleData.photo.length <5 ){
+        setVehicleData({
+          ...vehicleData,
+          photo: [...vehicleData.photo, file.secure_url]
+        })
+      }else{
+        swal({
+          title: "Error",
+          text: "Maximo 5 fotos",
+          icon: "error",
+        })
+      }
+      
     }else console.log(file.error);
   }
 
@@ -299,7 +308,7 @@ function Panel() {
             <div className = {s.select}>
               <input type = "file" name = "photo" onChange = {uploadImage} required></input>
               <input type = "file" name = "video" onChange = {handleSelectVideo}></input>
-              <input type = "file" name = "presentation" onChange = {handlePres}></input>
+              <input type = "file" name = "presentation" onChange = {handlePres} required></input>
             </div>
           
             <textarea placeholder = "Descripcion" name = "description" value = {vehicleData.description} onChange = {handleChange} required id ={s.textarea}></textarea>
