@@ -14,11 +14,8 @@ import Nav from './Nav';
 import v from '../media/videos/jeep.mp4'
 import logo from '../media/logo.png'
 import { BiLeftArrowAlt } from 'react-icons/bi';
-<<<<<<< HEAD
 import Loading from './Loading';
-=======
 import video from '../media/video1.mp4'
->>>>>>> 3669f26991ab3d3a1ef77a02893d9205ed99be69
 
 
 function VehiclesDetails() {
