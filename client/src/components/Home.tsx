@@ -35,10 +35,6 @@ function Home() {
     behavior: 'smooth',
   })
 
-  const style2 = {
-    fontFamily: font
-  }
-
   const handleType = () => {
     dispatch(setType(undefined))
   }
@@ -58,7 +54,7 @@ function Home() {
           {
             !anim &&
             <div className = {s.animation} >
-            <h1 className = {s.text} style = {style2}>BIENVENIDO</h1>
+            <h1 className = {s.text}>BIENVENIDO</h1>
             <h3 className = {s.text}>#ARRANCAELMOTOR</h3>
             </div>
           }

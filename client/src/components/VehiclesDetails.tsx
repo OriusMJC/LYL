@@ -14,11 +14,8 @@ import Nav from './Nav';
 import v from '../media/videos/jeep.mp4'
 import logo from '../media/logo.png'
 import { BiLeftArrowAlt } from 'react-icons/bi';
-<<<<<<< HEAD
-import Loading from './Loading';
-=======
 import video from '../media/video1.mp4'
->>>>>>> 3669f26991ab3d3a1ef77a02893d9205ed99be69
+import Loading from './Loading';
 
 
 function VehiclesDetails() {
@@ -35,8 +32,9 @@ function VehiclesDetails() {
   const vehicle = useSelector((state:any) => state && state.vehicleDetails);
   const [deleteBtn, setDeleteBtn] = useState(false)
   const [photo,setPhoto] = useState(notFound)
-
+  const presentationType = vehicle.presentation && vehicle.presentation.length && vehicle.presentation[0].slice(-3)
   console.log(vehicle);
+  console.log(presentationType)
   
   const handleDelete = useCallback(() => {
     swal({
@@ -80,9 +78,21 @@ function VehiclesDetails() {
 
   return (
     <>
+    <Loading/>
     <Nav/>
-    <section>
-
+    <section id = {s.section1}>
+    { vehicle.presentation && presentationType === 'mp4' ? 
+      <video
+      src = {require(`../media/videos/${vehicle.presentation[0]}`)}
+      autoPlay
+      muted
+      loop
+      id = {s.video}
+      />
+      :
+      <img src = {vehicle.presentation && vehicle.presentation[0]}></img>  
+    }
+    <h1 id = {s.title}>{`#VIVILAEXPERIENCIA${vehicle.type.toUpperCase()}`}</h1>
     </section>
     <section>
 
