@@ -65,6 +65,7 @@
         z-index: 101;
     }
     .navBtn svg {
+        margin-top: 20px;
         width: 25px;
         height: 25px;
     }

@@ -14,6 +14,7 @@ import Nav from './Nav';
 import v from '../media/videos/jeep.mp4'
 import logo from '../media/logo.png'
 import { BiLeftArrowAlt } from 'react-icons/bi';
+import Loading from './Loading';
 
 
 function VehiclesDetails() {
@@ -69,6 +70,7 @@ function VehiclesDetails() {
 
   return (
     <div id={s.containerVehicleDetails}>
+      <Loading/>
       <div id={s.navVDetails}>
         <Link to='/vehicles'>
           <BiLeftArrowAlt className = {s.leftArrow}/>

@@ -10,6 +10,7 @@ import v from '../media/video2.mp4';
 import font from '../media/RFDewiExpanded.woff';
 import {BsArrowRightCircle} from 'react-icons/bs';
 import * as types from '../types'
+import Loading from './Loading';
 
 
 function Home() {
@@ -39,36 +40,37 @@ function Home() {
 
   return (
     <>
-    <Nav/>
-    <section className = {s.main}>
-      <video 
-      src = {v}
-      autoPlay
-      loop
-      muted
-      />
-      <div className = {s.content}>
-        {
-          !anim &&
-          <div className = {s.animation} >
-          <h1 className = {s.text} style = {style2}>BIENVENIDO</h1>
-          <h3 className = {s.text}>#ARRANCAELMOTOR</h3>
-          </div>
-        }
-      </div>
-    </section>
-    <section className = {s.main2}>
-      <Slider/>
-    </section>
-    <section className = {s.main3}>
-      <Marcas/>
-    </section>
-    <footer className = {s.footer}>
-        <h3>CONOCE NUESTRAS MARCAS</h3>
-        <Link to = '/vehicles'>
-          <BsArrowRightCircle className = {s.arrow} onClick = {handleType}/>
-        </Link>
-    </footer>
+      <Loading/>
+      <Nav/>
+      <section className = {s.main}>
+        <video 
+        src = {v}
+        autoPlay
+        loop
+        muted
+        />
+        <div className = {s.content}>
+          {
+            !anim &&
+            <div className = {s.animation} >
+            <h1 className = {s.text} style = {style2}>BIENVENIDO</h1>
+            <h3 className = {s.text}>#ARRANCAELMOTOR</h3>
+            </div>
+          }
+        </div>
+      </section>
+      <section className = {s.main2}>
+        <Slider/>
+      </section>
+      <section className = {s.main3}>
+        <Marcas/>
+      </section>
+      <footer className = {s.footer}>
+          <h3>CONOCE NUESTRAS MARCAS</h3>
+          <Link to = '/vehicles'>
+            <BsArrowRightCircle className = {s.arrow} onClick = {handleType}/>
+          </Link>
+      </footer>
     </>
   )
 }

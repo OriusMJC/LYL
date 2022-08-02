@@ -32,7 +32,7 @@ function Nav() {
         {/* <i className="fa-solid fa-bars"></i> */}
         {
           open?
-            <>X</>
+            <FontAwesomeIcon icon={solid('xmark')} />
             :
             <FontAwesomeIcon icon={solid('bars')} />
         }
@@ -56,7 +56,7 @@ function Nav() {
       </div>
       <div className={s.navSec2}>
         <Link to='/'>
-          <img src={logo}/>
+          <img src={logo} alt='Logo'/>
         </Link>
       </div>
   </div>
