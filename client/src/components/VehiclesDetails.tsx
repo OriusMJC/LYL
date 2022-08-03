@@ -16,6 +16,8 @@ import logo from '../media/logo.png'
 import { BiLeftArrowAlt } from 'react-icons/bi';
 import Loading from './Loading';
 import video from '../media/video1.mp4'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 
 function VehiclesDetails() {
@@ -34,10 +36,11 @@ function VehiclesDetails() {
   const [photo,setPhoto] = useState(notFound)
   const presentationType = vehicle.presentation && vehicle.presentation.length && vehicle.presentation[0].slice(-3)
   // const presentation = vehicle.presentation2.slice(1, 3)
-  console.log(vehicle);
-  console.log(presentationType)
-  // console.log(presentation);
-  
+  //vista general, info, cont
+  const [view,setView] = useState('gen')
+  //ver foto
+  const [show,setShow] = useState(false)
+  const [bigPhoto,setBigPhoto] = useState('')
   const handleDelete = useCallback(() => {
     swal({
       text: 'Estas seguro que queres eliminar este vehiculo?',
@@ -82,6 +85,14 @@ function VehiclesDetails() {
     <>
     <Loading/>
     <Nav/>
+    <div id={show? s.contPhoto : s.bigPhotoN}>
+      <button onClick={()=>setShow(false)} id={show? s.bigPhoto : s.bigPhotoN}>
+        <button>
+          <FontAwesomeIcon icon={solid('x')} />
+        </button>
+      </button>
+      <img src={bigPhoto} alt='vista grande de foto'/>
+    </div>
     <section id = {s.section1}>
     { vehicle.presentation && presentationType === 'mp4' ? 
       <video
@@ -99,47 +110,59 @@ function VehiclesDetails() {
     <section id = {s.section2}>
       <div id = {s.div1}>
         <div id = {s.divNav}>
-          <h2>General</h2>
-          <h2>Informacion</h2>
-          <h2>Contacto</h2>
+          <h2 onClick={()=>{setView('gen')}}>General</h2>
+          <h2 onClick={()=>{setView('info')}}>Informacion</h2>
+          <h2 onClick={()=>{setView('contact')}}>Contacto</h2>
         </div>
-        <div id = {s.div2}>
-          <div id = {s.divIzq}>
-            <div id = {s.divA}>
-              <h1>{vehicle.title && vehicle.title.toUpperCase()}</h1>
-              <p>{vehicle.description}</p>
+        {
+          view === 'gen' ?
+          <div id = {s.div2}>
+            <div id = {s.divIzq}>
+              <div id = {s.divA}>
+                <h1>{vehicle.title && vehicle.title.toUpperCase()}</h1>
+                <p>{vehicle.description}</p>
+              </div>
+              <div id = {s.divB} onClick={()=>{setShow(true);setBigPhoto(vehicle.photo[1])}}>
+                <img src = {vehicle.photo && vehicle.photo[1]} id = {s.imgV}></img>
+              </div>
+              <div id = {s.divC} onClick={()=>{setShow(true);setBigPhoto(vehicle.photo[3])}}>
+                <img src = {vehicle.photo && vehicle.photo[3]} id = {s.imgV}></img>
+              </div>
+              {vehicle.video !== '' && vehicle.video &&
+              <div id = {s.divD}>
+                <video
+                src = {require(`../media/videos/${vehicle.video}`)}
+                autoPlay
+                controls
+                loop
+                muted
+                id = {s.video2}
+                ></video>
+              </div>
+              }
             </div>
-            <div id = {s.divB}>
-              <img src = {vehicle.photo && vehicle.photo[1]} id = {s.imgV}></img>
+            <div id = {s.divDer}>
+              <div id = {s.divE} onClick={()=>{setShow(true);setBigPhoto(vehicle.photo[0])}}>
+                <img src = {vehicle.photo && vehicle.photo[0]} id = {s.imgV}></img>
+              </div>
+              <div id = {s.divF} onClick={()=>{setShow(true);setBigPhoto(vehicle.photo[2])}}>
+                <img src = {vehicle.photo && vehicle.photo[2]} id = {s.imgV}></img>
+              </div>
+              <div id = {s.divG} onClick={()=>{setShow(true);setBigPhoto(vehicle.photo[4])}}>
+                <img src = {vehicle.photo && vehicle.photo[4]} id = {s.imgV}></img>
+              </div>
             </div>
-            <div id = {s.divC}>
-            <img src = {vehicle.photo && vehicle.photo[3]} id = {s.imgV}></img>
-            </div>
-            {vehicle.video !== '' && vehicle.video &&
-            <div id = {s.divD}>
-            <video
-            src = {require(`../media/videos/${vehicle.video}`)}
-            autoPlay
-            controls
-            loop
-            muted
-            id = {s.video2}
-            ></video>
-            </div>
-            }
           </div>
-          <div id = {s.divDer}>
-            <div id = {s.divE}>
-              <img src = {vehicle.photo && vehicle.photo[0]} id = {s.imgV}></img>
-            </div>
-            <div id = {s.divF}>
-            <img src = {vehicle.photo && vehicle.photo[2]} id = {s.imgV}></img>
-            </div>
-            <div id = {s.divG}>
-              <img src = {vehicle.photo && vehicle.photo[4]} id = {s.imgV}></img>
-            </div>
-          </div>
-        </div>
+          :
+            view === 'info'?
+              <div>
+                <h1>info</h1>
+              </div>
+              :
+              <div>
+                <h1>contact</h1>
+              </div>
+        }
       </div>
     </section>
     </>
