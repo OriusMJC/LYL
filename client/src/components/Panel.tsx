@@ -23,6 +23,7 @@ function Panel() {
   const [pos, setPos] = useState(0);
   const [video, setVideo] = useState(false);
   const [pres, setPres] = useState(false);
+  const [pres2, setPres2] = useState(false);
   const [vehicleData,setVehicleData] = useState<any>({
     title: '',
     video: '',
@@ -268,252 +269,253 @@ function Panel() {
     <Nav/>
     <section id={s.panelContainer}>
       <form id = {s.form} onSubmit = {handleSubmit}>
-      <div id = {s.firstDiv}>
-        <div id = {s.divImages}>
-          <div id = {s.imgPrincipal}>
-            <img src= {vehicleData.photo[pos] ? vehicleData.photo[pos] : notFound}></img>
-          </div>
-          <div id = {s.imgCarrousel}>
-            {vehicleData.photo && vehicleData.photo.length &&
-              vehicleData.photo.map((photo:any, i:any) => {
-                const styledBut = {
-                  backgroundImage: `url("${photo}")`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center',
-                  backgroundSize: photo? 'cover' : 'contain',
-                  outlineOffset: photo? '-8px' : '0px',
-                  transition: '.2s',
-                  cursor: 'pointer',
-                }
-                return (
-                  <div id = {s.divButtons}>
-                    <button style = {styledBut} value = {i} onClick = {handlePosition} id = {s.button}>
-                      <button id = {s.button2} value = {photo} onClick = {handleDeleteImg}>X</button>
-                    </button>
-                  </div>
-                )
-              })
-            }
-          </div>
-        </div>
-        <div id = {s.divInfo}>
-            <input placeholder = "Titulo" name = "title" value = {vehicleData.title} onChange = {handleChange} required type = "text" id = {s.input1}></input>
-            <div>
-              <input placeholder = "Año" name = "year" value = {vehicleData.year} onChange = {handleChange} required type = "number" id = {s.input2}></input>
-              <span> - </span>
-              <input placeholder = "Kilom" name = "kilom" value = {vehicleData.kilom} onChange = {handleChange} required type = "number" id = {s.input2}></input>
+        <div id = {s.firstDiv}>
+          <div id = {s.divImages}>
+            <div id = {s.imgPrincipal}>
+              <img src= {vehicleData.photo[pos] ? vehicleData.photo[pos] : notFound}></img>
             </div>
-            <input placeholder = "Precio" name = "price" value = {vehicleData.price} onChange = {handleChange} required type = "number" id = {s.input1}></input>
+            <div id = {s.imgCarrousel}>
+              {vehicleData.photo && vehicleData.photo.length &&
+                vehicleData.photo.map((photo:any, i:any) => {
+                  const styledBut = {
+                    backgroundImage: `url("${photo}")`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center',
+                    backgroundSize: photo? 'cover' : 'contain',
+                    outlineOffset: photo? '-8px' : '0px',
+                    transition: '.2s',
+                    cursor: 'pointer',
+                  }
+                  return (
+                    <div id = {s.divButtons}>
+                      <button style = {styledBut} value = {i} onClick = {handlePosition} id = {s.button}>
+                        <button id = {s.button2} value = {photo} onClick = {handleDeleteImg}>X</button>
+                      </button>
+                    </div>
+                  )
+                })
+              }
+            </div>
+          </div>
+          <div id = {s.divInfo}>
+              <input placeholder = "Titulo" name = "title" value = {vehicleData.title} onChange = {handleChange} required type = "text" id = {s.input1}></input>
+              <div className = {s.select1}>
+                <input placeholder = "Año" name = "year" value = {vehicleData.year} onChange = {handleChange} required type = "number" id = {s.input2}></input>
+                <span> - </span>
+                <input placeholder = "Kilom" name = "kilom" value = {vehicleData.kilom} onChange = {handleChange} required type = "number" id = {s.input2}></input>
+              </div>
+              <input placeholder = "Precio" name = "price" value = {vehicleData.price} onChange = {handleChange} required type = "number" id = {s.input1}></input>
 
-            <div className = {s.select}>
-              <input type = "file" name = "photo" onChange = {uploadImage} required></input>
-              <input type = "file" name = "video" onChange = {handleSelectVideo}></input>
-              <input type = "file" name = "presentation" onChange = {handlePres} required></input>
+              <div className = {s.select2}>
+                {/* <label>
+                  Subir imagen
+                </label> */}
+                <input type = "file" name = "photo" onChange = {uploadImage} required id = {s.photo}/>
+                <input type = "file" name = "video" onChange = {handleSelectVideo} id = {s.videoP}/>
+                <input type = "file" name = "presentation" onChange = {handlePres} required id = {s.presentation}/>
+              </div>
+              <textarea placeholder = "Descripcion" name = "description" value = {vehicleData.description} onChange = {handleChange} required id ={s.textarea}></textarea>
+          </div>
+          {video || pres || pres2 ?
+          <div id = {s.divP}>
+            { video &&
+            <div id = {s.divVideo}>
+              <video 
+              src = {require(`../media/videos/${vehicleData.video}`)}
+              controls
+              muted
+              id = {s.video}
+              />
+              <button onClick = {handleDeleteVideo}>X</button>
             </div>
-          
-            <textarea placeholder = "Descripcion" name = "description" value = {vehicleData.description} onChange = {handleChange} required id ={s.textarea}></textarea>
-        </div>
-        {video || pres ?
-        <div id = {s.divP}>
-          { video &&
-          <div id = {s.divVideo}>
-            <video 
-            src = {require(`../media/videos/${vehicleData.video}`)}
+          }
+          { pres && 
+          <div id = {s.divPres}>
+            {
+            presType === 'mp4' ?
+            <video
+            src = {require(`../media/videos/${vehicleData.presentation[0]}`)}
             controls
             muted
-            id = {s.video}
+            id = {s.videoPres}
             />
-            <button onClick = {handleDeleteVideo}>X</button>
+            :
+            <img src = {vehicleData.presentation[0]} id = {s.imgPres}></img>
+            }
+            <button onClick = {handleDeletePres}>x</button>
           </div>
-        }
-        { pres && 
-        <div id = {s.divPres}>
-          {
-          presType === 'mp4' ?
-          <video
-          src = {require(`../media/videos/${vehicleData.presentation[0]}`)}
-          controls
-          muted
-          id = {s.videoPres}
-          />
-          :
-          <img src = {vehicleData.presentation[0]} id = {s.imgPres}></img>
           }
-          <button onClick = {handleDeletePres}>x</button>
+          </div>
+          : null
+          }
         </div>
-        }
-        </div>
-        : null
-        }
-        
-      </div>
-      <h1 id = {s.h1}>CARACTERISTICAS</h1>
-      <div id = {s.caracteristicas}>
-        <div id = {s.general}>
-          <h2>General</h2>
-          <div>
-          <label>Tipo de combustible      
-            <select name = "tipoDeCombustible" onChange = {setGeneralInfo}>
-              <option hidden>Combustible</option>
-              <option value = 'Nafta'>Nafta</option>
-              <option value = 'Diesel'>Diesel</option>
+        <h1 id = {s.h1}>CARACTERISTICAS</h1>
+        <div id = {s.caracteristicas}>
+          <div className= {s.general}>
+            <h2>General</h2>
+            <div>
+            <label>Tipo de combustible      
+              <select name = "tipoDeCombustible" onChange = {setGeneralInfo}>
+                <option hidden>Combustible</option>
+                <option value = 'Nafta'>Nafta</option>
+                <option value = 'Diesel'>Diesel</option>
+              </select>
+            </label>
+            <label>Transmision
+            <select name = "transmision" onChange = {setGeneralInfo}>
+                <option hidden>Transmision</option>
+                <option value = 'Automatica'>Automatica</option>
+                <option value = 'Manual'>Manual</option>
             </select>
-          </label>
-          <label>Transmision
-          <select name = "transmision" onChange = {setGeneralInfo}>
-              <option hidden>Transmision</option>
-              <option value = 'Automatica'>Automatica</option>
+            </label>
+            <label>Marca
+            <select name = "type" onChange = {handleChange}>
+                <option hidden>Marca</option>
+                {types && types.map((t:any) =>{
+                  return (
+                    <option value = {t}>{t}</option>
+                  )
+                })}
+            </select>
+            </label>
+            </div>
+          </div>
+
+          <div className= {s.general}>
+            <h2>Exterior</h2>
+            <div>
+            <label>Apertura de cajuela
+            <select name = "aperturaDeCajuela" onChange = {setExterior}>
+              <option hidden>Tipo</option>
               <option value = 'Manual'>Manual</option>
-          </select>
-          </label>
-          <label>Marca
-          <select name = "type" onChange = {handleChange}>
-              <option hidden>Marca</option>
-              {types && types.map((t:any) =>{
-                return (
-                  <option value = {t}>{t}</option>
-                )
-              })}
-          </select>
-          </label>
+              <option value = 'Electrica'>Electrica</option>
+              <option value = 'A distancia'>A distancia</option>
+            </select>
+            </label>
+            <label>Numero de puertas
+            <select name = "numeroDePuertas" onChange = {setExterior}>
+              <option hidden>Cantidad</option>
+              <option value = '3'>3</option>
+              <option value = '5'>5</option>
+            </select>
+            </label>
+            </div>  
+          </div>
+
+          <div className= {s.general}>
+            <h2>Equipamiento</h2>
+            <div>
+              <label>Alarma
+              <select name = "alarma" onChange = {setEquipamiento}>
+                <option hidden>Alarma</option>
+                <option value = "Si">Si</option>
+                <option value = "No">No</option>
+              </select>
+              </label>
+              <label>Aire Acondicionado
+              <select name = "aireAcondicionado" onChange = {setEquipamiento}>
+                <option hidden>Aire</option>
+                <option value = "Si">Si</option>
+                <option value = "No">No</option>
+              </select>
+              </label>
+              <label>Espejos Electricos
+              <select name = "espejosElectricos" onChange = {setEquipamiento}>
+                <option hidden>Espejos</option>
+                <option value = "Si">Si</option>
+                <option value = "No">No</option>
+              </select>
+              </label>
+              <label>Butacas Calefaccionadas
+              <select name = "butacasCalefaccionadas" onChange = {setEquipamiento}>
+                <option hidden>Butacas</option>
+                <option value = "Si">Si</option>
+                <option value = "No">No</option>
+              </select>
+              </label>
+              <label>Control cruzero
+              <select name = "controlDeVelocidad" onChange = {setEquipamiento}>
+                <option hidden>Control</option>
+                <option value = "Si">Si</option>
+                <option value = "No">No</option>
+              </select>
+              </label>
+            </div>
+          </div>
+
+          <div className= {s.general}>
+            <h2>Seguridad</h2>
+            <div>
+              <label>ABS
+              <select name = "ABS" onChange = {setSeguridad}>
+                <option hidden>ABS</option>
+                <option value = "Si">Si</option>
+                <option value = "No">No</option>
+              </select>
+              </label>
+              <label>Cantidad Airbags
+              <select name = "cantidadDeAirbags" onChange = {setSeguridad}>
+                <option hidden>Aire</option>
+                <option value = "1">1</option>
+                <option value = "2">2</option>
+                <option value = "3">3</option>
+                <option value = "4">4</option>
+                <option value = "5">5</option>
+                <option value = "6">6</option>
+
+              </select>
+              </label>
+            </div>
+          </div>
+
+          <div className= {s.general}>
+            <h2>Interior</h2>
+            <div>
+              <label>Regulacion de butaca
+              <select name = "regulacionDeButaca" onChange = {setInterior}>
+                <option hidden>Butacas</option>
+                <option value = "Si">Si</option>
+                <option value = "No">No</option>
+              </select>
+              </label>
+              <label>Regulacion de volante
+              <select name = "regulacionDeVolante" onChange = {setInterior}>
+                <option hidden>Volante</option>
+                <option value = "Si">Si</option>
+                <option value = "No">No</option>          
+              </select>
+              </label>
+            </div>
+          </div>
+
+          <div className= {s.general}>
+            <h2>Multimedia</h2>
+            <div>
+              <label>Bluetooth
+              <select name = "Bluetooth" onChange = {setMultimedia}>
+                <option hidden>Bluetooth</option>
+                <option value = "Si">Si</option>
+                <option value = "No">No</option>
+              </select>
+              </label>
+              <label>GPS
+              <select name = "GPS" onChange = {setMultimedia}>
+                <option hidden>GPS</option>
+                <option value = "Si">Si</option>
+                <option value = "No">No</option>
+              </select>
+              </label>
+              <label>USB
+              <select name = "USB" onChange = {setMultimedia}>
+                <option hidden>USB</option>
+                <option value = "Si">Si</option>
+                <option value = "No">No</option>
+              </select>
+              </label>
+            </div>
           </div>
         </div>
-
-        <div id = {s.general}>
-          <h2>Exterior</h2>
-          <div>
-          <label>Apertura de cajuela
-          <select name = "aperturaDeCajuela" onChange = {setExterior}>
-            <option hidden>Tipo</option>
-            <option value = 'Manual'>Manual</option>
-            <option value = 'Electrica'>Electrica</option>
-            <option value = 'A distancia'>A distancia</option>
-          </select>
-          </label>
-          <label>Numero de puertas
-          <select name = "numeroDePuertas" onChange = {setExterior}>
-            <option hidden>Cantidad</option>
-            <option value = '3'>3</option>
-            <option value = '5'>5</option>
-          </select>
-          </label>
-          </div>  
-        </div>
-
-        <div id = {s.general}>
-          <h2>Equipamiento</h2>
-          <div>
-            <label>Alarma
-            <select name = "alarma" onChange = {setEquipamiento}>
-              <option hidden>Alarma</option>
-              <option value = "Si">Si</option>
-              <option value = "No">No</option>
-            </select>
-            </label>
-            <label>Aire Acondicionado
-            <select name = "aireAcondicionado" onChange = {setEquipamiento}>
-              <option hidden>Aire</option>
-              <option value = "Si">Si</option>
-              <option value = "No">No</option>
-            </select>
-            </label>
-            <label>Espejos Electricos
-            <select name = "espejosElectricos" onChange = {setEquipamiento}>
-              <option hidden>Espejos</option>
-              <option value = "Si">Si</option>
-              <option value = "No">No</option>
-            </select>
-            </label>
-            <label>Butacas Calefaccionadas
-            <select name = "butacasCalefaccionadas" onChange = {setEquipamiento}>
-              <option hidden>Butacas</option>
-              <option value = "Si">Si</option>
-              <option value = "No">No</option>
-            </select>
-            </label>
-            <label>Control cruzero
-            <select name = "controlDeVelocidad" onChange = {setEquipamiento}>
-              <option hidden>Control</option>
-              <option value = "Si">Si</option>
-              <option value = "No">No</option>
-            </select>
-            </label>
-          </div>
-        </div>
-
-        <div id = {s.general}>
-          <h2>Seguridad</h2>
-          <div>
-            <label>ABS
-            <select name = "ABS" onChange = {setSeguridad}>
-              <option hidden>ABS</option>
-              <option value = "Si">Si</option>
-              <option value = "No">No</option>
-            </select>
-            </label>
-            <label>Cantidad Airbags
-            <select name = "cantidadDeAirbags" onChange = {setSeguridad}>
-              <option hidden>Aire</option>
-              <option value = "1">1</option>
-              <option value = "2">2</option>
-              <option value = "3">3</option>
-              <option value = "4">4</option>
-              <option value = "5">5</option>
-              <option value = "6">6</option>
-
-            </select>
-            </label>
-          </div>
-        </div>
-
-        <div id = {s.general}>
-          <h2>Interior</h2>
-          <div>
-            <label>Regulacion de butaca
-            <select name = "regulacionDeButaca" onChange = {setInterior}>
-              <option hidden>Butacas</option>
-              <option value = "Si">Si</option>
-              <option value = "No">No</option>
-            </select>
-            </label>
-            <label>Regulacion de volante
-            <select name = "regulacionDeVolante" onChange = {setInterior}>
-              <option hidden>Volante</option>
-              <option value = "Si">Si</option>
-              <option value = "No">No</option>          
-            </select>
-            </label>
-          </div>
-        </div>
-
-        <div id = {s.general}>
-          <h2>Multimedia</h2>
-          <div>
-            <label>Bluetooth
-            <select name = "Bluetooth" onChange = {setMultimedia}>
-              <option hidden>Bluetooth</option>
-              <option value = "Si">Si</option>
-              <option value = "No">No</option>
-            </select>
-            </label>
-            <label>GPS
-            <select name = "GPS" onChange = {setMultimedia}>
-              <option hidden>GPS</option>
-              <option value = "Si">Si</option>
-              <option value = "No">No</option>
-            </select>
-            </label>
-            <label>USB
-            <select name = "USB" onChange = {setMultimedia}>
-              <option hidden>USB</option>
-              <option value = "Si">Si</option>
-              <option value = "No">No</option>
-            </select>
-            </label>
-          </div>
-        </div>
-      </div>
-      <button id = {s.buttonPublicar}>PUBLICAR</button>
+        <button id = {s.buttonPublicar}>PUBLICAR</button>
       </form>
     </section>
     </>

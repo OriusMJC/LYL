@@ -92,13 +92,13 @@ function Nav() {
           <Link to = '/admin/panel'>
             <h4>Panel</h4>
           </Link>
-          <div className={s.navSec2}>
-          <Link to='/'>
-            <img src={logo}/>
-          </Link>
         </div>
+          <div className={s.navSec2}>
+            <Link to='/'>
+              <img src={logo}/>
+            </Link>
+          </div>
       </div>
-    </div>
     )
   }
 }
