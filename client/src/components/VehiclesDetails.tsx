@@ -32,8 +32,11 @@ function VehiclesDetails() {
   const vehicle = useSelector((state:any) => state && state.vehicleDetails);
   const [deleteBtn, setDeleteBtn] = useState(false)
   const [photo,setPhoto] = useState(notFound)
-
+  const presentationType = vehicle.presentation && vehicle.presentation.length && vehicle.presentation[0].slice(-3)
+  // const presentation = vehicle.presentation2.slice(1, 3)
   console.log(vehicle);
+  console.log(presentationType)
+  // console.log(presentation);
   
   const handleDelete = useCallback(() => {
     swal({
@@ -77,12 +80,67 @@ function VehiclesDetails() {
 
   return (
     <>
+    <Loading/>
     <Nav/>
-    <section>
-
+    <section id = {s.section1}>
+    { vehicle.presentation && presentationType === 'mp4' ? 
+      <video
+      src = {require(`../media/videos/${vehicle.presentation[0]}`)}
+      autoPlay
+      muted
+      loop
+      id = {s.video}
+      />
+      :
+      <img src = {vehicle.presentation && vehicle.presentation[0]}></img>  
+    }
+    <h1 id = {s.title}>{`#VIVILAEXPERIENCIA${vehicle && vehicle.type && vehicle.type.toUpperCase()}`}</h1>
     </section>
-    <section>
-
+    <section id = {s.section2}>
+      <div id = {s.div1}>
+        <div id = {s.divNav}>
+          <h2>General</h2>
+          <h2>Informacion</h2>
+          <h2>Contacto</h2>
+        </div>
+        <div id = {s.div2}>
+          <div id = {s.divIzq}>
+            <div id = {s.divA}>
+              <h1>{vehicle.title && vehicle.title.toUpperCase()}</h1>
+              <p>{vehicle.description}</p>
+            </div>
+            <div id = {s.divB}>
+              <img src = {vehicle.photo && vehicle.photo[1]} id = {s.imgV}></img>
+            </div>
+            <div id = {s.divC}>
+            <img src = {vehicle.photo && vehicle.photo[3]} id = {s.imgV}></img>
+            </div>
+            {vehicle.video !== '' && vehicle.video &&
+            <div id = {s.divD}>
+            <video
+            src = {require(`../media/videos/${vehicle.video}`)}
+            autoPlay
+            controls
+            loop
+            muted
+            id = {s.video2}
+            ></video>
+            </div>
+            }
+          </div>
+          <div id = {s.divDer}>
+            <div id = {s.divE}>
+              <img src = {vehicle.photo && vehicle.photo[0]} id = {s.imgV}></img>
+            </div>
+            <div id = {s.divF}>
+            <img src = {vehicle.photo && vehicle.photo[2]} id = {s.imgV}></img>
+            </div>
+            <div id = {s.divG}>
+              <img src = {vehicle.photo && vehicle.photo[4]} id = {s.imgV}></img>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     </>
   )

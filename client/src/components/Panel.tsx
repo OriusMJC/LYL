@@ -23,6 +23,7 @@ function Panel() {
   const [pos, setPos] = useState(0);
   const [video, setVideo] = useState(false);
   const [pres, setPres] = useState(false);
+  const [pres2, setPres2] = useState(false);
   const [vehicleData,setVehicleData] = useState<any>({
     title: '',
     video: '',
@@ -309,14 +310,13 @@ function Panel() {
                 {/* <label>
                   Subir imagen
                 </label> */}
-                <input type = "file" name = "photo" onChange = {uploadImage} required/>
-                <input type = "file" name = "video" onChange = {handleSelectVideo}/>
-                <input type = "file" name = "presentation" onChange = {handlePres} required/>
+                <input type = "file" name = "photo" onChange = {uploadImage} required id = {s.photo}/>
+                <input type = "file" name = "video" onChange = {handleSelectVideo} id = {s.videoP}/>
+                <input type = "file" name = "presentation" onChange = {handlePres} required id = {s.presentation}/>
               </div>
-            
               <textarea placeholder = "Descripcion" name = "description" value = {vehicleData.description} onChange = {handleChange} required id ={s.textarea}></textarea>
           </div>
-          {video || pres ?
+          {video || pres || pres2 ?
           <div id = {s.divP}>
             { video &&
             <div id = {s.divVideo}>
@@ -348,7 +348,6 @@ function Panel() {
           </div>
           : null
           }
-          
         </div>
         <h1 id = {s.h1}>CARACTERISTICAS</h1>
         <div id = {s.caracteristicas}>
