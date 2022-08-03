@@ -106,6 +106,7 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
+    animation: aparece 1.5s ease-in-out;
 }
 #divIzq{
     margin-top: 5%;
@@ -180,4 +181,44 @@
 #video2{
     width: 100%;
     height: 100%;
+}
+
+#secContact h1{
+    animation: aparece 1.5s ease-in-out;
+}
+#secContact form textarea{
+    font-family: 'Montserrat';
+    color: #EEEEEE;
+    background-color: #222;
+    height: 300px;
+    width: 500px;
+    padding: 10px 15px;
+    resize: none;
+    overflow: auto;
+    border-radius: 5px;
+    animation: aparece 1.5s ease-in-out;
+}
+#secContact a button{
+    font-family: 'Montserrat';
+    color: #fff;
+    background-color: #393E46;
+    width: 120px;
+    margin: 15px;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    transition: .2s;
+    animation: aparece 1.5s ease-in-out;
+}
+#secContact a button:hover{
+    transform: scale(1.03);
+}
+
+@keyframes aparece {
+    from {
+        margin-top: 10vh;
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
 }

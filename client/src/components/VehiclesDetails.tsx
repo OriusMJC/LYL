@@ -38,6 +38,8 @@ function VehiclesDetails() {
   // const presentation = vehicle.presentation2.slice(1, 3)
   //vista general, info, cont
   const [view,setView] = useState('gen')
+  const [msg,setMsg] = useState('')
+  const num = '3415005025'
   //ver foto
   const [show,setShow] = useState(false)
   const [bigPhoto,setBigPhoto] = useState('')
@@ -159,8 +161,19 @@ function VehiclesDetails() {
                 <h1>info</h1>
               </div>
               :
-              <div>
-                <h1>contact</h1>
+              <div id={s.secContact}>
+                <h1>CONTACTO</h1>
+                <form>
+                    {/* <input type='text' placeholder="Tu nombre" value={data.name} name="name" onChange={handleChange}/>
+                    <input type='text' placeholder="Tu apellido" value={data.lastname} name="lastname" onChange={handleChange}/> */}
+                    <textarea placeholder="Tu mensaje" value={msg} name="msg" onChange={(e)=>setMsg(e.target.value)}/>
+                </form>
+                <a href={`https://wa.me/${num}?text=${msg}`} target="_blank">
+                    <button>
+                        ENVIAR A WHATSAPP
+                    </button>
+                </a>
+                <p>WPP: +54 9 3415 00-5025</p>
               </div>
         }
       </div>
