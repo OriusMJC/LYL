@@ -88,12 +88,16 @@
     width: 100%;
     height: 5%;
 }
+#divNav .select{
+    border-bottom: 4px solid black;
+}
 #divNav h2{
+    padding: 29px 0;
     cursor: pointer;
     font-family: "Helvetica";
     font-weight: normal;
     font-size: 23px;
-    transition: .1s;
+    transition: .2s;
 }
 #divNav h2:hover{
     transform: scale(1.03);
@@ -191,7 +195,8 @@
     color: #EEEEEE;
     background-color: #222;
     height: 300px;
-    width: 500px;
+    width: 40%;
+    min-width: 230px;
     padding: 10px 15px;
     resize: none;
     overflow: auto;

@@ -112,9 +112,9 @@ function VehiclesDetails() {
     <section id = {s.section2}>
       <div id = {s.div1}>
         <div id = {s.divNav}>
-          <h2 onClick={()=>{setView('gen')}}>General</h2>
-          <h2 onClick={()=>{setView('info')}}>Informacion</h2>
-          <h2 onClick={()=>{setView('contact')}}>Contacto</h2>
+          <h2 onClick={()=>{setView('gen')}} className={view === 'gen'? s.select : ''}>General</h2>
+          <h2 onClick={()=>{setView('info')}} className={view === 'info'? s.select : ''}>Informacion</h2>
+          <h2 onClick={()=>{setView('contact')}} className={view === 'contact'? s.select : ''}>Contacto</h2>
         </div>
         {
           view === 'gen' ?
