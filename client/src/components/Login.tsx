@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { useAppDispatch } from "../config"
 import { loginUser } from "../redux/actions"
 import { useVerfication } from "../services/services"
+import Nav from "./Nav"
 import s from './Styles/Login.module.css'
 
 export default function Login(){
@@ -44,6 +45,7 @@ export default function Login(){
 
     return(
         <section id={s.loginContainer}>
+            <Nav/>
             <form onSubmit={handleSubmit} id={s.formLogin}>
                 <label>Email:</label>
                 <input name='email' type='text' value={userData.email} onChange={handleChange}/>
