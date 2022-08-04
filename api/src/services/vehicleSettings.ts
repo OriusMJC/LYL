@@ -30,7 +30,7 @@ export const deleteVehicle = async(idVehicle: string): Promise<string> => {
     return 'Vehiculo eliminado';
 };
 
-export const updateData = async(idVehicle: string, newData: types.Vehicle): Promise<string> => {
+export const updateData = async(idVehicle: string, newData: Array<types.Vehicle>): Promise<string> => {
     await Vehicle.update(newData, {where: {id: idVehicle}});
     return 'Cambios actualizados';
 }

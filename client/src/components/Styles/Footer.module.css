@@ -46,3 +46,31 @@
 #id{
     margin-top: 5%;
 }
+
+@media screen and (max-width: 1024px) {
+    .container{
+        min-height: 35vh;
+        gap: 10%;
+    }
+}
+@media screen and (max-width: 425px) {
+    #img1{
+        width: 80px;
+        margin: 2% 0;
+    }
+    .container{
+        min-height: 92vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+    }
+    .container div {
+        width: 80%;
+    }
+    .container div div{ 
+        width: 80%;
+        align-items: center;
+    }
+}

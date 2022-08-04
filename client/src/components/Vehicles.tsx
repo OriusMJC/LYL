@@ -22,7 +22,6 @@ function Vehicles() {
   let filteredType = allVehicles.filter((v:any) => v.type === actualType[0]);
   const [pos, setPos] = useState(0)
 
-  console.log(allVehicles);
   const styledBut = {
     backgroundImage: `url("${allVehicles[pos]?.photo[0]}")`,
     backgroundRepeat: 'no-repeat',

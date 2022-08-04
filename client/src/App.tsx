@@ -8,6 +8,7 @@ import Panel from './components/Panel';
 import Contact from './components/Contact';
 import About from './components/About';
 import EditVehicle from './components/EditVehicle';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         </Route>
         <Route path = '/vehicles/edit/:idVehicle' element = {<EditVehicle/>}/>
       </Routes>
+      <Footer/>
     </div>
   );
 }
