@@ -345,6 +345,7 @@
 #btn2:hover{
     transform: scale(1.03)
 }
+
 @media screen and (max-width: 769px) {
     #section2{
         min-height: 250vh;

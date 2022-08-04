@@ -1,8 +1,19 @@
-import { useState } from "react"
+import { useState, useEffect } from "react";
+import { setPanel } from '../redux/actions';
+import { useAppDispatch } from '../config';
 import Nav from "./Nav"
-import s from './Styles/Contact.module.css'
+import s from './Styles/Contact.module.css';
+import wp from '../media/logos/wp.png';
+import Footer from "./Footer";
+import v from '../media/video1.mp4';
 
 export default function Contact(){
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(setPanel(true))
+    }, []);
+
     // const num = '3413880895'
     const num = '3415005025'
     // const num = '1126099930'
@@ -20,21 +31,35 @@ export default function Contact(){
     }
 
     return (
+        <>
+        <Nav></Nav>
         <section id={s.containerContact}>
-            <Nav></Nav>
-            <h1>CONTACTO</h1>
-            <form>
-                {/* <input type='text' placeholder="Tu nombre" value={data.name} name="name" onChange={handleChange}/>
-                <input type='text' placeholder="Tu apellido" value={data.lastname} name="lastname" onChange={handleChange}/> */}
-                <textarea placeholder="Tu mensaje" value={data.msg} name="msg" onChange={handleChange}/>
-            </form>
-            <a href={`https://wa.me/${num}?text=${data.msg}`} target="_blank">
-                <button>
-                    ENVIAR A WHATSAPP
-                </button>
-            </a>
-            <p>WPP: +54 9 3415 00-5025</p>
-
+            <div id = {s.divForm1}>
+            <div id = {s.divContact}>
+                <h2>CON</h2>
+                <h2>TAC</h2>
+                <h2>TO</h2>
+            </div>
+            <div id = {s.divOther}>
+                <form>
+                    <textarea placeholder="Tu mensaje" value={data.msg} name="msg" onChange={handleChange}/>
+                </form>
+                <a href={`https://wa.me/${num}?text=${data.msg}`} target="_blank">
+                    <button>
+                        ENVIAR A WHATSAPP
+                    </button>
+                </a> 
+            </div>
+            </div>
+            <div id = {s.video}>
+                <video
+                src = {v}
+                autoPlay
+                loop
+                muted
+                ></video>
+            </div>
         </section>
+        </>
     )
 }

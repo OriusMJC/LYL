@@ -1,4 +1,4 @@
-#containerContact{
+/* #containerContact{
     color: #EEEEEE;
     background-color: #131313;
     display: flex;
@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     font-family: 'Montserrat';
     overflow: hidden;
 }
@@ -27,20 +27,33 @@
 }
 #containerContact a button{
     font-family: 'Montserrat';
-    color: #fff;
-    background-color: #393E46;
+    color: white;
+    background-color: transparent;
     width: 120px;
     margin: 15px;
     padding: 10px 10px;
     border: none;
+    width: 95%;
     border-radius: 5px;
-    transition: .2s;
+    transition: .1s;
     animation: aparece 1.5s ease-in-out;
+    cursor: pointer;
 }
 #containerContact a button:hover{
     transform: scale(1.03);
 }
-
+#containerContact div{
+    border: 2px solid white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+}
+#containerContact div p{
+    color: white;
+    margin-left: 200px;
+}
 @keyframes aparece {
     from {
         margin-top: 20vh;
@@ -55,4 +68,56 @@
         height: 430px;
         width: 340px;
     }
+} */
+#containerContact{
+    color: #EEEEEE;
+    background-color: #131313;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    width: 100%;
+    font-family: 'Montserrat';
+    overflow: hidden;
+}
+#divForm1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 80%;
+    height: 100%;
+    background-color: white;
+}
+#divContact{
+    border: 2px solid black;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#divContact h2{
+    color: black;
+}
+#divOther{
+    border: 2px solid black;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#video {
+    width: 20%;
+    height: 100%;
+    background-color: black;
+}
+#video video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .7;
 }
