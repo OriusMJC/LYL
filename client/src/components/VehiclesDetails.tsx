@@ -291,7 +291,6 @@ function VehiclesDetails() {
         }
       </div>
     </section>
-    <Footer/>
     </>
   )
 }

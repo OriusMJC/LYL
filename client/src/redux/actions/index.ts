@@ -95,7 +95,7 @@ export function deleteVehicle(idVehicle:string){
 export function updateData(idVehicle:string, data:types.Vehicle){
     return async(dispatch: Dispatch<Action>)=>{
         try {
-            let res = await axios.put(`/vehicles/${idVehicle}`, data);
+            let res = await axios.put(`/vehicles/edit/${idVehicle}`, data);
             dispatch({type: UPDATE_VEHICLE, payload: res.data});
         } catch (error) {
             console.log(error)
