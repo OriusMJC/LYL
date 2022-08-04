@@ -1,0 +1,120 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.main2ContainActive{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 60%;
+    height: 70%;
+    opacity: 1;
+    transition: 1s;
+    transform: scale(1.08);
+}
+.main2Contain{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 60%;
+    height: 70%;
+    opacity: 0;
+    transition: 1s ease;
+}
+.main2Text{
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    animation: aparecer 2s;
+}
+.main2Text h1{
+    font-family: 'Montserrat';
+    font-size: 60px;
+    width: 500px;
+    text-align: left;
+}
+.main2Text p{
+    margin: 0;
+    width: 400px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.main2Text button{
+    font-size: 20px;
+    transition: .2s;
+    text-decoration: none;
+    border: none;
+    background-color: #F7F7F7;
+    height: 30px;
+    cursor: pointer;
+    padding: 0;
+}
+.main2Text button:hover{
+    border-bottom: 1px solid black;
+}
+.img{
+    width: 50%;
+    height: 100%;
+    transition: 1s ease;
+}
+.rightArrow{
+    font-size: 30px;
+    cursor: pointer;
+    transition: .2s;
+    z-index: 1000;
+}
+.leftArrow{
+    font-size: 30px;
+    cursor: pointer;
+    transition: .2s;
+}
+.rightArrow:hover{
+    transform: translateX(10%)
+}
+.leftArrow:hover{
+    transform: translateX(-10%)
+}
+
+
+@keyframes aparecer {
+    from {
+        margin: 0px 500px;
+        opacity: 0;
+    }to{
+        margin: 0;
+        opacity: 1;
+    }
+}
+@keyframes aparecer2 {
+    from {
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 1270px){
+    .img{
+        display: none;
+    }
+    .main2Text{
+        width: 100%;
+        animation: aparecer2 2s;
+    }
+    .main2Text h1{
+        font-size: 30px;
+        width: 100%;
+    }
+    .main2Text p{
+        width: 100%;
+    }
+}

@@ -1,0 +1,102 @@
+#aboutContainer{
+    color: #fff;
+    background-color: #131313;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+#map{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 100vw;
+    margin: 50px 0 100px;
+    animation: aparece 1.5s ease-in-out;
+}
+#aboutContainer h1{
+    margin: 150px 0;
+}
+#aboutContainer h1, h2, h3{
+    font-family: 'Montserrat';
+    animation: aparece 1.5s ease-in-out;
+}
+/* #aboutContainer h3{
+    font-size: 1.3em;
+} */
+
+.dataAbout{
+    width: 80vw;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    margin-bottom: 150px;
+    transition: .2s;
+    animation: abrirse 1.5s ease-in-out;
+}
+.dataAbout div{
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 5vw;
+}
+
+@keyframes abrirse {
+    from {
+        opacity: 0;
+        width: 60vw;
+    }to{
+        opacity: 1;
+        width: 80vw;
+    }
+}
+@keyframes aparece {
+    from {
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 768px){
+    #aboutContainer h1{
+        margin: 150px 0 60px;
+        width: 90vw;
+    }
+    .dataAbout{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 150px;
+    }
+    .dataAbout hr{
+        width: 60vw;
+    }
+    .dataAbout div{
+        width: 60vw;
+        text-align: center;
+        margin-left: 0;
+    }
+}
+@media screen and (max-width: 430px){
+    .dataAbout{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 150px;
+    }
+    .dataAbout hr{
+        width: 80vw;
+    }
+    .dataAbout div{
+        width: 80vw;
+        text-align: center;
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,94 @@
+.main{
+    background-color: #000;
+    width: 100%;
+    height: 100vh;
+}
+.main video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.content{
+    position: absolute;
+    width: 100%;
+    height: 50vh;
+    top:50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    line-height: 0;
+    font-family: 'Montserrat';
+}
+.animation{
+    width: auto;
+    height: auto;
+    line-height: 10px;
+    overflow: hidden;
+    transition: .2s
+}
+.text{
+    font-size: 60px;
+    animation: anim 1s forwards 1s;
+    position: relative;
+    bottom: -100%;
+    color: #EEEEEE;
+}
+@keyframes anim{
+    from{
+        bottom: -100%;
+    }
+    to{
+        bottom: 0%;
+    }
+}
+
+.content h1{
+    font-size: 50px;
+}
+.content h3{
+    font-size: 23px;
+    margin-bottom: 100px;
+}
+.main2{
+    width: 100%;
+    height: 100vh;
+    background-color: #F7F7F7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main3{
+    width: 100%;
+    height: 180vh;
+    background-color: black;
+}
+.footer{
+    width: 100%;
+    height: 8vh;
+    background-color: #292c31;
+    font-family: 'Noto Sans', sans-serif;
+    color: white;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.arrow{
+    font-size: 20px;
+    transition: .5s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    margin-top: 5px;
+}
+.arrow:hover{
+    transform: translateX(20%)
+}
+
+@media screen and (max-width: 430px){
+    .main3{
+        height: 90vh;
+    }
+}

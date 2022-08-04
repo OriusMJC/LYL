@@ -3,7 +3,6 @@ const { Vehicle } = require('../db');
 
 export const getAllVehicles = async(): Promise<types.Vehicle[] | string> => {
     let allVehicles = await Vehicle.findAll();
-    if(!allVehicles.length) return 'No hay vehiculos creados aun';
     return allVehicles;
 };
 
@@ -31,7 +30,7 @@ export const deleteVehicle = async(idVehicle: string): Promise<string> => {
     return 'Vehiculo eliminado';
 };
 
-export const updateData = async(idVehicle: string, newData: types.Vehicle): Promise<string> => {
+export const updateData = async(idVehicle: string, newData: Array<types.Vehicle>): Promise<string> => {
     await Vehicle.update(newData, {where: {id: idVehicle}});
     return 'Cambios actualizados';
 }

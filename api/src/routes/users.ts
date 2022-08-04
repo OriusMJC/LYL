@@ -13,7 +13,7 @@ const {EMAIL,PASSWORD} = process.env
 const router = Router();
 
 router.get('/', (req, res, next): Object | undefined | void=> {
-    const {email,password} = req.body
+    const {email,password} = req.query
     try {
         if(email === EMAIL && password === PASSWORD){
             return res.send('Datos correctos')

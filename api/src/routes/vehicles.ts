@@ -1,14 +1,13 @@
 import { Router } from 'express';
-// import * as types from '../types';
 import {
     getAllVehicles,
     getVehiclesById,
-    // getVehicleByName,
     addNewVehicle,
     deleteVehicle,
     updateData,
 } from '../services/vehicleSettings';
-// import { getBasicUserInfo } from '../services/userSettings';
+import cloudinary from '../services/cloudinarySettings';
+
 const router = Router();
 
 router.get('/', async(_req, res, next): Promise<any> =>{
@@ -30,12 +29,25 @@ router.get('/:id', async(req, res, next): Promise<any> => {
     }
 });
 
-router.post('/', async(req, res, next): Promise<any> => {
-    // const id = req.params.idUser;
+router.post('/create', async(req, res, next): Promise<any> => {
+    let arr:any = []
+    const photos = req.body.photo
     const vehicle = req.body;
+    photos.map(async(p:any) => {
+        await cloudinary.uploader.upload(p, (error:any, result:any) => {
+            if(!error){
+                arr.push(result.url)
+            }else{
+                console.log(error);
+            }
+        })
+    })
+    const product = {
+        ...vehicle,
+        photos: arr
+    }
     try {
-        // const userData = await getBasicUserInfo(id);
-        let resp = await addNewVehicle(vehicle);
+        let resp = await addNewVehicle(product);
         return res.json(resp);
     } catch (error) {
         next(error)
@@ -52,7 +64,7 @@ router.delete('/:idVehicle', async(req, res, next): Promise<any> => {
     }
 });
 
-router.put('/:idVehicle', async(req, res, next): Promise<any>=>{
+router.put('/edit/:idVehicle', async(req, res, next): Promise<any>=>{
     const idVehicle = req.params.idVehicle;
     const newData = req.body;
     try {

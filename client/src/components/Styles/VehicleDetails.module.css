@@ -1,0 +1,464 @@
+#contPhoto{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1000;
+}
+#bigPhoto{
+    background-color: rgba(0, 0, 0, 0.781);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1000;
+}
+#contPhoto img{
+    position: absolute;
+    top: 10vh;
+    max-width: 80vw;
+    max-height: 80vh;
+    min-width: 25vw;
+    margin-bottom: -100%;
+    z-index: 1000;
+}
+#bigPhoto button{
+    position: absolute;
+    top: 5vh;
+    left: 20vw;
+    height: 40px;
+    width: 40px;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0px 10px 15px black;
+    transition: .2s;
+    z-index: 2001 !important;
+}
+#bigPhoto button:hover{
+    transform: scale(1.1);
+}
+#bigPhotoN{
+    display: none;
+}
+
+#section1 {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+#video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .7
+}
+#img1 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .7;
+}
+#title{
+    position: absolute;
+    color: white;
+    font-family: "Montserrat";
+    font-size: 2.25vw;
+    margin-bottom: 5%;
+}
+#section2{
+    width: 100%;
+    height: 200vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#div1{
+    width: 60%;
+    height: 80%;
+
+}
+#divNav {
+    border-bottom: 1px solid grey;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3%;
+    width: 100%;
+    height: 5%;
+}
+#divNav .select{
+    border-bottom: 4px solid black;
+}
+#divNav h2{
+    padding: 29px 0;
+    cursor: pointer;
+    font-family: "Helvetica";
+    font-weight: normal;
+    font-size: 23px;
+    transition: .2s;
+}
+#divNav h2:hover{
+    border-bottom: 4px solid black;
+}
+#div2 {
+    width: 100%;
+    height: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    animation: aparece 1.5s ease-in-out;
+}
+#divIzq{
+    margin-top: 5%;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+#divIzq div {
+    overflow: hidden;
+    margin: 10px 0;
+}
+#divA{
+    width: 70%;
+    min-height: 300px;
+    margin: 30px 0 !important;
+    text-justify: inter-word;
+    text-align: justify;
+}
+#divA h1{
+    font-family: "Montserrat";
+    font-size: 50px;
+    font-weight: 1000;
+    text-align: left;
+}
+#divB{
+    width: 70%;
+    height: 25%;
+}
+#divC{
+    width: 70%;
+    height: 25%;
+}
+#divD{
+    width: 50%;
+    height: 20%;
+}
+#divDer{
+    margin-top: 15%;
+    width: 50%;
+    height: 100%;
+}
+#divDer div{
+    overflow: hidden;
+    margin: 20px 0;
+}
+#divE{
+    width: 85%;
+    height: 40%;
+    overflow: hidden;
+}
+#divF{
+    width: 65%;
+    height: 35%;
+}
+#divG{
+    width: 85%;
+    height: 25%;
+}
+#imgV{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .2s;
+    cursor: pointer;
+}
+#imgV:hover{
+    transform: scale(1.05)
+}
+#video2{
+    width: 100%;
+    height: 100%;
+}
+#secContact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5%;
+}
+#secContact h1{
+    animation: aparece 1.5s ease-in-out;
+}
+#secContact form{
+    width: 100%;
+}
+#secContact form textarea{
+    font-family: 'Montserrat';
+    color: #EEEEEE;
+    background-color: #222;
+    height: 300px;
+    width: 35%;
+    min-width: 230px;
+    padding: 10px 15px;
+    resize: none;
+    overflow: auto;
+    border-radius: 5px;
+    animation: aparece 1.5s ease-in-out;
+    font-size: 15px;
+}
+#secContact a button{
+    font-family: 'Montserrat';
+    color: black;
+    background-color: transparent;
+    width: 120px;
+    margin: 15px;
+    padding: 10px 10px;
+    border: none;
+    width: 95%;
+    border-radius: 5px;
+    transition: .1s;
+    animation: aparece 1.5s ease-in-out;
+    cursor: pointer;
+}
+#secContact a button:hover{
+    transform: scale(1.02);
+}
+#p {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 15%;
+}
+#p img{
+    width: 30px;
+    height: 30px;
+}
+
+@keyframes aparece {
+    from {
+        margin-top: 10vh;
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+
+#divInfo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#divInfoCont{
+    height: 90%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    animation: aparece 1.5s ease-in-out;
+}
+#divInfoCont h2 {
+    border-bottom: 1px solid black;
+    font-weight: 1000;
+    /* animation: aparece 1.5s ease-in-out; */
+}
+#divInfoCont div{
+    height: 8%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* animation: aparece 1.5s ease-in-out; */
+}
+#divInfoCont label{
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* animation: aparece 1.5s ease-in-out; */
+}
+#divInfoCont span{
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    /* animation: aparece 1.5s ease-in-out; */
+}
+#secAdmin {
+    margin-top: 5%;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: aparece 1.5s ease-in-out;
+}
+#secAdminCont {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10%;
+}
+#link{
+    width: 25%;
+    height: 5%;
+}
+#btn1{
+    width: 25%;
+    height: 5%;
+    font-family: 'Montserrat';
+    color: white;  
+    background-color: black;
+    border: none;
+    cursor: pointer;
+    transition: .2s
+}
+#btn1:hover{
+    transform: scale(1.03)
+}
+#btn2{
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat';
+    color: white;  
+    background-color: black;
+    border: none;
+    cursor: pointer;
+    transition: .2s
+}
+#btn2:hover{
+    transform: scale(1.03)
+}
+@media screen and (max-width: 769px) {
+    #section2{
+        min-height: 250vh;
+    }
+    #contPhoto img{
+        top: 20vh;
+    }
+    #div2{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 350px;
+    }
+    #divIzq{
+        margin-top: 0;
+        width: 100%;
+        align-items: center;
+    }
+    #divDer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0%;
+        width: 100%;
+        height: 100%;
+    }
+    #divDer div{
+        margin: 10px 0;
+    }
+    #divE{
+        width: 70%;
+    }
+    #divF{
+        width: 70%;
+        height: 35%;
+    }
+}
+@media screen and (max-width: 1024px) {
+    #divInfo {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #divInfoCont{
+        height: 90%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        animation: aparece 1.5s ease-in-out;
+    }
+    #divInfoCont h2 {
+        border-bottom: 1px solid black;
+        font-weight: 1000;
+        /* animation: aparece 1.5s ease-in-out; */
+    }
+    #divInfoCont div{
+        height: 10%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* animation: aparece 1.5s ease-in-out; */
+    }
+    #divInfoCont label{
+        width: 60%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        /* animation: aparece 1.5s ease-in-out; */
+    }
+    #divInfoCont span{
+        font-weight: bold;
+        border-bottom: 1px solid black;
+        /* animation: aparece 1.5s ease-in-out; */
+    }
+}
+@media screen and (max-width: 425px) {
+    #contPhoto img{
+        top: 30vh;
+    }
+    #divNav h2{
+        padding: 30px 5px;
+        font-size: 18px;
+    }
+    #div2{
+        margin-left: -50px;
+    }
+    #divInfoCont{
+        height: 90%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: aparece 1.5s ease-in-out;
+    }
+    #divInfoCont div{
+        min-height: 15%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        /* animation: aparece 1.5s ease-in-out; */
+    }
+    #divInfoCont label{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* animation: aparece 1.5s ease-in-out; */
+    }
+}

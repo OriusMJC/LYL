@@ -1,0 +1,121 @@
+#navContainer{
+    background: transparent;
+    display: flex;
+    height: 8vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: .3s;
+    z-index: 1000;
+}
+.navBtn{
+    display: none;
+}
+.navSec{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 30%;
+}
+.navSec a{
+    text-decoration: none;
+}
+.navSec h4{
+    color: #fff;
+    transition: .1s;
+    font-family: 'Noto Sans', sans-serif;
+    color: #F7F7F7;
+    cursor: pointer;
+}
+.navSec h4:hover{
+    border-bottom: 2px solid white;
+}
+.navSec2 {
+    position: absolute;
+    top: 15px;
+    left: 49%;
+    right: 49%;
+}
+.navSec2 img{
+    width: 50px;
+    height: 50px;
+}
+
+#navContainer2{
+    background-color: black;
+    display: flex;
+    height: 8vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: .3s;
+    z-index: 1000;
+}
+
+#navContainer3{
+    background-color: black;
+    display: flex;
+    height: 8vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: .3s;
+    z-index: 1000;
+}
+
+#navContainer4{
+    background-color: black;
+    display: flex;
+    height: 8vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: .3s;
+    z-index: 1000;
+}
+@media screen and (max-width: 1024px){
+    .navBtn{
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0);
+        display: block;
+        width: 50px;
+        height: 50px;
+        border: none;
+        z-index: 101;
+    }
+    .navBtn svg {
+        margin-top: 20px;
+        width: 25px;
+        height: 25px;
+    }
+    .navSec{
+        display: none;
+    }
+    #navOpen{
+        background-color: rgba(0, 0, 0, 0.897);
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 45%;
+        height: 60vh;
+        z-index: 100;
+        animation: openNav .5s ease-in-out;
+    }
+    @keyframes openNav {
+        from{
+            /* width: 10%;
+            height: 10vh; */
+            opacity: 0;
+        }to{
+            /* width: 45%;
+            height: 60vh; */
+            opacity: 1;
+        }
+    }
+}

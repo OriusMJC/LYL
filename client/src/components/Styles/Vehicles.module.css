@@ -1,0 +1,151 @@
+.superCont{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+#vehiclesContainer{
+    height: 100%;
+    width: 35%;
+    background-color: #F7F7F7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.subDiv{
+    width: 75%;
+    height: 98%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.imgDiv{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid grey;
+}
+.imgDiv img{
+    width: 50px;
+    height: 50px;
+    padding: 10px 0px;
+}
+.subDiv2 {
+    width: 100%;
+    height: 12%;
+    border-bottom: 1px solid grey;
+}
+.titleH2{
+    font-size: 20px;
+    transition: .2s;
+    text-decoration: none;
+    border-radius: 50%;
+    border: 1px solid #BBBFCA;
+    color: #BBBFCA;
+    background-color: #F7F7F7;
+    height: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: .2s;
+}
+.titleH2:hover{
+    color: black;
+    border: 1px solid black;
+}
+#sectionVehicles{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 70%;
+    overflow-y: scroll;
+    margin-top: 30px;
+}
+#sectionVehicles::-webkit-scrollbar{
+    width: 2px;
+}
+#sectionVehicles::-webkit-scrollbar-track{
+    background: #BBBFCA;
+}
+#sectionVehicles::-webkit-scrollbar-thumb{
+    background: black;
+}
+#sectionVehicles::-webkit-scrollbar-thumb:hover{
+    background: #555;
+}
+#links{
+    text-decoration: none;
+}
+.h2{
+    color: #BBBFCA;
+    font-family: 'Montserrat';
+    font-size: 30px;
+    transition: .2s ease;
+    border: none;
+    background-color: #F7F7F7;
+    margin: 15px 0px;
+}
+.h2:hover{
+    color: black;
+}
+.imgContainer{
+    background-color: #F7F7F7;
+    width: 65%;
+    height: 100%;
+    overflow: hidden;
+}
+.imgContainer img{
+    width: 100%;
+    height: 100%;
+    animation: fadeIn .5s ease;
+}
+@keyframes fadeIn{
+    0% {
+        opacity: 0;
+        filter: blur(2px)
+    }
+    10% {
+        opacity: 1;
+        filter: blur(2px)
+    }
+}
+@media screen and (max-width: 1850px){
+    #links button{
+        text-align: left;
+    }
+}
+@media screen and (max-width: 1024px){
+    #vehiclesContainer{
+        height: 100%;
+        width: 55%;
+    }
+    #links button{
+        text-align: left;
+    }
+    .imgContainer{
+        width: 45%;
+    }
+}
+@media screen and (max-width: 768px){
+    #vehiclesContainer{
+        height: 100%;
+        width: 60%;
+    }
+    .imgContainer{
+        width: 40%;
+    }
+}
+@media screen and (max-width: 425px){
+    #vehiclesContainer{
+        height: 100%;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+    }
+    .imgContainer{
+        display: none;
+    }
+}
