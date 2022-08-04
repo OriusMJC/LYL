@@ -36,19 +36,52 @@
 @keyframes loadLogo {
     0%{
 
+        opacity: .1;
+    }
+    6.25%{
+        opacity: .2
+    }
+    12.5%{
+        opacity: .3;
+    }
+    18.75%{
+        opacity: .4
+    }
+    25%{
         opacity: .5;
     }
-    20%{
+    31.25%{
+        opacity: .6;
+    }
+    37.5%{
+        opacity: .7;
+    }
+    43.75%{
+        opacity: .8,5;
+    }
+    50%{
         opacity: 1;
     }
-    40%{
+    56.25%{
+        opacity: .8,5;
+    }
+    62.5%{
+        opacity: .7;
+    }
+    68.75%{
+        opacity: .6;
+    }
+    75%{
         opacity: .5;
     }
-    60%{
-        opacity: 1;
+    81.25%{
+        opacity: .4;
     }
-    80%{
-        opacity: .5;
+    87.5%{
+        opacity: .3;
+    }
+    93.75%{
+        opacity: .2;
     }
     100%{
         opacity: .1;

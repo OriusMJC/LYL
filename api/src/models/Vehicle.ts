@@ -44,7 +44,7 @@ module.exports = (sequelize: any) => {
             allownull: false,
         },
         type: {
-            type: DataTypes.ENUM('bmw', 'audi', 'peugeot', 'citroen', 'mercedes benz', 'ford', 'fiat', 'jeep', 'toyota', 'volkswagen', 'renault', 'chevrolet', 'honda', 'hyundai', 'suzuki', 'ducati', 'rouser')
+            type: DataTypes.ENUM('bmw', 'audi', 'peugeot', 'citroen', 'mercedesbenz', 'ford', 'fiat', 'jeep', 'toyota', 'volkswagen', 'renault', 'chevrolet', 'honda', 'hyundai','kia','alfaromeo','nissan','volvo','chrysler', 'suzuki', 'ducati', 'rouser', 'yamaha')
         },
         generalInfo: {
             type: DataTypes.JSON,

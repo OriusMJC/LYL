@@ -34,6 +34,7 @@ function Vehicles() {
 
   const handleFilter = () => {
     dispatch(setType(undefined))
+    dispatch(getAllVehicles())
   }
 
   const handleHover = (e:any) => {

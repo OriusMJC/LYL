@@ -14,6 +14,7 @@ export const CHANGE_PAGE = "CHANGE_PAGE";
 export const SET_TYPE = "SET_TYPE";
 export const REFRESH_TYPE = "REFRESH_TYPE";
 export const SET_PANEL = "SET_PANEL";
+export const CLEAR_SEARCH = "CLEAR_SEARCH";
 
 type Action = {
 	type: string;

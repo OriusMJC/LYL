@@ -1,13 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
-import Nav from './components/Nav';
 import Vehicles from './components/Vehicles';
 import VehiclesDetails from './components/VehiclesDetails';
 import Login from './components/Login';
 import Panel from './components/Panel';
 import Contact from './components/Contact';
 import About from './components/About';
+import EditVehicle from './components/EditVehicle';
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
           <Route path='login' element={<Login/>}/>
           <Route path='panel' element={<Panel/>}/>
         </Route>
+        <Route path = '/vehicles/edit/:idVehicle' element = {<EditVehicle/>}/>
       </Routes>
     </div>
   );

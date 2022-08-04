@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch } from '../config';
-import { createVehicle } from '../redux/actions';
+import { updateData } from '../redux/actions';
 import { useVerfication } from '../services/services';
 import { setPanel } from '../redux/actions';
 import s from './Styles/Panel.module.css';
@@ -13,6 +13,9 @@ import ReactPlayer from 'react-player';
 
 function Panel() {
   const dispatch = useAppDispatch();
+  const idVehicle:any = useParams().idVehicle;
+  const vehicle = useSelector((state:any) => state && state.vehicleDetails);
+  console.log(vehicle);
 
   useEffect(()=>{
     dispatch(setPanel(true))
@@ -25,59 +28,60 @@ function Panel() {
   const [pres, setPres] = useState(false);
   const [pres2, setPres2] = useState(false);
   const [vehicleData,setVehicleData] = useState<any>({
-    title: '',
-    video: '',
-    photo: [],
-    presentation: [],
-    price: null,
-    status: 'Nuevo',
-    kilom: null,
-    year: null,
-    type: '',
-    description: '',
+    title: vehicle?.title,
+    video: vehicle?.video,
+    photo: vehicle?.photo,
+    presentation: vehicle?.presentation,
+    price: vehicle?.price,
+    status: vehicle?.status,
+    kilom: vehicle?.kilom,
+    year: vehicle?.year,
+    type: vehicle?.type,
+    description: vehicle?.description,
     generalInfo: {
-      tipoDeCombustible: '',
-      transmision: '',
-      motorizacion: '',
-      turbo: '',
+      tipoDeCombustible: vehicle?.generalInfo?.tipoDeCombustible,
+      transmision: vehicle?.generalInfo?.transmision,
+      motorizacion: vehicle?.generalInfo?.motorizacion,
+      turbo: vehicle?.generalInfo?.turbo,
     },
     exterior:{
-      aperturaDeCajuela: '',
-      numeroDePuertas: '',
+      aperturaDeCajuela: vehicle?.exterior?.aperturaDeCajuela,
+      numeroDePuertas: vehicle?.exterior?.numeroDePuertas,
     },
     equipamiento: {
-      alarma: '',
-      aireAcondicionado: '',
-      espejosElectricos: '',
-      butacasCalefaccionadas: '',
-      controlDeVelocidad: '',
+      alarma: vehicle?.equipamiento?.alarma,
+      aireAcondicionado: vehicle?.equipamiento?.aireAcondicionado,
+      espejosElectricos: vehicle?.equipamiento?.espejosElectricos,
+      butacasCalefaccionadas: vehicle?.equipamiento?.butacasCalefaccionadas,
+      controlDeVelocidad: vehicle?.equipamiento?.controlDeVelocidad,
     },
     seguridad :{
-      ABS: '',
-      cantidadDeAirbags: '',
-      controlEstabilidad: '',
-      controlTraccion: '',
+      ABS: vehicle?.seguridad?.ABS,
+      cantidadDeAirbags: vehicle?.seguridad?.cantidadDeAirbags,
+      controlEstabilidad: vehicle?.seguridad?.controlEstabilidad,
+      controlTraccion: vehicle?.seguridad?.controlTraccion,
     },
     interior: {
-      regulacionDeButaca: '',
-      regulacionDeVolante: '',
+      regulacionDeButaca: vehicle?.interior?.regulacionDeButaca,
+      regulacionDeVolante: vehicle?.interior?.regulacionDeVolante,
     },
     multimedia: {
-      bluetooth: '',
-      GPS: '',
-      USB: '',
+      bluetooth: vehicle?.multimedia?.bluetooth,
+      GPS: vehicle?.multimedia?.GPS,
+      USB: vehicle?.multimedia?.USB,
     },
   })
-  const presType = vehicleData.presentation[0] && vehicleData.presentation.length && vehicleData.presentation[0].slice(-3)
 
   console.log(vehicleData);
 
+  const presType = vehicleData.presentation[0] && vehicleData.presentation.length && vehicleData.presentation[0].slice(-3)
+
   function handleSubmit(event:any){
     event.preventDefault()
-    dispatch(createVehicle(vehicleData))
+    dispatch(updateData(idVehicle, vehicleData))
     swal({
       title: "Felicidades",
-      text: "Vehiculo creado",
+      text: "Vehiculo actualizado",
       icon: "success",
     })
     navigate('/vehicles')
@@ -314,9 +318,9 @@ function Panel() {
                 {/* <label>
                   Subir imagen
                 </label> */}
-                <input type = "file" name = "photo" onChange = {uploadImage} required id = {s.photo}/>
+                <input type = "file" name = "photo" onChange = {uploadImage} id = {s.photo}/>
                 <input type = "file" name = "video" onChange = {handleSelectVideo} id = {s.videoP}/>
-                <input type = "file" name = "presentation" onChange = {handlePres} required id = {s.presentation}/>
+                <input type = "file" name = "presentation" onChange = {handlePres} id = {s.presentation}/>
               </div>
               <textarea placeholder = "Descripcion" name = "description" value = {vehicleData.description} onChange = {handleChange} required id ={s.textarea}></textarea>
           </div>
@@ -360,7 +364,6 @@ function Panel() {
             <div>
             <label>Tipo de combustible      
               <select name = "tipoDeCombustible" onChange = {setGeneralInfo}>
-                <option hidden>Combustible</option>
                 <option value = 'Nafta'>Nafta</option>
                 <option value = 'Diesel'>Diesel</option>
               </select>
@@ -370,14 +373,12 @@ function Panel() {
             </label>
             <label>Turbo      
               <select name = "turbo" onChange = {setGeneralInfo}>
-                <option hidden>Turbo</option>
                 <option value = 'Si'>Si</option>
                 <option value = 'No'>No</option>
               </select>
             </label>
             <label>Transmision
             <select name = "transmision" onChange = {setGeneralInfo}>
-                <option hidden>Transmision</option>
                 <option value = 'Automatica'>Automatica</option>
                 <option value = 'Manual'>Manual</option>
             </select>
@@ -400,7 +401,6 @@ function Panel() {
             <div>
             <label>Apertura de cajuela
             <select name = "aperturaDeCajuela" onChange = {setExterior}>
-              <option hidden>Tipo</option>
               <option value = 'Manual'>Manual</option>
               <option value = 'Electrica'>Electrica</option>
               <option value = 'A distancia'>A distancia</option>
@@ -408,7 +408,6 @@ function Panel() {
             </label>
             <label>Numero de puertas
             <select name = "numeroDePuertas" onChange = {setExterior}>
-              <option hidden>Cantidad</option>
               <option value = '3'>3</option>
               <option value = '5'>5</option>
             </select>
@@ -421,35 +420,30 @@ function Panel() {
             <div>
               <label>Alarma
               <select name = "alarma" onChange = {setEquipamiento}>
-                <option hidden>Alarma</option>
                 <option value = "Si">Si</option>
                 <option value = "No">No</option>
               </select>
               </label>
               <label>Aire Acondicionado
               <select name = "aireAcondicionado" onChange = {setEquipamiento}>
-                <option hidden>Aire</option>
                 <option value = "Si">Si</option>
                 <option value = "No">No</option>
               </select>
               </label>
               <label>Espejos Electricos
               <select name = "espejosElectricos" onChange = {setEquipamiento}>
-                <option hidden>Espejos</option>
                 <option value = "Si">Si</option>
                 <option value = "No">No</option>
               </select>
               </label>
               <label>Butacas Calefaccionadas
               <select name = "butacasCalefaccionadas" onChange = {setEquipamiento}>
-                <option hidden>Butacas</option>
                 <option value = "Si">Si</option>
                 <option value = "No">No</option>
               </select>
               </label>
               <label>Control cruzero
               <select name = "controlDeVelocidad" onChange = {setEquipamiento}>
-                <option hidden>Control</option>
                 <option value = "Si">Si</option>
                 <option value = "No">No</option>
               </select>
@@ -462,14 +456,12 @@ function Panel() {
             <div>
               <label>ABS
               <select name = "ABS" onChange = {setSeguridad}>
-                <option hidden>ABS</option>
                 <option value = "Si">Si</option>
                 <option value = "No">No</option>
               </select>
               </label>
               <label>Cantidad Airbags
               <select name = "cantidadDeAirbags" onChange = {setSeguridad}>
-                <option hidden>Airbags</option>
                 <option value = "1">1</option>
                 <option value = "2">2</option>
                 <option value = "3">3</option>
@@ -484,14 +476,12 @@ function Panel() {
               </label>
               <label>Control de Traccion
               <select name = "controlTraccion" onChange = {setSeguridad}>
-                <option hidden>Control Traccion</option>
                 <option value = "Si">Si</option>
                 <option value = "No">No</option>
               </select>
               </label>
               <label>Control de Estabilidad
               <select name = "controlEstabilidad" onChange = {setSeguridad}>
-                <option hidden>Control Estabilidad</option>
                 <option value = "Si">Si</option>
                 <option value = "No">No</option>
               </select>
@@ -504,14 +494,12 @@ function Panel() {
             <div>
               <label>Regulacion de butaca
               <select name = "regulacionDeButaca" onChange = {setInterior}>
-                <option hidden>Butacas</option>
                 <option value = "Si">Si</option>
                 <option value = "No">No</option>
               </select>
               </label>
               <label>Regulacion de volante
               <select name = "regulacionDeVolante" onChange = {setInterior}>
-                <option hidden>Volante</option>
                 <option value = "Si">Si</option>
                 <option value = "No">No</option>          
               </select>
@@ -524,21 +512,18 @@ function Panel() {
             <div>
               <label>Bluetooth
               <select name = "Bluetooth" onChange = {setMultimedia}>
-                <option hidden>Bluetooth</option>
                 <option value = "Si">Si</option>
                 <option value = "No">No</option>
               </select>
               </label>
               <label>GPS
               <select name = "GPS" onChange = {setMultimedia}>
-                <option hidden>GPS</option>
                 <option value = "Si">Si</option>
                 <option value = "No">No</option>
               </select>
               </label>
               <label>USB
               <select name = "USB" onChange = {setMultimedia}>
-                <option hidden>USB</option>
                 <option value = "Si">Si</option>
                 <option value = "No">No</option>
               </select>
@@ -546,7 +531,7 @@ function Panel() {
             </div>
           </div>
         </div>
-        <button id = {s.buttonPublicar}>PUBLICAR</button>
+        <button id = {s.buttonPublicar} type = 'submit'>ACTUALIZAR</button>
       </form>
     </section>
     </>

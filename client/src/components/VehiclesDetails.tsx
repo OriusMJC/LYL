@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useState } from 'react';
 import { useSelector} from 'react-redux';
 import { useAppDispatch } from '../config';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { getAllVehicles, getDetails, deleteVehicle, setPanel } from '../redux/actions';
+import { getAllVehicles, getDetails, deleteVehicle, setPanel, updateData } from '../redux/actions';
 import * as types from '../types';
 import notFound from '../media/notFound.jpg';
 import play from '../media/play-button-transparent.png';
@@ -18,6 +18,8 @@ import Loading from './Loading';
 import video from '../media/video1.mp4'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+import Footer from './Footer';
+import wp from '../media/logos/whatsapp.png'
 
 
 function VehiclesDetails() {
@@ -43,6 +45,7 @@ function VehiclesDetails() {
   //ver foto
   const [show,setShow] = useState(false)
   const [bigPhoto,setBigPhoto] = useState('')
+  
   const handleDelete = useCallback(() => {
     swal({
       text: 'Estas seguro que queres eliminar este vehiculo?',
@@ -105,7 +108,7 @@ function VehiclesDetails() {
       id = {s.video}
       />
       :
-      <img src = {vehicle.presentation && vehicle.presentation[0]}></img>  
+      <img src = {vehicle.presentation && vehicle.presentation[0]} id = {s.img1}></img>  
     }
     <h1 id = {s.title}>{`#VIVILAEXPERIENCIA${vehicle && vehicle.type && vehicle.type.toUpperCase()}`}</h1>
     </section>
@@ -115,6 +118,7 @@ function VehiclesDetails() {
           <h2 onClick={()=>{setView('gen')}} className={view === 'gen'? s.select : ''}>General</h2>
           <h2 onClick={()=>{setView('info')}} className={view === 'info'? s.select : ''}>Informacion</h2>
           <h2 onClick={()=>{setView('contact')}} className={view === 'contact'? s.select : ''}>Contacto</h2>
+          <h2 onClick={()=>{setView('admin')}} className={view === 'admin'? s.select : ''}>Admin</h2>
         </div>
         {
           view === 'gen' ?
@@ -157,15 +161,115 @@ function VehiclesDetails() {
           </div>
           :
             view === 'info'?
-              <div>
-                <h1>info</h1>
+              <div id = {s.divInfo}>
+                <div id = {s.divInfoCont}>
+                  <h2>General</h2>
+                  <div>
+                    {vehicle && vehicle.generalInfo &&
+                    <>
+                    <label>Tipo de Combustible
+                      <span>{vehicle.generalInfo.tipoDeCombustible}</span>
+                    </label>
+                    <label>Transmision
+                      <span>{vehicle.generalInfo.transmision}</span>
+                    </label>
+                    <label>Motorizacion
+                      <span>{vehicle.generalInfo.motorizacion}</span>
+                    </label>
+                    <label>Turbo
+                      <span>{vehicle.generalInfo.turbo}</span>
+                    </label>
+                    <label>Kilometraje
+                      <span>{vehicle.kilom} km</span>
+                    </label>
+                    </>
+                    }
+                  </div>
+                  <h2>Exterior</h2>
+                  <div>
+                    {vehicle && vehicle.exterior &&
+                    <>
+                    <label>Apertura de Baul
+                      <span>{vehicle.exterior.aperturaDeCajuela}</span>
+                    </label>
+                    <label>Numero de puertas
+                      <span>{vehicle.exterior.numeroDePuertas}</span>
+                    </label>
+                    </>}
+                  </div>
+                  <h2>Equipamiento</h2>
+                  <div>
+                    {vehicle && vehicle.equipamiento &&
+                    <>
+                    <label>Alarma
+                      <span>{vehicle.equipamiento.alarma}</span>
+                    </label>
+                    <label>Aire Acondicionado
+                      <span>{vehicle.equipamiento.aireAcondicionado}</span>
+                    </label>
+                    <label>Espejos Electricos
+                      <span>{vehicle.equipamiento.espejosElectricos}</span>
+                    </label>
+                    <label>Butacas Calefaccionadas
+                      <span>{vehicle.equipamiento.butacasCalefaccionadas}</span>
+                    </label>
+                    <label>Control de Velocidad
+                      <span>{vehicle.equipamiento.controlDeVelocidad}</span>
+                    </label>
+                    </>}
+                  </div>
+                  <h2>Seguridad</h2>
+                  <div>
+                    {vehicle && vehicle.seguridad && 
+                    <>
+                    <label>ABS
+                      <span>{vehicle.seguridad.ABS}</span>
+                    </label>
+                    <label>Cantidad de Airbags
+                      <span>{vehicle.seguridad.cantidadDeAirbags}</span>
+                    </label>
+                    <label>Control de Estabilidad
+                      <span>{vehicle.seguridad.controlEstabilidad}</span>
+                    </label>
+                    <label>Control de Traccion
+                      <span>{vehicle.seguridad.controlTraccion}</span>
+                    </label>
+                    </>}
+                  </div>
+                  <h2>Interior</h2>
+                  <div>
+                    {vehicle && vehicle.interior &&
+                    <>
+                    <label>Regulacion de Butaca
+                      <span>{vehicle.interior.regulacionDeButaca}</span>
+                    </label>
+                    <label>Regulacion de Volante
+                      <span>{vehicle.seguridad.regulacionDeVolante}</span>
+                    </label>
+                    </>}
+                  </div>
+                  <h2>Multimedia</h2>
+                  <div>
+                    {vehicle && vehicle.multimedia &&
+                    <>
+                    <label>Bluetooth
+                      <span>{vehicle.multimedia.bluetooth}</span>
+                    </label>
+                    <label>GPS
+                      <span>{vehicle.multimedia.GPS}</span>
+                    </label>
+                    <label>USB
+                      <span>{vehicle.multimedia.USB}</span>
+                    </label>
+                    </>}
+                  </div>
+                </div>
               </div>
               :
+              view === 'contact' ?
               <div id={s.secContact}>
-                <h1>CONTACTO</h1>
+                <h1>ENVIANOS TU CONSULTA</h1>
                 <form>
-                    {/* <input type='text' placeholder="Tu nombre" value={data.name} name="name" onChange={handleChange}/>
-                    <input type='text' placeholder="Tu apellido" value={data.lastname} name="lastname" onChange={handleChange}/> */}
                     <textarea placeholder="Tu mensaje" value={msg} name="msg" onChange={(e)=>setMsg(e.target.value)}/>
                 </form>
                 <a href={`https://wa.me/${num}?text=${msg}`} target="_blank">
@@ -173,11 +277,21 @@ function VehiclesDetails() {
                         ENVIAR A WHATSAPP
                     </button>
                 </a>
-                <p>WPP: +54 9 3415 00-5025</p>
+                <p id = {s.p}><img src = {wp}/>  +54 9 3415 00-5025</p>
+              </div>
+              :
+              <div id = {s.secAdmin}>
+                <div id = {s.secAdminCont}>
+                  <button onClick = {handleDelete} id = {s.btn1}>ELIMINAR VEHICULO</button>
+                  <Link to = {`/vehicles/edit/${idVehicle}`} id = {s.link}>
+                  <button id = {s.btn2}>EDITAR VEHICULO</button>
+                  </Link>
+                </div>
               </div>
         }
       </div>
     </section>
+    <Footer/>
     </>
   )
 }

@@ -27,7 +27,19 @@
 #searchBarContainer button:hover{
     background-color: #ddd;
 }
-
+@media screen and (max-width: 1850px){
+    #searchBarContainer{
+        width: 100%;
+        height: 50px;
+        margin: 10px 0px;
+    }
+    #searchBarContainer input{
+        width: 75%;
+    }
+    #searchBarContainer button{
+        width: 20%;
+    }
+}
 @media screen and (max-width: 1024px){
     #searchBarContainer{
         width: 100%;

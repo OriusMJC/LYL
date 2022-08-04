@@ -4,8 +4,9 @@ import audi from '../../media/Marcas/audi.jpg';
 import bmw from '../../media/Marcas/bmw.jpg';
 import ford from '../../media/Marcas/ford.jpg';
 import mb from '../../media/Marcas/mb.jpg';
-import peugeot from '../../media/Marcas/peugeot.jpg';
+// import peugeot from '../../media/Marcas/peugeot.jpg';
 import volkswagen from '../../media/Marcas/volkswagen.jpg';
+import jeep from '../../media/Marcas/Jeep.webp';
 
 
 const initialState:any = {
@@ -14,13 +15,13 @@ const initialState:any = {
     vehicleDetails: {},
     actualPage: 1,
     actualType : [],
-    types: ['bmw', 'audi', 'peugeot', 'citroen', 'mercedes benz','jeep','ford', 'fiat', 'toyota', 'volkswagen', 'renault', 'chevrolet', 'honda', 'hyundai', 'suzuki', 'ducati', 'rouser'],
+    types: ['bmw', 'audi', 'peugeot', 'citroen', 'mercedesbenz','jeep','ford', 'fiat', 'toyota', 'volkswagen', 'renault', 'chevrolet', 'honda', 'hyundai','kia','alfaromeo','nissan','chrysler','volvo','suzuki', 'ducati', 'rouser', 'yamaha'],
     fotos: [
         {text: "audi", photo: audi}, 
         {text: "bmw", photo: bmw}, 
         {text: "ford", photo: ford},
         {text: "mercedes benz", photo: mb}, 
-        {text: "peugeot", photo: peugeot},
+        {text: "jeep", photo: jeep},
         {text: "volkswagen", photo: volkswagen}],
     panel: false,
     

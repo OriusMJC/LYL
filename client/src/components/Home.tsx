@@ -12,6 +12,7 @@ import font from '../media/RFDewiExpanded.woff';
 import {BsArrowRightCircle} from 'react-icons/bs';
 import * as types from '../types'
 import Loading from './Loading';
+import Footer from './Footer';
 
 
 function Home() {
@@ -72,6 +73,7 @@ function Home() {
             <BsArrowRightCircle className = {s.arrow} onClick = {handleType}/>
           </Link>
       </footer>
+      <Footer/>
     </>
   )
 }

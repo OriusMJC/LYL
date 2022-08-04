@@ -64,7 +64,7 @@ router.delete('/:idVehicle', async(req, res, next): Promise<any> => {
     }
 });
 
-router.put('/:idVehicle', async(req, res, next): Promise<any>=>{
+router.put('/edit/:idVehicle', async(req, res, next): Promise<any>=>{
     const idVehicle = req.params.idVehicle;
     const newData = req.body;
     try {

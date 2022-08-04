@@ -112,7 +112,11 @@
         filter: blur(2px)
     }
 }
-
+@media screen and (max-width: 1850px){
+    #links button{
+        text-align: left;
+    }
+}
 @media screen and (max-width: 1024px){
     #vehiclesContainer{
         height: 100%;
