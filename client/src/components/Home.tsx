@@ -73,6 +73,7 @@ function Home() {
             <BsArrowRightCircle className = {s.arrow} onClick = {handleType}/>
           </Link>
       </footer>
+      <Footer/>
     </>
   )
 }

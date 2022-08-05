@@ -25,7 +25,6 @@ function App() {
         </Route>
         <Route path = '/vehicles/edit/:idVehicle' element = {<EditVehicle/>}/>
       </Routes>
-      <Footer/>
     </div>
   );
 }

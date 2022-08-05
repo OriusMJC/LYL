@@ -21,13 +21,36 @@
     filter: grayscale(0);
     transform: scale(1.1);
 }
-
-@media screen and (max-width: 430px){
+@media screen and (max-width: 1650px){
     .container{
-        grid-template-columns: repeat(2, 1fr);
+        height: 150vh;
+    }
+    .container button{
+        height: 50vh;
+    }   
+}
+@media screen and (max-width: 1350px){
+    .container{
+        height: 120vh;
+    }
+    .container button{
+        height: 40vh;
+    }   
+}
+@media screen and (max-width: 850px){
+    .container{
         height: 90vh;
     }
     .container button{
         height: 30vh;
-    }
+    }   
 }
+
+/* @media screen and (max-width: 430px){
+    .container{
+        height: 60vh;
+    }
+    .container button{
+        height: 20vh;
+    }
+} */

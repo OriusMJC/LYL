@@ -77,6 +77,9 @@ function Nav() {
           }
         </button>
         <div className={s.navSec} id={open? s.navOpen : ''}>
+          <Link to = "/">
+            <h4>Inicio</h4>        
+          </Link>
           <Link to = "/vehicles">
             <h4 onClick = {handleType}>Vehiculos</h4>
           </Link>
@@ -85,9 +88,6 @@ function Nav() {
           </Link>
           <Link to='/contact'>
             <h4>Contactanos</h4>
-          </Link>
-          <Link to = "/">
-            <h4>Inicio</h4>        
           </Link>
           <Link to = '/admin/panel'>
             <h4>Panel</h4>
