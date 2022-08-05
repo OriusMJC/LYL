@@ -1,74 +1,3 @@
-/* #containerContact{
-    color: #EEEEEE;
-    background-color: #131313;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    font-family: 'Montserrat';
-    overflow: hidden;
-}
-#containerContact h1{
-    animation: aparece 1.5s ease-in-out;
-}
-#containerContact form textarea{
-    font-family: 'Montserrat';
-    color: #EEEEEE;
-    background-color: #222;
-    height: 300px;
-    width: 500px;
-    padding: 10px 15px;
-    resize: none;
-    overflow: auto;
-    border-radius: 5px;
-    animation: aparece 1.5s ease-in-out;
-}
-#containerContact a button{
-    font-family: 'Montserrat';
-    color: white;
-    background-color: transparent;
-    width: 120px;
-    margin: 15px;
-    padding: 10px 10px;
-    border: none;
-    width: 95%;
-    border-radius: 5px;
-    transition: .1s;
-    animation: aparece 1.5s ease-in-out;
-    cursor: pointer;
-}
-#containerContact a button:hover{
-    transform: scale(1.03);
-}
-#containerContact div{
-    border: 2px solid white;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 20%;
-}
-#containerContact div p{
-    color: white;
-    margin-left: 200px;
-}
-@keyframes aparece {
-    from {
-        margin-top: 20vh;
-        opacity: 0;
-    }to{
-        opacity: 1;
-    }
-}
-
-@media screen and (max-width: 430px){
-    #containerContact form textarea{
-        height: 430px;
-        width: 340px;
-    }
-} */
 #containerContact{
     color: #EEEEEE;
     background-color: #131313;
@@ -83,35 +12,66 @@
 }
 #divForm1{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    width: 80%;
+    justify-content: center;
+    width: 70%;
     height: 100%;
     background-color: white;
 }
-#divContact{
-    border: 2px solid black;
-    height: 100%;
-    width: 50%;
+#divForm1 h2{
+    color: black;
+    font-family: 'Montserrat';
+    font-size: 40px;
+    border-bottom: 1px solid black;
+}
+#divOther{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 40%;
+    height: 60%;
 }
-#divContact h2{
-    color: black;
-}
-#divOther{
-    border: 2px solid black;
-    width: 50%;
-    height: 100%;
+#divOther form {
+    width: 100%;
+    height: 70%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+}
+#divOther form input{
+    width: 80%;
+    padding: 10px;
+}
+#divOther form textarea {
+    resize: none;
+    width: 80%;
+    height: 80%;
+    font-family: 'Helvetica';
+    font-size: 15px;
+    padding: 10px;
+}
+#divOther a{
+    width: 100%;
+    height: 5%;
+}
+#divOther a button{
+    height: 100%;
+    width: 20%;
+    font-family: 'Montserrat';
+    color: white;  
+    background-color: black;
+    border: none;
+    cursor: pointer;
+    transition: .2s
+}
+#divOther a button:hover{
+    transform: scale(1.03)
 }
 #video {
-    width: 20%;
+    width: 30%;
     height: 100%;
     background-color: black;
 }
@@ -119,5 +79,54 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: .7;
+    opacity: .5;
+}
+@media screen and (max-width: 1500px){
+    #divOther{
+        width: 70%;
+    }
+}
+@media screen and (max-width: 1100px){
+    #divForm1 h2{
+       font-size: 32px;
+    }
+    #divOther{
+        width: 85%;
+    }
+}
+@media screen and (max-width: 800px){
+    #divForm1{
+        width: 100%;
+    }
+    #video{
+        display: none;
+    }
+}
+@media screen and (max-width: 600px){
+    #divForm1{
+        width: 100%;
+    }
+    #divForm1 h2{
+        font-size: 30px;
+     }
+    #video{
+        display: none;
+    }
+    #divOther{
+        width: 90%;
+    }
+}
+@media screen and (max-width: 420px){
+    #divForm1{
+        width: 100%;
+    }
+    #divForm1 h2{
+        font-size: 20px;
+     }
+    #video{
+        display: none;
+    }
+    #divOther{
+        width: 100%;
+    }
 }

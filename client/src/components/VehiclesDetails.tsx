@@ -92,11 +92,11 @@ function VehiclesDetails() {
     <Nav/>
     <div id={show? s.contPhoto : s.bigPhotoN}>
       <button onClick={()=>setShow(false)} id={show? s.bigPhoto : s.bigPhotoN}>
-        <button>
+        {/* <button>
           <FontAwesomeIcon icon={solid('x')} />
-        </button>
+        </button> */}
       </button>
-      <img src={bigPhoto} alt='vista grande de foto'/>
+        <img src={bigPhoto} alt='vista grande de foto'></img>
     </div>
     <section id = {s.section1}>
     { vehicle.presentation && presentationType === 'mp4' ? 
@@ -277,7 +277,6 @@ function VehiclesDetails() {
                         ENVIAR A WHATSAPP
                     </button>
                 </a>
-                <p id = {s.p}><img src = {wp}/>  +54 9 3415 00-5025</p>
               </div>
               :
               <div id = {s.secAdmin}>
@@ -291,6 +290,7 @@ function VehiclesDetails() {
         }
       </div>
     </section>
+    <Footer/>
     </>
   )
 }

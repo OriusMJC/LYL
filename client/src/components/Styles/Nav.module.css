@@ -8,6 +8,7 @@
     width: 100%;
     transition: .3s;
     z-index: 1000;
+    
 }
 .navBtn{
     display: none;
@@ -76,6 +77,22 @@
     width: 100%;
     transition: .3s;
     z-index: 1000;
+}
+@media screen and (max-width: 1600px){
+    .navSec{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 35%;
+    }
+}
+@media screen and (max-width: 1300px){
+    .navSec{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 40%;
+    }
 }
 @media screen and (max-width: 1024px){
     .navBtn{

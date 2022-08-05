@@ -86,9 +86,23 @@
 .arrow:hover{
     transform: translateX(20%)
 }
-
-@media screen and (max-width: 430px){
+@media screen and (max-width: 1650px){
+    .main3{
+        height: 150vh;
+    }
+}
+@media screen and (max-width: 1350px){
+    .main3{
+        height: 120vh;
+    }
+}
+@media screen and (max-width: 850px){
     .main3{
         height: 90vh;
     }
 }
+/* @media screen and (max-width: 430px){
+    .main3{
+        height: 60vh;
+    } */
+

@@ -26,18 +26,18 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 }
 .container div div a{
-    margin-left: 10%;
     text-decoration: none;
     color: white;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     font-family: 'Noto Sans';
     text-align: justify;
     text-justify: inter-word;
+    width: 70%;
 }
 .container div div a img{
     width: 50px;

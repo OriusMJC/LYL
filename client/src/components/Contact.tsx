@@ -19,7 +19,6 @@ export default function Contact(){
     // const num = '1126099930'
     const [data,setData] = useState({
         name: '',
-        lastname: '',
         msg: '',
     })
 
@@ -35,21 +34,18 @@ export default function Contact(){
         <Nav></Nav>
         <section id={s.containerContact}>
             <div id = {s.divForm1}>
-            <div id = {s.divContact}>
-                <h2>CON</h2>
-                <h2>TAC</h2>
-                <h2>TO</h2>
-            </div>
-            <div id = {s.divOther}>
-                <form>
-                    <textarea placeholder="Tu mensaje" value={data.msg} name="msg" onChange={handleChange}/>
-                </form>
-                <a href={`https://wa.me/${num}?text=${data.msg}`} target="_blank">
-                    <button>
-                        ENVIAR A WHATSAPP
-                    </button>
-                </a> 
-            </div>
+                <h2>ENVIANOS TU CONSULTA</h2>
+                <div id = {s.divOther}>
+                    <form>
+                        <input  placeholder="Tu nombre" value={data.name} type = 'text' name="name" onChange={handleChange}></input>
+                        <textarea placeholder="Tu mensaje" value={data.msg} name="msg" onChange={handleChange}/>
+                    </form>
+                    <a href={`https://wa.me/${num}?text=${`Hola! Mi nombre es ${data.name}, ${data.msg}`}`} target="_blank">
+                        <button>
+                            ENVIAR
+                        </button>
+                    </a> 
+                </div>
             </div>
             <div id = {s.video}>
                 <video

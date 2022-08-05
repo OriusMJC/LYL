@@ -29,7 +29,7 @@
 #bigPhoto button{
     position: absolute;
     top: 5vh;
-    left: 20vw;
+    right: 5vw;
     height: 40px;
     width: 40px;
     border: none;
@@ -157,6 +157,10 @@
     width: 50%;
     height: 20%;
 }
+#divD vide{
+    width: 100%;
+    height: 100%;
+}
 #divDer{
     margin-top: 15%;
     width: 50%;
@@ -223,14 +227,13 @@
 }
 #secContact a button{
     font-family: 'Montserrat';
-    color: black;
-    background-color: transparent;
+    color: white;
+    background-color: black;
     width: 120px;
     margin: 15px;
     padding: 10px 10px;
     border: none;
     width: 95%;
-    border-radius: 5px;
     transition: .1s;
     animation: aparece 1.5s ease-in-out;
     cursor: pointer;
@@ -345,46 +348,10 @@
 #btn2:hover{
     transform: scale(1.03)
 }
-
-@media screen and (max-width: 769px) {
-    #section2{
-        min-height: 250vh;
+@media screen and (max-width: 1200px) {
+    #div1 {
+        width: 90%;
     }
-    #contPhoto img{
-        top: 20vh;
-    }
-    #div2{
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-width: 350px;
-    }
-    #divIzq{
-        margin-top: 0;
-        width: 100%;
-        align-items: center;
-    }
-    #divDer{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 0%;
-        width: 100%;
-        height: 100%;
-    }
-    #divDer div{
-        margin: 10px 0;
-    }
-    #divE{
-        width: 70%;
-    }
-    #divF{
-        width: 70%;
-        height: 35%;
-    }
-}
-@media screen and (max-width: 1024px) {
     #divInfo {
         width: 100%;
         height: 100%;
@@ -427,6 +394,126 @@
         /* animation: aparece 1.5s ease-in-out; */
     }
 }
+@media screen and (max-width: 1024px) {
+    #div1 {
+        width: 90%;
+    }
+    #divInfo {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #divInfoCont{
+        height: 90%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        animation: aparece 1.5s ease-in-out;
+    }
+    #divInfoCont h2 {
+        border-bottom: 1px solid black;
+        font-weight: 1000;
+        /* animation: aparece 1.5s ease-in-out; */
+    }
+    #divInfoCont div{
+        height: 10%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* animation: aparece 1.5s ease-in-out; */
+    }
+    #divInfoCont label{
+        width: 60%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        /* animation: aparece 1.5s ease-in-out; */
+    }
+    #divInfoCont span{
+        font-weight: bold;
+        border-bottom: 1px solid black;
+        /* animation: aparece 1.5s ease-in-out; */
+    }
+}
+
+@media screen and (max-width: 770px) {
+    #div1{
+        width: 90%;
+    }
+    #section2{
+        min-height: 250vh;
+    }
+    #contPhoto img{
+        top: 20vh;
+    }
+    #div1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+    }
+    #div2{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 350px;
+        height: 100%;
+    }
+    #divIzq{
+        width: 100%;
+        align-items: center;
+        height: 50%;
+    }
+    #divA h1{
+        font-size: 40px;
+    }
+    #divA{
+        width: 80%;
+        height: 70%;
+    }
+    #divD{
+        height: 40%;
+    }
+    #divDer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0%;
+        width: 100%;
+        height: 50%;
+    }
+    #divDer div{
+        margin: 10px 0;
+    }
+    #divE{
+        width: 70%;
+    }
+    #divF{
+        width: 70%;
+        height: 35%;
+    }
+    #divInfoCont{
+        width: 90%;
+    }
+    #btn1{
+        font-size: 12px;
+        width: 30%;
+    }
+    #link{
+        width: 30%;
+    }
+    #btn2{
+        font-size: 12px;
+    }
+}
+
 @media screen and (max-width: 425px) {
     #contPhoto img{
         top: 30vh;
@@ -437,6 +524,13 @@
     }
     #div2{
         margin-left: -50px;
+    }
+    #divA h1{
+        font-size: 28px;
+    }
+    #divA{
+        width: 80%;
+        height: 100%;
     }
     #divInfoCont{
         height: 90%;
@@ -461,5 +555,15 @@
         align-items: center;
         justify-content: center;
         /* animation: aparece 1.5s ease-in-out; */
+    }
+    #btn1{
+        font-size: 10px;
+        width: 30%;
+    }
+    #link{
+        width: 30%;
+    }
+    #btn2{
+        font-size: 10px;
     }
 }
