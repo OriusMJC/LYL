@@ -118,9 +118,10 @@
         display: none;
     } */
     .main2Text{
+        min-width: 290px;
         width: 45%;
         height: 80%;
-        animation: aparecer2 2s;
+        animation: aparecer 2s;
     }
     .main2Text h1{
         font-size: 30px;
