@@ -244,7 +244,7 @@ function VehiclesDetails() {
                       <span>{vehicle.interior.regulacionDeButaca}</span>
                     </label>
                     <label>Regulacion de Volante
-                      <span>{vehicle.seguridad.regulacionDeVolante}</span>
+                      <span>{vehicle.interior.regulacionDeVolante}</span>
                     </label>
                     </>}
                   </div>
