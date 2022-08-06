@@ -20,7 +20,7 @@ const initialState:any = {
         {text: "audi", photo: audi}, 
         {text: "bmw", photo: bmw}, 
         {text: "ford", photo: ford},
-        {text: "mercedes benz", photo: mb}, 
+        {text: "mercedesbenz", photo: mb}, 
         {text: "jeep", photo: jeep},
         {text: "volkswagen", photo: volkswagen}],
     panel: false,
