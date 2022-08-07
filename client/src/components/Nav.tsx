@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 function Nav() {
+  const data = window.localStorage.getItem("userDataLogin");
   const dispatch = useAppDispatch();
   const panel = useSelector((state:any) => state&& state.panel)
   const [nav, setNav] = useState(false);
@@ -53,9 +54,11 @@ function Nav() {
           <Link to='/contact'>
             <h4>Contactanos</h4>
           </Link>
+          {data && 
           <Link to = '/admin/panel'>
-            <h4>Panel</h4>
+          <h4>Panel</h4>
           </Link>
+          }
         </div>
         <div className={s.navSec2}>
           <Link to='/'>

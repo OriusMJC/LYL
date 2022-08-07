@@ -24,6 +24,7 @@ import wp from '../media/logos/whatsapp.png'
 
 function VehiclesDetails() {
   
+  const data = window.localStorage.getItem("userDataLogin");
   const idVehicle:any = useParams().idVehicle;
   const dispatch = useAppDispatch();
 
@@ -279,14 +280,18 @@ function VehiclesDetails() {
                 </a>
               </div>
               :
+              <>
+              {data && 
               <div id = {s.secAdmin}>
-                <div id = {s.secAdminCont}>
-                  <button onClick = {handleDelete} id = {s.btn1}>ELIMINAR VEHICULO</button>
-                  <Link to = {`/vehicles/edit/${idVehicle}`} id = {s.link}>
-                  <button id = {s.btn2}>EDITAR VEHICULO</button>
-                  </Link>
-                </div>
+              <div id = {s.secAdminCont}>
+                <button onClick = {handleDelete} id = {s.btn1}>ELIMINAR VEHICULO</button>
+                <Link to = {`/vehicles/edit/${idVehicle}`} id = {s.link}>
+                <button id = {s.btn2}>EDITAR VEHICULO</button>
+                </Link>
               </div>
+              </div>
+              }
+              </>
         }
       </div>
     </section>

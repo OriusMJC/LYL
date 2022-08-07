@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../config';
-import { createVehicle } from '../redux/actions';
+import { createVehicle, getAllVehicles } from '../redux/actions';
 import { useVerfication } from '../services/services';
 import { setPanel } from '../redux/actions';
 import s from './Styles/Panel.module.css';
@@ -70,16 +70,15 @@ function Panel() {
   })
   const presType = vehicleData.presentation[0] && vehicleData.presentation.length && vehicleData.presentation[0].slice(-3)
 
-  console.log(vehicleData);
-
   function handleSubmit(event:any){
-    event.preventDefault()
+    event.preventDefault();
     dispatch(createVehicle(vehicleData))
     swal({
       title: "Felicidades",
       text: "Vehiculo creado",
       icon: "success",
     })
+    dispatch(getAllVehicles())
     navigate('/vehicles')
   }
 
@@ -272,7 +271,7 @@ function Panel() {
     <>
     <Nav/>
     <section id={s.panelContainer}>
-      <form id = {s.form} onSubmit = {handleSubmit}>
+      <form id = {s.form} >
         <div id = {s.firstDiv}>
           <div id = {s.divImages}>
             <div id = {s.imgPrincipal}>
@@ -292,7 +291,7 @@ function Panel() {
                   }
                   return (
                     <div id = {s.divButtons}>
-                      <button style = {styledBut} value = {i} onClick = {handlePosition} id = {s.button}>
+                      <button style = {styledBut} value = {i} onClick = {handlePosition} id = {s.button} type = "button">
                         <button id = {s.button2} value = {photo} onClick = {handleDeleteImg}>X</button>
                       </button>
                     </div>
@@ -523,7 +522,7 @@ function Panel() {
             <h2>Multimedia</h2>
             <div>
               <label>Bluetooth
-              <select name = "Bluetooth" onChange = {setMultimedia}>
+              <select name = "bluetooth" onChange = {setMultimedia}>
                 <option hidden>Bluetooth</option>
                 <option value = "Si">Si</option>
                 <option value = "No">No</option>
@@ -546,7 +545,7 @@ function Panel() {
             </div>
           </div>
         </div>
-        <button id = {s.buttonPublicar}>PUBLICAR</button>
+        <button id = {s.buttonPublicar} type = 'submit' onSubmit = {handleSubmit}>PUBLICAR</button>
       </form>
     </section>
     </>

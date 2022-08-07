@@ -38,7 +38,6 @@ function Footer() {
             <h2>Horarios de Atencion</h2>
             <div>
             <a id = {s.id}>
-                {/* <img src = {reloj} alt = 'reloj'></img> */}
                 Lunes a Viernes de 10 a 13 hs y 15 a 18hs
             </a>
             </div>
