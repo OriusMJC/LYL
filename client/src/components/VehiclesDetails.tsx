@@ -124,7 +124,7 @@ function VehiclesDetails() {
         {
           view === 'gen' ?
           <div id = {s.div2}>
-            <div id = {s.divIzq}>
+            <div className = {s.divIzq}>
               <div id = {s.divA}>
                 <h1>{vehicle.title && vehicle.title.toUpperCase()}</h1>
                 <p>{vehicle.description}</p>

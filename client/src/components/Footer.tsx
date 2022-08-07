@@ -12,9 +12,9 @@ function Footer() {
   return (
     <div className = {s.container}>
         <img src = {logo} alt = "logo" id = {s.img1}></img>
-        <div>
+        <div id = {s.divCont}>
             <h2>Nuestras Redes</h2>
-            <div>
+            <div id = {s.divInfo}>
                 <a href = 'https://www.instagram.com/lylautomotores_/' target = '_blank'>
                     <img src = {instagram} alt = 'instagram'></img>
                     lylautomotores
@@ -25,26 +25,26 @@ function Footer() {
                 </a>
             </div>
         </div>
-        <div>
+        <div id = {s.divCont}>
             <h2>Contactanos</h2>
-            <div>
+            <div id = {s.divInfo}>
             <a href = {`https://wa.me/${num}`} target = '_blank'>
                 <img src = {wp} alt = 'whatsapp'></img>
                 3413880895
             </a>
             </div>
         </div>
-        <div>
+        <div id = {s.divCont}>
             <h2>Horarios de Atencion</h2>
-            <div>
+            <div id = {s.divInfo}>
             <a id = {s.id}>
                 Lunes a Viernes de 10 a 13 hs y 15 a 18hs
             </a>
             </div>
         </div>
-        <div>
+        <div id = {s.divCont}>
             <h2>Ubicacion</h2>
-            <div>
+            <div id = {s.divInfo}>
             <a>
                 <img src = {ubicacion} alt = 'ubicacion'></img>
                 España 2201

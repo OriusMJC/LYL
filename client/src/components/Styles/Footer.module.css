@@ -12,23 +12,27 @@
     width: 80px;
     margin-top: 2%;
 }
-.container div {
+#divCont {
     margin-top: 1%;
     height: 70%;
-    width: 10%;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 .container div h2{
     color: white;
     font-size: 18px;
     font-family: 'Noto Sans';
 }
-.container div div{ 
-    width: 100%;
+#divInfo{ 
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.container div div a{
+#divInfo a{
     text-decoration: none;
     color: white;
     display: flex;
@@ -37,9 +41,10 @@
     font-family: 'Noto Sans';
     text-align: justify;
     text-justify: inter-word;
-    width: 70%;
+    width: 100%;
+    font-size: 15px;
 }
-.container div div a img{
+#divInfo a img{
     width: 50px;
     height: 50px;
 }
