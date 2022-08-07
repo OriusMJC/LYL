@@ -135,4 +135,8 @@
             opacity: 1;
         }
     }
+    .navSec2 img{
+        width: 40px;
+        height: 40px;
+    }
 }
