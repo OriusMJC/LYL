@@ -271,7 +271,7 @@ function Panel() {
     <>
     <Nav/>
     <section id={s.panelContainer}>
-      <form id = {s.form} >
+      <form id = {s.form} onSubmit = {handleSubmit}>
         <div id = {s.firstDiv}>
           <div id = {s.divImages}>
             <div id = {s.imgPrincipal}>
@@ -517,7 +517,6 @@ function Panel() {
               </label>
             </div>
           </div>
-
           <div className= {s.general}>
             <h2>Multimedia</h2>
             <div>
@@ -545,7 +544,7 @@ function Panel() {
             </div>
           </div>
         </div>
-        <button id = {s.buttonPublicar} type = 'submit' onSubmit = {handleSubmit}>PUBLICAR</button>
+        <button id = {s.buttonPublicar} onSubmit = {handleSubmit}>PUBLICAR</button>
       </form>
     </section>
     </>
