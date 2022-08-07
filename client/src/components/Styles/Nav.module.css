@@ -78,6 +78,11 @@
     transition: .3s;
     z-index: 1000;
 }
+@media screen and (max-height: 800px){
+    #navContainer, #navContainer2, #navContainer3, #navContainer4 {
+        height: 10vh;
+    }
+}
 @media screen and (max-width: 1600px){
     .navSec{
         display: flex;

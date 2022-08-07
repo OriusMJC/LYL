@@ -24,7 +24,8 @@ import wp from '../media/logos/whatsapp.png'
 
 function VehiclesDetails() {
   
-  const data = window.localStorage.getItem("userDataLogin");
+  const data:any = window.localStorage.getItem("userDataLogin");
+  const boolean = data?.email === "lautaroarnay@gmail.com"
   const idVehicle:any = useParams().idVehicle;
   const dispatch = useAppDispatch();
 
@@ -122,7 +123,7 @@ function VehiclesDetails() {
           <h2 onClick={()=>{setView('info')}} className={view === 'info'? s.select : ''}>Informacion</h2>
           <h2 onClick={()=>{setView('contact')}} className={view === 'contact'? s.select : ''}>Contacto</h2>
           {
-            data && 
+            boolean && 
             <h2 onClick={()=>{setView('admin')}} className={view === 'admin'? s.select : ''}>Admin</h2>
           }
         </div>
