@@ -93,9 +93,11 @@ function Nav() {
           <Link to='/contact'>
             <h4>Contactanos</h4>
           </Link>
+          {boolean && 
           <Link to = '/admin/panel'>
             <h4>Panel</h4>
           </Link>
+          }
         </div>
           <div className={s.navSec2}>
             <Link to='/'>
