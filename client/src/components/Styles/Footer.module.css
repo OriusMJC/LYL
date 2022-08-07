@@ -9,53 +9,104 @@
     gap: 4%;
 }
 #img1{
-    width: 80px;
+    width: 60px;
     margin-top: 2%;
 }
 #divCont {
     margin-top: 1%;
     height: 70%;
-    width: 15%;
+    width: 13%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
 }
-.container div h2{
+#divCont h2{
     color: white;
     font-size: 18px;
     font-family: 'Noto Sans';
+    height: 20%;
 }
 #divInfo{ 
-    width: 50%;
+    width: 100%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 #divInfo a{
     text-decoration: none;
     color: white;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     font-family: 'Noto Sans';
     text-align: justify;
     text-justify: inter-word;
-    width: 100%;
+    width: 55%;
     font-size: 15px;
 }
 #divInfo a img{
     width: 50px;
     height: 50px;
 }
-#id{
-    margin-top: 5%;
-}
-
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1850px) {
     .container{
+        height: 15vh
+    }
+    #divCont h2{
+        color: white;
+        font-size: 15px;
+        font-family: 'Noto Sans';
+        height: 20%;
+    }
+    #divInfo a{
+        font-size: 12px;
+    }
+    #divInfo a img{
+        width: 40px;
+        height: 40px;
+    }
+}
+@media screen and (max-width: 1450px) {
+    #divInfo a{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 1200px) {
+    #divCont h2{
+        font-size: 13px;
+    }
+    #divInfo a{
+        width: 90%;
+    }
+}
+@media screen and (max-width: 1050px) {
+    /* .container{
         min-height: 35vh;
         gap: 10%;
+    } */
+    .container{
+        height: 13vh;
+    }
+    #divCont {
+        width: 15%;
+        height: 55%;
+    }
+}
+@media screen and (max-width: 850px) {
+    /* .container{
+        min-height: 35vh;
+        gap: 10%;
+    } */
+    #divCont {
+        width: 18%;
+        height: 80%;
     }
 }
 @media screen and (max-width: 768px) {
@@ -71,32 +122,119 @@
         justify-content: center;
         gap: 0;
     }
-    .container div {
+    #divCont{
+        width: 80%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 100%;
     }
-    .container div div{ 
+    #divCont h2{
+        font-size: 25px;
+    }
+    #divInfo{
         display: flex;
         width: 80%;
         align-items: center!important;
     }
-    .container div div a{ 
-        width: 50%;
+    #divInfo a{ 
+        width: 40%;
         align-content: center!important;
         justify-content: center;
         margin: 0;
         padding: 0;
     }
+    #divInfo a{
+        font-size: 15px;
+    }
+    #divInfo a img{
+        width: 50px;
+        height: 50px;
+    }
 }
 @media screen and (max-width: 425px) {
-    .container div div a{ 
-        width: 50%;
-        align-content: flex-start!important;
-        justify-content: flex-start;
+    #img1{
+        width: 60px;
+        margin: 2% 0;
+    }
+    .container{
+        min-height: 92vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+    }
+    #divCont{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #divCont h2{
+        font-size: 18px;
+    }
+    #divInfo{
+        display: flex;
+        width: 80%;
+        align-items: center!important;
+    }
+    #divInfo a{ 
+        width: 45%;
+        align-content: center!important;
+        justify-content: space-between;
         margin: 0;
         padding: 0;
+    }
+    #divInfo a{
+        font-size: 15px;
+    }
+    #divInfo a img{
+        width: 40px;
+        height: 40px;
+    }
+}
+@media screen and (max-width: 360px) {
+    #img1{
+        width: 50px;
+        margin: 2% 0;
+    }
+    .container{
+        min-height: 92vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+    }
+    #divCont{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #divCont h2{
+        font-size: 15px;
+    }
+    #divInfo{
+        display: flex;
+        width: 85%;
+        align-items: center!important;
+    }
+    #divInfo a{ 
+        width: 45%;
+        align-content: center!important;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+    }
+    #divInfo a{
+        font-size: 12px;
+    }
+    #divInfo a img{
+        width: 35px;
+        height: 35px;
     }
 }
