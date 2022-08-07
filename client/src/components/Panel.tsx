@@ -382,7 +382,7 @@ function Panel() {
             </select>
             </label>
             <label>Marca
-            <select name = "type" onChange = {handleChange}>
+            <select name = "type" onChange = {handleChange} required>
                 <option hidden>Marca</option>
                 {types && types.map((t:any) =>{
                   return (

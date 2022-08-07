@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch } from '../config';
-import { updateData } from '../redux/actions';
+import { updateData , getAllVehicles} from '../redux/actions';
 import { useVerfication } from '../services/services';
 import { setPanel } from '../redux/actions';
 import s from './Styles/Panel.module.css';
@@ -81,6 +81,7 @@ function Panel() {
       text: "Vehiculo actualizado",
       icon: "success",
     })
+    dispatch(getAllVehicles())
     navigate('/vehicles')
   }
 

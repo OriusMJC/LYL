@@ -21,6 +21,7 @@ function Vehicles() {
   const actualType = useSelector((state:any)=> state && state.actualType);
   let filteredType = allVehicles.filter((v:any) => v.type === actualType[0]);
   const [pos, setPos] = useState(0)
+  console.log(filteredType);
 
   const styledBut = {
     backgroundImage: `url("${allVehicles[pos]?.photo[0]}")`,
@@ -29,6 +30,17 @@ function Vehicles() {
     backgroundSize: allVehicles[pos]?.photo[0]? 'cover' : 'contain',
     outlineOffset: allVehicles[pos]?.photo[0]? '-8px' : '0px',
     transition: '.2s',
+    border: "none",
+  }
+
+  const styledButF = {
+    backgroundImage: `url("${filteredType[pos]?.photo[0]}")`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    backgroundSize: filteredType[pos]?.photo[0]? 'cover' : 'contain',
+    outlineOffset: filteredType[pos]?.photo[0]? '-8px' : '0px',
+    transition: '.2s',
+    border: "none",
   }
 
   const handleFilter = () => {
@@ -76,8 +88,8 @@ function Vehicles() {
       </section>
       </div>
     </div>
-
-    <div className = {s.imgContainer} style={styledBut}>
+    
+    <div className = {s.imgContainer} style={!filteredType.length ? styledBut : styledButF}>
       {/* <img src= {allVehicles && allVehicles[pos].photo[0]}></img> */}
     </div>
 

@@ -121,7 +121,10 @@ function VehiclesDetails() {
           <h2 onClick={()=>{setView('gen')}} className={view === 'gen'? s.select : ''}>General</h2>
           <h2 onClick={()=>{setView('info')}} className={view === 'info'? s.select : ''}>Informacion</h2>
           <h2 onClick={()=>{setView('contact')}} className={view === 'contact'? s.select : ''}>Contacto</h2>
-          <h2 onClick={()=>{setView('admin')}} className={view === 'admin'? s.select : ''}>Admin</h2>
+          {
+            data && 
+            <h2 onClick={()=>{setView('admin')}} className={view === 'admin'? s.select : ''}>Admin</h2>
+          }
         </div>
         {
           view === 'gen' ?
