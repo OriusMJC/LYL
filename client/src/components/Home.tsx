@@ -50,6 +50,8 @@ function Home() {
         autoPlay
         loop
         muted
+        playsInline
+        preload = "auto"
         />
         <div className = {s.content}>
           {

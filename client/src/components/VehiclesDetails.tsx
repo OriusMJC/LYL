@@ -106,6 +106,8 @@ function VehiclesDetails() {
       autoPlay
       muted
       loop
+      preload = "auto"
+      playsInline
       id = {s.video}
       />
       :
