@@ -53,7 +53,7 @@
         gap: 10%;
     }
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 768px) {
     #img1{
         width: 80px;
         margin: 2% 0;
@@ -78,6 +78,15 @@
         width: 80%;
         align-items: center!important;
     }
+    .container div div a{ 
+        width: 50%;
+        align-content: center!important;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+}
+@media screen and (max-width: 425px) {
     .container div div a{ 
         width: 50%;
         align-content: flex-start!important;
