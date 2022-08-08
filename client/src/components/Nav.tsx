@@ -10,7 +10,8 @@ import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import
 
 function Nav() {
   const data:any = window.localStorage.getItem("userDataLogin");
-  const boolean = data?.email === "lautaroarnay@gmail.com"
+  const dataParsed = data ? JSON.parse(data) : null
+  const boolean = dataParsed?.email === "lautaroarnay@gmail.com"
   const dispatch = useAppDispatch();
   const panel = useSelector((state:any) => state&& state.panel)
   const [nav, setNav] = useState(false);

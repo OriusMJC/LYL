@@ -25,7 +25,8 @@ import wp from '../media/logos/whatsapp.png'
 function VehiclesDetails() {
   
   const data:any = window.localStorage.getItem("userDataLogin");
-  const boolean = data?.email === "lautaroarnay@gmail.com"
+  const dataParsed = data ? JSON.parse(data) : null;
+  const boolean = dataParsed?.email === "lautaroarnay@gmail.com"
   const idVehicle:any = useParams().idVehicle;
   const dispatch = useAppDispatch();
 

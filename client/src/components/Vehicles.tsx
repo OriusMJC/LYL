@@ -57,9 +57,11 @@ function Vehicles() {
     <div className = {s.superCont}>
     <div id={s.vehiclesContainer}>
       <div className = {s.subDiv}>
-      <Link to = "/" className = {s.imgDiv}>
+      <div className = {s.imgDiv}>
+      <Link to = "/" >
         <img src= {logo} alt = "logo"></img>
       </Link>
+      </div>
       <div className = {s.subDiv2}>
       {filteredType && <button onClick = {handleFilter} className = {s.titleH2}>X</button>}
       <SearchBar/>
