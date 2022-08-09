@@ -150,6 +150,8 @@ function VehiclesDetails() {
                 controls
                 loop
                 muted
+                preload = "auto"
+                playsInline
                 id = {s.video2}
                 ></video>
               </div>
@@ -175,6 +177,9 @@ function VehiclesDetails() {
                   <div>
                     {vehicle && vehicle.generalInfo &&
                     <>
+                    <label>Año
+                      <span>{vehicle.year}</span>
+                    </label>
                     <label>Tipo de Combustible
                       <span>{vehicle.generalInfo.tipoDeCombustible}</span>
                     </label>

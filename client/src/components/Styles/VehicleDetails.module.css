@@ -545,6 +545,9 @@
     #divD{
         height: 40%;
     }
+    #divG{
+        width: 70%;
+    }
     #divDer{
         display: flex;
         flex-direction: column;
@@ -599,6 +602,9 @@
     #divA{
         width: 80%;
         height: 100%;
+    }
+    #divG{
+        width: 70%;
     }
     #divInfo{
         display: flex;
